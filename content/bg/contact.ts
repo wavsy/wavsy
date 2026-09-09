@@ -1,0 +1,42 @@
+export const contact = {
+  title: "Имаш идея?",
+  titleLine2: "Разкажи ни.",
+  pageTitle: "Контакти",
+  lead: "Попълни формата. Запитването идва при нас като WhatsApp съобщение. Отговаряме до 2 календарни дни.",
+  emailLabel: "Имейл",
+  email: "mitkobarev@gmail.com",
+  emailHint: "Ако предпочиташ, пиши директно на имейла.",
+  response: "Отговаряме до 2 календарни дни.",
+  whatsappNote:
+    "След изпращане се отваря WhatsApp с готово съобщение. Номерът не е публичен на сайта.",
+  fields: {
+    name: "Име",
+    company: "Фирма",
+    email: "Имейл",
+    phone: "Телефон",
+    projectType: "Тип проект",
+    message: "Какво ти трябва",
+    contactHint: "Попълни имейл, телефон или и двете.",
+    submit: "Изпрати запитване",
+    pending: "Отваряме WhatsApp…",
+  },
+  projectTypes: [
+    { value: "", label: "Избери" },
+    { value: "website", label: "Сайт" },
+    { value: "app", label: "Уеб приложение" },
+    { value: "maintenance", label: "Поддръжка" },
+    { value: "automation", label: "AI асистент или автоматизация" },
+    { value: "unsure", label: "Не съм сигурен" },
+  ],
+  errors: {
+    name: "Напиши име.",
+    contact: "Напиши имейл или телефон — поне едното.",
+    email: "Имейлът не изглежда валиден.",
+    projectType: "Избери тип проект.",
+    message: "Напиши накратко какво ти трябва.",
+    config: "Формата не е настроена. Пиши ни на имейла.",
+    generic: "Нещо се обърка. Опитай пак или пиши на имейла.",
+  },
+  honeypotSuccess:
+    "Благодарим. Ако запитването е истинско, ще се свържем до 2 календарни дни.",
+} as const;

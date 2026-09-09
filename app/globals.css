@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #111c33;
+  --navy: #0b3d91;
+  --cyan: #3fc1f0;
+  --deep: #0a1224;
+  --paper: #f4f6f8;
+  --mist: #e8eef3;
+  --muted: #5c6b80;
+  --white: #ffffff;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --header-h: 4.5rem;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-cyan: var(--cyan);
+  --color-deep: var(--deep);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-muted: var(--muted);
+  --color-white: var(--white);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-unbounded);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--cyan) 35%, white);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wave-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  to {
+    transform: translate3d(1.5%, -1.2%, 0) rotate(-4deg);
+  }
+}
+
+.hero-copy > * {
+  animation: rise 0.75s var(--ease-out) both;
+}
+
+.hero-copy > *:nth-child(1) {
+  animation-delay: 40ms;
+}
+
+.hero-copy > *:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.hero-copy > *:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.hero-copy > *:nth-child(4) {
+  animation-delay: 280ms;
+}
+
+.wave-drift {
+  animation: wave-drift 14s var(--ease-out) alternate infinite;
+}
+
+.field-input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--mist);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.7rem 0;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 200ms var(--ease-out);
+}
+
+.field-input:focus {
+  border-bottom-color: var(--navy);
+}
+
+.field-input-dark {
+  border-bottom-color: rgb(255 255 255 / 0.22);
+  color: var(--white);
+}
+
+.field-input-dark:focus {
+  border-bottom-color: var(--cyan);
+}
+
+.field-input-dark option {
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > *,
+  .wave-drift {
+    animation: none;
+  }
+}
