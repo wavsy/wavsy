@@ -1,17 +1,27 @@
 "use client";
 
 import { useActionState } from "react";
-import { contact } from "@/content/bg/contact";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { submitInquiry } from "@/lib/inquiry";
 import { cn } from "@/lib/cn";
 import type { InquiryState } from "@/lib/validation";
+
+const projectTypeValues = [
+  "website",
+  "app",
+  "maintenance",
+  "automation",
+  "unsure",
+] as const;
 
 type InquiryFormProps = {
   tone?: "light" | "dark";
 };
 
 export function InquiryForm({ tone = "light" }: InquiryFormProps) {
+  const t = useTranslations("contact");
+  const locale = useLocale();
   const [state, action, pending] = useActionState<InquiryState, FormData>(
     submitInquiry,
     null,
@@ -22,26 +32,27 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
   if (state && !state.error && !state.fieldErrors) {
     return (
       <p className={cn("max-w-[42ch] leading-7", dark ? "text-white/80" : "text-ink/80")}>
-        {contact.honeypotSuccess}
+        {t("honeypotSuccess")}
       </p>
     );
   }
 
   return (
     <form action={action} className="relative grid gap-6" noValidate>
+      <input type="hidden" name="locale" value={locale} />
       <Field
         id="name"
         name="name"
-        label={contact.fields.name}
+        label={t("fields.name")}
         autoComplete="name"
-        error={state?.fieldErrors?.name}
+        error={state?.fieldErrors?.name ? t("errors.name") : undefined}
         dark={dark}
         required
       />
       <Field
         id="company"
         name="company"
-        label={contact.fields.company}
+        label={t("fields.company")}
         autoComplete="organization"
         dark={dark}
       />
@@ -49,24 +60,28 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
         <Field
           id="email"
           name="email"
-          label={contact.fields.email}
+          label={t("fields.email")}
           type="email"
           autoComplete="email"
-          error={state?.fieldErrors?.email}
+          error={
+            state?.fieldErrors?.email
+              ? t(`errors.${state.fieldErrors.email === "contact" ? "contact" : "email"}`)
+              : undefined
+          }
           dark={dark}
         />
         <Field
           id="phone"
           name="phone"
-          label={contact.fields.phone}
+          label={t("fields.phone")}
           type="tel"
           autoComplete="tel"
-          error={state?.fieldErrors?.phone}
+          error={state?.fieldErrors?.phone ? t("errors.contact") : undefined}
           dark={dark}
         />
       </div>
       <p className={cn("text-sm", dark ? "text-white/50" : "text-muted")}>
-        {contact.fields.contactHint}
+        {t("fields.contactHint")}
       </p>
       <div className="grid gap-2">
         <label
@@ -76,7 +91,7 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
             dark ? "text-white/55" : "text-muted",
           )}
         >
-          {contact.fields.projectType}
+          {t("fields.projectType")}
         </label>
         <select
           id="projectType"
@@ -88,14 +103,17 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
             dark && "field-input-dark",
           )}
         >
-          {contact.projectTypes.map((item) => (
-            <option key={item.value || "empty"} value={item.value} disabled={item.value === ""}>
-              {item.label}
+          <option value="" disabled>
+            {t("projectTypes.empty")}
+          </option>
+          {projectTypeValues.map((value) => (
+            <option key={value} value={value}>
+              {t(`projectTypes.${value}`)}
             </option>
           ))}
         </select>
         {state?.fieldErrors?.projectType ? (
-          <p className="text-sm text-cyan">{state.fieldErrors.projectType}</p>
+          <p className="text-sm text-cyan">{t("errors.projectType")}</p>
         ) : null}
       </div>
       <div className="grid gap-2">
@@ -106,7 +124,7 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
             dark ? "text-white/55" : "text-muted",
           )}
         >
-          {contact.fields.message}
+          {t("fields.message")}
         </label>
         <textarea
           id="message"
@@ -116,7 +134,7 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
           className={cn("field-input min-h-32 resize-y", dark && "field-input-dark")}
         />
         {state?.fieldErrors?.message ? (
-          <p className="text-sm text-cyan">{state.fieldErrors.message}</p>
+          <p className="text-sm text-cyan">{t("errors.message")}</p>
         ) : null}
       </div>
       <input
@@ -126,16 +144,16 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
         aria-hidden="true"
         className="pointer-events-none absolute h-px w-px opacity-0"
       />
-      {state?.error ? (
+      {state?.error === "config" || state?.error === "generic" ? (
         <p className="text-sm text-cyan" role="alert">
-          {state.error}
+          {t(`errors.${state.error}`)}
         </p>
       ) : null}
       <p className={cn("text-sm leading-6", dark ? "text-white/50" : "text-muted")}>
-        {contact.whatsappNote}
+        {t("whatsappNote")}
       </p>
       <Button type="submit" disabled={pending} variant={dark ? "inverse" : "primary"}>
-        {pending ? contact.fields.pending : contact.fields.submit}
+        {pending ? t("fields.pending") : t("fields.submit")}
       </Button>
     </form>
   );

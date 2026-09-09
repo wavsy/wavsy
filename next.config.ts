@@ -1,13 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
-const publicToInternal = [
-  ["/услуги", "/uslugi"],
-  ["/проекти", "/proekti"],
-  ["/за-нас", "/za-nas"],
-  ["/контакти", "/kontakti"],
-  ["/поверителност", "/poveritelnost"],
-  ["/бисквитки", "/biskvitki"],
-] as const;
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 function encodedSources(source: string) {
   const encoded = encodeURI(source);
@@ -17,29 +11,50 @@ function encodedSources(source: string) {
   return [...new Set([source, encoded, lower])];
 }
 
+const publicToInternal = [
+  ["/", "/bg"],
+  ["/услуги", "/bg/uslugi"],
+  ["/калкулатор", "/bg/kalkulator"],
+  ["/портфолио", "/bg/portfolio"],
+  ["/проекти", "/bg/portfolio"],
+  ["/за-нас", "/bg/za-nas"],
+  ["/контакти", "/bg/kontakti"],
+  ["/поверителност", "/bg/poveritelnost"],
+  ["/бисквитки", "/bg/biskvitki"],
+  ["/en/services", "/en/uslugi"],
+  ["/en/calculator", "/en/kalkulator"],
+  ["/en/about", "/en/za-nas"],
+  ["/en/contact", "/en/kontakti"],
+  ["/en/privacy", "/en/poveritelnost"],
+  ["/en/cookies", "/en/biskvitki"],
+  ["/de/leistungen", "/de/uslugi"],
+  ["/de/rechner", "/de/kalkulator"],
+  ["/de/ueber-uns", "/de/za-nas"],
+  ["/de/kontakt", "/de/kontakti"],
+  ["/de/datenschutz", "/de/poveritelnost"],
+  ["/de/cookies", "/de/biskvitki"],
+] as const;
+
 const nextConfig: NextConfig = {
   async redirects() {
-    return publicToInternal.flatMap(([publicPath, internalPath]) => [
-      {
-        source: internalPath,
-        destination: publicPath,
-        permanent: true,
-      },
-      {
-        source: `${internalPath}/:path*`,
-        destination: `${publicPath}/:path*`,
-        permanent: true,
-      },
-    ]);
+    return [
+      { source: "/bg", destination: "/", permanent: true },
+      { source: "/uslugi", destination: "/услуги", permanent: true },
+      { source: "/proekti", destination: "/портфолио", permanent: true },
+      { source: "/za-nas", destination: "/за-нас", permanent: true },
+      { source: "/kontakti", destination: "/контакти", permanent: true },
+      { source: "/poveritelnost", destination: "/поверителност", permanent: true },
+      { source: "/biskvitki", destination: "/бисквитки", permanent: true },
+    ];
   },
   async rewrites() {
-    return publicToInternal.flatMap(([publicPath, internalPath]) =>
-      encodedSources(publicPath).flatMap((source) => [
-        { source, destination: internalPath },
-        { source: `${source}/:path*`, destination: `${internalPath}/:path*` },
-      ]),
+    return publicToInternal.flatMap(([source, destination]) =>
+      encodedSources(source).map((entry) => ({
+        source: entry,
+        destination,
+      })),
     );
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

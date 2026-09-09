@@ -2,16 +2,21 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { nav } from "@/content/bg/nav";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
+import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { cn } from "@/lib/cn";
+import { pathFor, type Locale } from "@/lib/routes";
 
 type MobileNavProps = {
   open: boolean;
   onClose: () => void;
+  locale: Locale;
 };
 
-export function MobileNav({ open, onClose }: MobileNavProps) {
+export function MobileNav({ open, onClose, locale }: MobileNavProps) {
+  const t = useTranslations("nav");
+
   useEffect(() => {
     if (!open) {
       return;
@@ -32,26 +37,25 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     };
   }, [open, onClose]);
 
+  const items = [
+    { href: pathFor(locale, "home"), label: t("home") },
+    { href: pathFor(locale, "services"), label: t("services") },
+    { href: pathFor(locale, "portfolio"), label: t("portfolio") },
+    { href: pathFor(locale, "calculator"), label: t("calculator") },
+    { href: pathFor(locale, "about"), label: t("about") },
+    { href: pathFor(locale, "contact"), label: t("contact") },
+  ];
+
   return (
     <div
       className={cn(
-        "fixed inset-0 z-40 bg-paper pt-[var(--header-h)] transition-opacity duration-200 md:hidden",
+        "fixed inset-0 z-40 bg-paper pt-[var(--header-h)] transition-opacity duration-150 lg:hidden",
         open ? "opacity-100" : "pointer-events-none opacity-0",
       )}
       hidden={!open}
     >
-      <nav
-        className="flex h-full flex-col gap-2 px-5 pb-10 pt-6"
-        aria-label="Мобилна навигация"
-      >
-        <Link
-          href={nav.home.href}
-          onClick={onClose}
-          className="border-b border-mist py-4 font-display text-3xl tracking-[-0.04em]"
-        >
-          {nav.home.label}
-        </Link>
-        {nav.items.map((item) => (
+      <nav className="flex h-full flex-col gap-2 overflow-y-auto px-5 pb-10 pt-6">
+        {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
@@ -62,9 +66,12 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           </Link>
         ))}
         <div className="mt-8">
-          <Button href={nav.cta.href} className="w-fit">
-            {nav.cta.label}
+          <Button href={pathFor(locale, "contact")} className="w-fit">
+            {t("cta")}
           </Button>
+        </div>
+        <div className="mt-8">
+          <LanguageSwitch />
         </div>
       </nav>
     </div>

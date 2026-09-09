@@ -1,6 +1,5 @@
 import "server-only";
 
-import { contact } from "@/content/bg/contact";
 import type { InquiryInput } from "@/lib/validation";
 
 export function getWhatsAppDigits(): string | null {
@@ -14,21 +13,18 @@ export function getWhatsAppDigits(): string | null {
 }
 
 export function buildInquiryMessage(data: InquiryInput): string {
-  const typeLabel =
-    contact.projectTypes.find((item) => item.value === data.projectType)
-      ?.label ?? data.projectType;
-
-  const lines = [
-    "Ново запитване от wavsy.dev",
+  return [
+    "New enquiry from wavsy.dev",
     "",
-    `Име: ${data.name}`,
-    `Фирма: ${data.company || "—"}`,
-    `Имейл: ${data.email || "—"}`,
-    `Телефон: ${data.phone || "—"}`,
-    `Тип: ${typeLabel}`,
+    `Name: ${data.name}`,
+    `Company: ${data.company || "—"}`,
+    `Email: ${data.email || "—"}`,
+    `Phone: ${data.phone || "—"}`,
+    `Type: ${data.projectType}`,
+    data.locale ? `Locale: ${data.locale}` : null,
     "",
     data.message,
-  ];
-
-  return lines.join("\n");
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
 }

@@ -125,9 +125,19 @@ body {
   color: var(--ink);
 }
 
+@media (max-width: 767px) {
+  .hero-copy > * {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-copy > *,
   .wave-drift {
     animation: none;
   }
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
 }

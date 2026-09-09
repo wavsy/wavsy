@@ -1,7 +1,6 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { contact } from "@/content/bg/contact";
 import { inquirySchema, type InquiryState } from "@/lib/validation";
 import { buildInquiryMessage, getWhatsAppDigits } from "@/lib/whatsapp";
 
@@ -22,6 +21,7 @@ export async function submitInquiry(
     projectType: read(formData, "projectType"),
     message: read(formData, "message"),
     website: read(formData, "website"),
+    locale: read(formData, "locale") || undefined,
   });
 
   if (!parsed.success) {
@@ -33,10 +33,7 @@ export async function submitInquiry(
       }
     }
 
-    return {
-      error: fieldErrors.email ?? parsed.error.issues[0]?.message,
-      fieldErrors,
-    };
+    return { error: "fields", fieldErrors };
   }
 
   if (parsed.data.website) {
@@ -45,7 +42,7 @@ export async function submitInquiry(
 
   const digits = getWhatsAppDigits();
   if (!digits) {
-    return { error: contact.errors.config };
+    return { error: "config" };
   }
 
   const text = encodeURIComponent(buildInquiryMessage(parsed.data));

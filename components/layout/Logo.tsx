@@ -2,11 +2,12 @@ import Link from "next/link";
 
 type LogoProps = {
   className?: string;
+  href?: string;
 };
 
-export function Logo({ className }: LogoProps) {
+export function Logo({ className, href = "/" }: LogoProps) {
   return (
-    <Link href="/" className={className} aria-label="Wavsy — начало">
+    <Link href={href} className={className} aria-label="Wavsy">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/brand/wavsy-logo-horizontal.svg"

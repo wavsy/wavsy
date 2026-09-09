@@ -8,13 +8,18 @@ type Shared = {
 };
 
 type ButtonProps =
-  | (Shared & { href: string; type?: never; disabled?: never })
-  | (Shared & { href?: never; type: "button" | "submit"; disabled?: boolean });
+  | (Shared & { href: string; type?: never; disabled?: never; onClick?: never })
+  | (Shared & {
+      href?: never;
+      type: "button" | "submit";
+      disabled?: boolean;
+      onClick?: () => void;
+    });
 
 export function Button(props: ButtonProps) {
   const { children, variant = "primary", className } = props;
   const classes = cn(
-    "group inline-flex items-center gap-2 text-[0.9375rem] tracking-[-0.01em] transition-colors duration-200",
+    "group inline-flex items-center gap-2 text-[0.9375rem] tracking-[-0.01em] transition-colors duration-150",
     variant === "primary" &&
       "bg-ink px-5 py-3 text-white hover:bg-navy disabled:opacity-60",
     variant === "ghost" && "py-3 text-ink hover:text-navy",
@@ -28,7 +33,7 @@ export function Button(props: ButtonProps) {
       <span>{children}</span>
       <span
         aria-hidden
-        className="translate-x-0 transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+        className="translate-x-0 transition-transform duration-150 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
       >
         →
       </span>
@@ -44,7 +49,12 @@ export function Button(props: ButtonProps) {
   }
 
   return (
-    <button type={props.type} disabled={props.disabled} className={classes}>
+    <button
+      type={props.type}
+      disabled={props.disabled}
+      onClick={props.onClick}
+      className={classes}
+    >
       {inner}
     </button>
   );
