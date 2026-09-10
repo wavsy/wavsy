@@ -10,7 +10,13 @@
   --muted: #5c6b80;
   --white: #ffffff;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --header-h: 4.5rem;
+  --header-h: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-h: 4.5rem;
+  }
 }
 
 @theme inline {

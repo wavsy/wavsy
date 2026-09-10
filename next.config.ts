@@ -14,7 +14,6 @@ function encodedSources(source: string) {
 const publicToInternal = [
   ["/", "/bg"],
   ["/услуги", "/bg/uslugi"],
-  ["/калкулатор", "/bg/kalkulator"],
   ["/портфолио", "/bg/portfolio"],
   ["/проекти", "/bg/portfolio"],
   ["/за-нас", "/bg/za-nas"],
@@ -22,18 +21,29 @@ const publicToInternal = [
   ["/поверителност", "/bg/poveritelnost"],
   ["/бисквитки", "/bg/biskvitki"],
   ["/en/services", "/en/uslugi"],
-  ["/en/calculator", "/en/kalkulator"],
   ["/en/about", "/en/za-nas"],
   ["/en/contact", "/en/kontakti"],
   ["/en/privacy", "/en/poveritelnost"],
   ["/en/cookies", "/en/biskvitki"],
   ["/de/leistungen", "/de/uslugi"],
-  ["/de/rechner", "/de/kalkulator"],
   ["/de/ueber-uns", "/de/za-nas"],
   ["/de/kontakt", "/de/kontakti"],
   ["/de/datenschutz", "/de/poveritelnost"],
   ["/de/cookies", "/de/biskvitki"],
 ] as const;
+
+const calculatorRedirects = [
+  ...encodedSources("/калкулатор").map((source) => ({
+    source,
+    destination: "/контакти",
+    permanent: true,
+  })),
+  { source: "/en/calculator", destination: "/en/contact", permanent: true },
+  { source: "/de/rechner", destination: "/de/kontakt", permanent: true },
+  { source: "/bg/kalkulator", destination: "/контакти", permanent: true },
+  { source: "/en/kalkulator", destination: "/en/contact", permanent: true },
+  { source: "/de/kalkulator", destination: "/de/kontakt", permanent: true },
+];
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -45,6 +55,7 @@ const nextConfig: NextConfig = {
       { source: "/kontakti", destination: "/контакти", permanent: true },
       { source: "/poveritelnost", destination: "/поверителност", permanent: true },
       { source: "/biskvitki", destination: "/бисквитки", permanent: true },
+      ...calculatorRedirects,
     ];
   },
   async rewrites() {

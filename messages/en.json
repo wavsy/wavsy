@@ -1,13 +1,11 @@
 {
   "meta": {
-    "homeTitle": "Wavsy — A site that works for you",
+    "homeTitle": "Wavsy — Website that works for you",
     "homeDescription": "Wavsy builds modern websites and web apps for businesses that want more trust and more enquiries. Two people. Direct contact.",
     "servicesTitle": "Services — Wavsy",
     "servicesDescription": "Websites, web apps, maintenance and automations. Two ways of working. Price is agreed together.",
     "portfolioTitle": "Portfolio — Wavsy",
     "portfolioDescription": "Selected websites and web apps made by Wavsy.",
-    "calculatorTitle": "Calculator — Wavsy",
-    "calculatorDescription": "A price range for a new website. No hourly rate. A quote within 48 hours.",
     "aboutTitle": "About — Wavsy",
     "aboutDescription": "Wavsy is a two-person studio. You speak directly with the people who build the site.",
     "contactTitle": "Contact — Wavsy",
@@ -21,7 +19,6 @@
     "home": "Home",
     "services": "Services",
     "portfolio": "Portfolio",
-    "calculator": "Calculator",
     "about": "About",
     "contact": "Contact",
     "cta": "Request a quote",
@@ -32,7 +29,7 @@
     "main": "Main navigation"
   },
   "footer": {
-    "tagline": "A site that works for you.",
+    "tagline": "Website that works for you.",
     "studio": "Two people. Direct contact.",
     "emailLabel": "Email",
     "response": "We reply within 2 calendar days.",
@@ -44,7 +41,7 @@
   },
   "hero": {
     "eyebrow": "Wavsy",
-    "titleLine1": "A site that",
+    "titleLine1": "Website that",
     "titleLine2": "works for you.",
     "body": "We make modern websites and web apps for businesses that want more trust and more enquiries.",
     "primary": "Request a quote",
@@ -52,7 +49,7 @@
   },
   "work": {
     "title": "Selected work",
-    "lead": "Real projects will appear here — name, industry, result. The slots stay empty on purpose for now.",
+    "lead": "Real work. Name, industry, and a link to the site.",
     "cta": "All work",
     "emptyName": "Project",
     "emptyLabel": "Soon",
@@ -61,9 +58,9 @@
   "services": {
     "title": "What we do",
     "pageTitle": "Services",
-    "lead": "Four things. No packages on this page — the calculator gives a range.",
-    "priceNote": "The exact price depends on scope. Better to talk. Or use the calculator for a range.",
-    "cta": "Price calculator",
+    "lead": "Four things. No packages on this page — the price is agreed together.",
+    "priceNote": "The exact price depends on scope. Better to talk.",
+    "cta": "Request a quote",
     "items": {
       "websites": {
         "title": "Websites",
@@ -90,7 +87,7 @@
   "engagement": {
     "title": "Two ways of working",
     "recommended": "Recommended",
-    "cta": "See a price range",
+    "cta": "Write to us",
     "handoff": {
       "title": "Build and hand over",
       "steps": "Talk and plan → Build → Hand over.",
@@ -138,10 +135,6 @@
       {
         "q": "What if I am not happy with the design?",
         "a": "The quote includes two rounds of design revisions. We write down what we will change and we do it. If the scope grows, we say so before we continue."
-      },
-      {
-        "q": "Do you work with clients outside Kazanlak?",
-        "a": "Yes. We work remotely with companies across Bulgaria and beyond. The conversation is online. If you are near Kazanlak, we can also meet in person."
       }
     ]
   },
@@ -149,10 +142,22 @@
     "title": "How we work",
     "lead": "A typical business site can be online in about 3 weeks.",
     "steps": [
-      { "title": "Talk", "body": "You say what you need. We ask what is missing." },
-      { "title": "Quote", "body": "Clear scope and price before we start. No surprises on the way." },
-      { "title": "Build", "body": "We make the site. We write when there is something to see." },
-      { "title": "Launch and care", "body": "We launch it. We stay if you want us to continue." }
+      {
+        "title": "Talk",
+        "body": "You say what you need. We ask what is missing."
+      },
+      {
+        "title": "Quote",
+        "body": "Clear scope and price before we start. No surprises on the way."
+      },
+      {
+        "title": "Build",
+        "body": "We make the site. We write when there is something to see."
+      },
+      {
+        "title": "Launch and care",
+        "body": "We launch it. We stay if you want us to continue."
+      }
     ]
   },
   "team": {
@@ -161,41 +166,62 @@
     "lead": "You speak directly with the people who build the site. No middlemen and no chain of messages.",
     "body": "Wavsy is a two-person studio. We make sites for small and mid-size service businesses — clinics, law firms, restaurants, consultants and others.",
     "photoPending": "Photo coming",
+    "linkedin": "LinkedIn",
+    "linkedinAria": "LinkedIn profile of {name}",
     "people": {
       "dimitar": {
         "name": "Dimitar",
         "role": "Co-founder",
         "photoLabel": "[PHOTO: Dimitar]",
-        "bio": "Dimitar builds systems and explains ideas clearly. He speaks straight, without jargon — from the first conversation to launch.",
-        "bioShort": "Dimitar speaks straight and keeps the site clear for the business, not for developers."
+        "titles": [
+          "Software Engineer",
+          "Public Speaker",
+          "Triathlete"
+        ],
+        "note": "Graduated in the Netherlands"
       },
       "nikolay": {
         "name": "Nikolay",
         "role": "Co-founder",
         "photoLabel": "[PHOTO: Nikolay]",
-        "bio": "Nikolay works side by side with Dimitar on the build. He keeps things simple, ready for real use, and free of extra layers.",
-        "bioShort": "Nikolay makes the site easy to use — from the first page to small changes after launch."
+        "titles": [
+          "Developer",
+          "Software Engineer"
+        ],
+        "note": "Rides enduro motorcycles and coaches at competitions"
       }
     }
   },
   "why": {
     "title": "Why Wavsy",
     "items": [
-      { "display": "~3 weeks", "body": "A typical site is online in about three weeks." },
-      { "display": "Clear quote", "body": "Scope and price are agreed before we start." },
-      { "display": "After launch", "body": "Maintenance, improvements, assistants — if you need them." },
-      { "display": "Direct contact", "body": "Two people. No account managers." }
+      {
+        "display": "~3 weeks",
+        "body": "A typical site is online in about three weeks."
+      },
+      {
+        "display": "Clear quote",
+        "body": "Scope and price are agreed before we start."
+      },
+      {
+        "display": "After launch",
+        "body": "Maintenance, improvements, assistants — if you need them."
+      },
+      {
+        "display": "Direct contact",
+        "body": "Two people. No account managers."
+      }
     ]
   },
   "contact": {
     "title": "Have an idea?",
     "titleLine2": "Tell us.",
     "pageTitle": "Contact",
-    "lead": "Fill in the form. The enquiry reaches us on WhatsApp. We reply within 2 calendar days.",
+    "lead": "Fill in the form. Send the enquiry on WhatsApp. We reply within 2 calendar days.",
     "emailLabel": "Email",
     "response": "We reply within 2 calendar days.",
     "emailHint": "If you prefer, write to the email directly.",
-    "whatsappNote": "After send, WhatsApp opens with a ready message. The number is not published on the site.",
+    "channelNote": "Send enquiry opens WhatsApp with your message. Viber opens a chat with us, without the form text. The number is not published on the site.",
     "fields": {
       "name": "Name",
       "company": "Company",
@@ -204,6 +230,8 @@
       "projectType": "Project type",
       "message": "What you need",
       "contactHint": "Fill in email, phone, or both.",
+      "viber": "Message on Viber",
+      "pendingViber": "Opening Viber…",
       "submit": "Send enquiry",
       "pending": "Opening WhatsApp…"
     },
@@ -238,92 +266,28 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "lead": "Real work, when we have confirmed projects to publish.",
+    "lead": "Sites we have made. Open them and see for yourself.",
     "empty": "The first projects are in progress. Write to us and we will show you what we are making now.",
-    "cta": "Write to us"
-  },
-  "calculator": {
-    "title": "Calculator",
-    "lead": "A few questions. The price shows only at the end — as a range, not a fixed quote.",
-    "progress": "Step {current} of {total}",
-    "back": "Back",
-    "next": "Next",
-    "step1": {
-      "title": "What kind of site do you need?",
-      "card": "Calling card (1–3 pages)",
-      "company": "Company site (5–8 pages)",
-      "shop": "Online shop",
-      "unsure": "I am not sure"
-    },
-    "step2": {
-      "title": "How many different kinds of pages?",
-      "helper": "Ten product pages on one template count as one page.",
-      "value": "{count} pages"
-    },
-    "step3": {
-      "title": "What should the site do?",
-      "blog": "Blog",
-      "booking": "Appointment booking",
-      "payments": "Online payments",
-      "crm": "CRM integration",
-      "i18n": "Multiple languages",
-      "none": "None of these"
-    },
-    "step4": {
-      "title": "An assistant that replies 24/7?",
-      "yes": "Yes",
-      "no": "No",
-      "note": "A visitor asks on the site. The assistant answers from your texts, even outside working hours."
-    },
-    "step5": {
-      "title": "Automations?",
-      "one": "One",
-      "oneExample": "For example: a new enquiry lands in your email or spreadsheet automatically.",
-      "three": "Three",
-      "threeExample": "For example: enquiry, reminder and a short internal notice — without doing them by hand.",
-      "none": "No",
-      "noneExample": "We start without automations. We can add them later."
-    },
-    "step6": {
-      "title": "Maintenance after launch?",
-      "basic": "Basic",
-      "standard": "Standard",
-      "none": "None",
-      "note": "We recommend Basic. Without maintenance the site gets old."
-    },
-    "result": {
-      "title": "Estimate",
-      "range": "Estimate: {low} – {high} €",
-      "monthly": "+ {amount} €/month",
-      "disclaimer": "The exact price depends on scope. We send a quote within 48 hours.",
-      "summary": "Your choices",
-      "continue": "Leave a contact",
-      "whatsapp": "Open WhatsApp"
-    },
-    "form": {
-      "title": "Where should we write?",
-      "submit": "Send enquiry",
-      "whatsapp": "Open WhatsApp",
-      "name": "Name",
-      "company": "Company",
-      "phone": "Phone",
-      "email": "Email",
-      "errors": {
-        "name": "Please write a name.",
-        "phone": "Please write a phone number.",
-        "email": "Please write a valid email.",
-        "config": "The form is not set up. Write to the email."
+    "cta": "Write to us",
+    "visit": "View site",
+    "visitAria": "Open the {name} website",
+    "imageAlt": "Homepage of {name}",
+    "projects": {
+      "glenz": {
+        "name": "Glenz Reinigung",
+        "industry": "Cleaning",
+        "summary": "A site for a cleaning company in Dissen — homes, offices and commercial spaces."
+      },
+      "quezher": {
+        "name": "Manufacturas Quezher",
+        "industry": "Metalworking",
+        "summary": "A site for a metalworking company in Mexico — manufacturing, machines and contact."
+      },
+      "dimitar": {
+        "name": "Dimitar Barev",
+        "industry": "Personal brand",
+        "summary": "A personal site — who they are and what they do."
       }
-    },
-    "labels": {
-      "siteType": "Site type",
-      "pages": "Pages",
-      "features": "Features",
-      "assistant": "24/7 assistant",
-      "automations": "Automations",
-      "maintenance": "Maintenance",
-      "yes": "Yes",
-      "no": "No"
     }
   }
 }

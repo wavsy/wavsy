@@ -1,10 +1,10 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Container } from "@/components/ui/Container";
-import { TeamPhoto } from "@/components/team/TeamPhoto";
+import { TeamCard } from "@/components/team/TeamCard";
 import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { teamIds, teamPhotos } from "@/lib/team";
+import { teamIds } from "@/lib/team";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -29,20 +29,7 @@ export default async function AboutPage({ params }: PageProps) {
         </p>
         <div className="mt-16 grid gap-8 md:grid-cols-2">
           {teamIds.map((id) => (
-            <article key={id}>
-              <TeamPhoto
-                src={teamPhotos[id]}
-                name={t(`people.${id}.name`)}
-                label={t(`people.${id}.photoLabel`)}
-              />
-              <h2 className="mt-6 font-display text-3xl tracking-[-0.04em]">
-                {t(`people.${id}.name`)}
-              </h2>
-              <p className="mt-2 text-sm text-muted">{t(`people.${id}.role`)}</p>
-              <p className="mt-4 max-w-[36ch] leading-7 text-ink/80">
-                {t(`people.${id}.bio`)}
-              </p>
-            </article>
+            <TeamCard key={id} id={id} heading="h2" />
           ))}
         </div>
       </Container>

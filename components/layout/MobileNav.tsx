@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { cn } from "@/lib/cn";
 import { pathFor, type Locale } from "@/lib/routes";
 
@@ -41,7 +40,6 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
     { href: pathFor(locale, "home"), label: t("home") },
     { href: pathFor(locale, "services"), label: t("services") },
     { href: pathFor(locale, "portfolio"), label: t("portfolio") },
-    { href: pathFor(locale, "calculator"), label: t("calculator") },
     { href: pathFor(locale, "about"), label: t("about") },
     { href: pathFor(locale, "contact"), label: t("contact") },
   ];
@@ -54,24 +52,23 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
       )}
       hidden={!open}
     >
-      <nav className="flex h-full flex-col gap-2 overflow-y-auto px-5 pb-10 pt-6">
-        {items.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            onClick={onClose}
-            className="border-b border-mist py-4 font-display text-3xl tracking-[-0.04em]"
-          >
-            {item.label}
-          </Link>
-        ))}
-        <div className="mt-8">
-          <Button href={pathFor(locale, "contact")} className="w-fit">
+      <nav className="flex h-full flex-col px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-4">
+        <div className="flex flex-1 flex-col gap-1 overflow-y-auto">
+          {items.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onClose}
+              className="border-b border-mist py-3.5 font-display text-[1.65rem] leading-none tracking-[-0.04em] sm:text-3xl"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+        <div className="pt-6">
+          <Button href={pathFor(locale, "contact")} className="w-full justify-center sm:w-fit">
             {t("cta")}
           </Button>
-        </div>
-        <div className="mt-8">
-          <LanguageSwitch />
         </div>
       </nav>
     </div>

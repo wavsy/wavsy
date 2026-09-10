@@ -14,7 +14,7 @@ export function Logo({ className, href = "/" }: LogoProps) {
         alt=""
         width={180}
         height={40}
-        className="h-8 w-auto sm:h-9"
+        className="h-7 w-auto max-w-[8.5rem] sm:h-8 sm:max-w-none lg:h-9"
       />
     </Link>
   );

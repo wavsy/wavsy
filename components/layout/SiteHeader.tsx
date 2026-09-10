@@ -29,7 +29,6 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const items = [
     { href: pathFor(locale, "services"), label: t("services") },
     { href: pathFor(locale, "portfolio"), label: t("portfolio") },
-    { href: pathFor(locale, "calculator"), label: t("calculator") },
     { href: pathFor(locale, "about"), label: t("about") },
     { href: pathFor(locale, "contact"), label: t("contact") },
   ];
@@ -37,7 +36,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter,height] duration-150",
+        "fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter] duration-150",
         compact || open
           ? "border-b border-mist/80 bg-paper/90 backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
@@ -45,12 +44,17 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     >
       <Container
         className={cn(
-          "flex items-center justify-between gap-4 transition-[height] duration-150",
-          compact ? "h-14" : "h-[var(--header-h)]",
+          "flex items-center gap-2 transition-[height] duration-150 sm:gap-3",
+          compact ? "h-12 sm:h-14" : "h-[var(--header-h)]",
         )}
       >
-        <Logo href={pathFor(locale, "home")} />
-        <nav className="hidden items-center gap-6 lg:flex" aria-label={t("main")}>
+        <div className="min-w-0 shrink">
+          <Logo href={pathFor(locale, "home")} />
+        </div>
+        <nav
+          className="ml-auto hidden items-center gap-5 lg:flex xl:gap-6"
+          aria-label={t("main")}
+        >
           {items.map((item) => (
             <Link
               key={item.href}
@@ -63,11 +67,11 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <LanguageSwitch />
           <Button href={pathFor(locale, "contact")}>{t("cta")}</Button>
         </nav>
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="ml-auto flex items-center gap-2 lg:hidden">
           <LanguageSwitch />
           <button
             type="button"
-            className="relative z-50 flex h-10 w-10 items-center justify-center"
+            className="relative z-50 flex h-11 w-11 items-center justify-center"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}

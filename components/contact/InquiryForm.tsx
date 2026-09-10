@@ -1,9 +1,10 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useId, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import { submitInquiry } from "@/lib/inquiry";
+import { openViberChat, submitInquiry } from "@/lib/inquiry";
+import { useExternalChat } from "@/lib/use-external-chat";
 import { cn } from "@/lib/cn";
 import type { InquiryState } from "@/lib/validation";
 
@@ -19,17 +20,56 @@ type InquiryFormProps = {
   tone?: "light" | "dark";
 };
 
+type FormValues = {
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  projectType: string;
+  message: string;
+};
+
+const emptyValues: FormValues = {
+  name: "",
+  company: "",
+  email: "",
+  phone: "",
+  projectType: "",
+  message: "",
+};
+
 export function InquiryForm({ tone = "light" }: InquiryFormProps) {
   const t = useTranslations("contact");
   const locale = useLocale();
+  const id = useId();
+  const [values, setValues] = useState<FormValues>(emptyValues);
+  const [viberPending, setViberPending] = useState(false);
+  const [viberError, setViberError] = useState(false);
   const [state, action, pending] = useActionState<InquiryState, FormData>(
     submitInquiry,
     null,
   );
+  useExternalChat(state?.url);
 
   const dark = tone === "dark";
 
-  if (state && !state.error && !state.fieldErrors) {
+  function update<Key extends keyof FormValues>(key: Key, value: FormValues[Key]) {
+    setValues((current) => ({ ...current, [key]: value }));
+  }
+
+  async function onViber() {
+    setViberError(false);
+    setViberPending(true);
+    const result = await openViberChat();
+    if (result.url) {
+      window.location.assign(result.url);
+      return;
+    }
+    setViberPending(false);
+    setViberError(true);
+  }
+
+  if (state && !state.error && !state.fieldErrors && !state.url) {
     return (
       <p className={cn("max-w-[42ch] leading-7", dark ? "text-white/80" : "text-ink/80")}>
         {t("honeypotSuccess")}
@@ -41,28 +81,34 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
     <form action={action} className="relative grid gap-6" noValidate>
       <input type="hidden" name="locale" value={locale} />
       <Field
-        id="name"
+        id={`${id}-name`}
         name="name"
         label={t("fields.name")}
         autoComplete="name"
+        value={values.name}
+        onChange={(value) => update("name", value)}
         error={state?.fieldErrors?.name ? t("errors.name") : undefined}
         dark={dark}
         required
       />
       <Field
-        id="company"
+        id={`${id}-company`}
         name="company"
         label={t("fields.company")}
         autoComplete="organization"
+        value={values.company}
+        onChange={(value) => update("company", value)}
         dark={dark}
       />
       <div className="grid gap-6 sm:grid-cols-2">
         <Field
-          id="email"
+          id={`${id}-email`}
           name="email"
           label={t("fields.email")}
           type="email"
           autoComplete="email"
+          value={values.email}
+          onChange={(value) => update("email", value)}
           error={
             state?.fieldErrors?.email
               ? t(`errors.${state.fieldErrors.email === "contact" ? "contact" : "email"}`)
@@ -71,11 +117,13 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
           dark={dark}
         />
         <Field
-          id="phone"
+          id={`${id}-phone`}
           name="phone"
           label={t("fields.phone")}
           type="tel"
           autoComplete="tel"
+          value={values.phone}
+          onChange={(value) => update("phone", value)}
           error={state?.fieldErrors?.phone ? t("errors.contact") : undefined}
           dark={dark}
         />
@@ -85,7 +133,7 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
       </p>
       <div className="grid gap-2">
         <label
-          htmlFor="projectType"
+          htmlFor={`${id}-projectType`}
           className={cn(
             "text-[0.75rem] uppercase tracking-[0.14em]",
             dark ? "text-white/55" : "text-muted",
@@ -94,9 +142,10 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
           {t("fields.projectType")}
         </label>
         <select
-          id="projectType"
+          id={`${id}-projectType`}
           name="projectType"
-          defaultValue=""
+          value={values.projectType}
+          onChange={(event) => update("projectType", event.target.value)}
           required
           className={cn(
             "field-input appearance-none bg-transparent",
@@ -118,7 +167,7 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
       </div>
       <div className="grid gap-2">
         <label
-          htmlFor="message"
+          htmlFor={`${id}-message`}
           className={cn(
             "text-[0.75rem] uppercase tracking-[0.14em]",
             dark ? "text-white/55" : "text-muted",
@@ -127,10 +176,12 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
           {t("fields.message")}
         </label>
         <textarea
-          id="message"
+          id={`${id}-message`}
           name="message"
           rows={5}
           required
+          value={values.message}
+          onChange={(event) => update("message", event.target.value)}
           className={cn("field-input min-h-32 resize-y", dark && "field-input-dark")}
         />
         {state?.fieldErrors?.message ? (
@@ -144,17 +195,30 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
         aria-hidden="true"
         className="pointer-events-none absolute h-px w-px opacity-0"
       />
-      {state?.error === "config" || state?.error === "generic" ? (
+      {state?.error === "config" || state?.error === "generic" || viberError ? (
         <p className="text-sm text-cyan" role="alert">
-          {t(`errors.${state.error}`)}
+          {t("errors.config")}
         </p>
       ) : null}
       <p className={cn("text-sm leading-6", dark ? "text-white/50" : "text-muted")}>
-        {t("whatsappNote")}
+        {t("channelNote")}
       </p>
-      <Button type="submit" disabled={pending} variant={dark ? "inverse" : "primary"}>
-        {pending ? t("fields.pending") : t("fields.submit")}
-      </Button>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <Button type="submit" disabled={pending} variant={dark ? "inverse" : "primary"}>
+          {pending ? t("fields.pending") : t("fields.submit")}
+        </Button>
+        <Button
+          type="button"
+          disabled={viberPending}
+          variant="ghost"
+          className={cn(dark && "text-white hover:text-cyan")}
+          onClick={() => {
+            void onViber();
+          }}
+        >
+          {viberPending ? t("fields.pendingViber") : t("fields.viber")}
+        </Button>
+      </div>
     </form>
   );
 }
@@ -168,6 +232,8 @@ type FieldProps = {
   required?: boolean;
   error?: string;
   dark: boolean;
+  value: string;
+  onChange: (value: string) => void;
 };
 
 function Field({
@@ -179,6 +245,8 @@ function Field({
   required,
   error,
   dark,
+  value,
+  onChange,
 }: FieldProps) {
   return (
     <div className="grid gap-2">
@@ -197,6 +265,8 @@ function Field({
         type={type}
         autoComplete={autoComplete}
         required={required}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
         className={cn("field-input", dark && "field-input-dark")}
       />
       {error ? <p className="text-sm text-cyan">{error}</p> : null}

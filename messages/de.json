@@ -7,8 +7,6 @@
     "servicesDescription": "Websites, Web-Apps, Betreuung und Automatisierung. Zwei Arbeitsweisen. Der Preis wird gemeinsam festgelegt.",
     "portfolioTitle": "Portfolio — Wavsy",
     "portfolioDescription": "Ausgewählte Websites und Web-Apps von Wavsy.",
-    "calculatorTitle": "Rechner — Wavsy",
-    "calculatorDescription": "Eine Preisspanne für eine neue Website. Kein Stundensatz. Angebot innerhalb von 48 Stunden.",
     "aboutTitle": "Über uns — Wavsy",
     "aboutDescription": "Wavsy ist ein Zwei-Personen-Studio. Du sprichst direkt mit den Menschen, die die Website bauen.",
     "contactTitle": "Kontakt — Wavsy",
@@ -22,7 +20,6 @@
     "home": "Start",
     "services": "Leistungen",
     "portfolio": "Portfolio",
-    "calculator": "Rechner",
     "about": "Über uns",
     "contact": "Kontakt",
     "cta": "Angebot anfragen",
@@ -53,7 +50,7 @@
   },
   "work": {
     "title": "Ausgewählte Projekte",
-    "lead": "Hier zeigen wir echte Arbeit — Name, Branche, Ergebnis. Die Plätze bleiben vorerst bewusst leer.",
+    "lead": "Echte Arbeit. Name, Branche und ein Link zur Website.",
     "cta": "Alle Projekte",
     "emptyName": "Projekt",
     "emptyLabel": "Bald",
@@ -62,9 +59,9 @@
   "services": {
     "title": "Was wir tun",
     "pageTitle": "Leistungen",
-    "lead": "Vier Dinge. Keine Pakete auf dieser Seite — der Rechner gibt eine Spanne.",
-    "priceNote": "Der genaue Preis hängt vom Umfang ab. Besser wir sprechen. Oder nutze den Rechner für eine Spanne.",
-    "cta": "Preisrechner",
+    "lead": "Vier Dinge. Keine Pakete auf dieser Seite — der Preis wird gemeinsam festgelegt.",
+    "priceNote": "Der genaue Preis hängt vom Umfang ab. Besser wir sprechen.",
+    "cta": "Angebot anfragen",
     "items": {
       "websites": {
         "title": "Websites",
@@ -91,7 +88,7 @@
   "engagement": {
     "title": "Zwei Arten zu arbeiten",
     "recommended": "Empfohlen",
-    "cta": "Preisspanne ansehen",
+    "cta": "Schreib uns",
     "handoff": {
       "title": "Umsetzung und Übergabe",
       "steps": "Gespräch und Plan → Umsetzung → Übergabe.",
@@ -139,10 +136,6 @@
       {
         "q": "Was passiert, wenn ich mit dem Design nicht zufrieden bin?",
         "a": "Im Angebot sind zwei Design-Korrekturrunden. Wir schreiben auf, was wir ändern, und machen es. Wächst der Umfang, sagen wir das, bevor wir weiterarbeiten."
-      },
-      {
-        "q": "Arbeitet ihr mit Kunden außerhalb von Kasanlak?",
-        "a": "Ja. Wir arbeiten remote mit Firmen in ganz Bulgarien und darüber hinaus. Das Gespräch ist online. Wenn du in der Nähe von Kasanlak bist, können wir uns auch treffen."
       }
     ]
   },
@@ -150,10 +143,22 @@
     "title": "So arbeiten wir",
     "lead": "Eine typische Unternehmenswebsite kann in etwa 3 Wochen online sein.",
     "steps": [
-      { "title": "Gespräch", "body": "Du sagst, was du brauchst. Wir fragen, was fehlt." },
-      { "title": "Angebot", "body": "Klarer Umfang und Preis, bevor wir starten. Keine Überraschungen unterwegs." },
-      { "title": "Umsetzung", "body": "Wir bauen die Website. Wir schreiben, wenn es etwas zu sehen gibt." },
-      { "title": "Launch und Betreuung", "body": "Wir gehen live. Wir bleiben, wenn du das möchtest." }
+      {
+        "title": "Gespräch",
+        "body": "Du sagst, was du brauchst. Wir fragen, was fehlt."
+      },
+      {
+        "title": "Angebot",
+        "body": "Klarer Umfang und Preis, bevor wir starten. Keine Überraschungen unterwegs."
+      },
+      {
+        "title": "Umsetzung",
+        "body": "Wir bauen die Website. Wir schreiben, wenn es etwas zu sehen gibt."
+      },
+      {
+        "title": "Launch und Betreuung",
+        "body": "Wir gehen live. Wir bleiben, wenn du das möchtest."
+      }
     ]
   },
   "team": {
@@ -162,41 +167,62 @@
     "lead": "Du sprichst direkt mit den Menschen, die die Website bauen. Keine Zwischenstellen und keine Nachrichtenkette.",
     "body": "Wavsy ist ein Studio von zwei Personen. Wir machen Websites für kleine und mittlere Dienstleister — Praxen, Kanzleien, Restaurants, Berater und andere.",
     "photoPending": "Foto folgt",
+    "linkedin": "LinkedIn",
+    "linkedinAria": "LinkedIn-Profil von {name}",
     "people": {
       "dimitar": {
         "name": "Dimitar",
         "role": "Mitgründer",
         "photoLabel": "[FOTO: Dimitar]",
-        "bio": "Dimitar baut Systeme und erklärt Ideen klar. Er spricht direkt, ohne Jargon — vom ersten Gespräch bis zum Launch.",
-        "bioShort": "Dimitar spricht direkt und hält die Website klar fürs Geschäft, nicht für Entwickler."
+        "titles": [
+          "Softwareentwickler",
+          "Redner",
+          "Triathlet"
+        ],
+        "note": "Abschluss in den Niederlanden"
       },
       "nikolay": {
         "name": "Nikolay",
         "role": "Mitgründer",
         "photoLabel": "[FOTO: Nikolay]",
-        "bio": "Nikolay arbeitet Seite an Seite mit Dimitar an der Umsetzung. Er hält die Dinge einfach, alltagstauglich und ohne Extra-Schichten.",
-        "bioShort": "Nikolay macht die Website leicht nutzbar — von der ersten Seite bis zu kleinen Änderungen nach dem Launch."
+        "titles": [
+          "Entwickler",
+          "Softwareentwickler"
+        ],
+        "note": "Fährt Enduro und trainiert Fahrer bei Wettbewerben"
       }
     }
   },
   "why": {
     "title": "Warum Wavsy",
     "items": [
-      { "display": "~3 Wochen", "body": "Eine typische Website ist in etwa drei Wochen online." },
-      { "display": "Klares Angebot", "body": "Umfang und Preis werden vereinbart, bevor wir starten." },
-      { "display": "Nach dem Launch", "body": "Betreuung, Verbesserungen, Assistenten — wenn du sie brauchst." },
-      { "display": "Direkter Kontakt", "body": "Zwei Personen. Keine Account-Manager." }
+      {
+        "display": "~3 Wochen",
+        "body": "Eine typische Website ist in etwa drei Wochen online."
+      },
+      {
+        "display": "Klares Angebot",
+        "body": "Umfang und Preis werden vereinbart, bevor wir starten."
+      },
+      {
+        "display": "Nach dem Launch",
+        "body": "Betreuung, Verbesserungen, Assistenten — wenn du sie brauchst."
+      },
+      {
+        "display": "Direkter Kontakt",
+        "body": "Zwei Personen. Keine Account-Manager."
+      }
     ]
   },
   "contact": {
     "title": "Hast du eine Idee?",
     "titleLine2": "Erzähl uns.",
     "pageTitle": "Kontakt",
-    "lead": "Fülle das Formular aus. Die Anfrage kommt bei uns in WhatsApp an. Wir antworten innerhalb von 2 Kalendertagen.",
+    "lead": "Fülle das Formular aus. Sende die Anfrage über WhatsApp. Wir antworten innerhalb von 2 Kalendertagen.",
     "emailLabel": "E-Mail",
     "response": "Wir antworten innerhalb von 2 Kalendertagen.",
     "emailHint": "Wenn du magst, schreib direkt an die E-Mail.",
-    "whatsappNote": "Nach dem Senden öffnet sich WhatsApp mit einer fertigen Nachricht. Die Nummer steht nicht auf der Website.",
+    "channelNote": "„Anfrage senden“ öffnet WhatsApp mit deiner Nachricht. Viber öffnet einen Chat mit uns, ohne den Formulartext. Die Nummer steht nicht auf der Website.",
     "fields": {
       "name": "Name",
       "company": "Firma",
@@ -205,6 +231,8 @@
       "projectType": "Projektart",
       "message": "Was du brauchst",
       "contactHint": "E-Mail, Telefon oder beides.",
+      "viber": "In Viber schreiben",
+      "pendingViber": "Viber wird geöffnet…",
       "submit": "Anfrage senden",
       "pending": "WhatsApp wird geöffnet…"
     },
@@ -239,92 +267,28 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "lead": "Echte Arbeit, sobald wir bestätigte Projekte veröffentlichen können.",
+    "lead": "Websites, die wir gebaut haben. Öffne sie und sieh selbst.",
     "empty": "Die ersten Projekte sind in Arbeit. Schreib uns, und wir zeigen, woran wir gerade bauen.",
-    "cta": "Schreib uns"
-  },
-  "calculator": {
-    "title": "Rechner",
-    "lead": "Ein paar Fragen. Der Preis erscheint erst am Ende — als Spanne, nicht als festes Angebot.",
-    "progress": "Schritt {current} von {total}",
-    "back": "Zurück",
-    "next": "Weiter",
-    "step1": {
-      "title": "Welche Website brauchst du?",
-      "card": "Visitenkarte (1–3 Seiten)",
-      "company": "Firmenwebsite (5–8 Seiten)",
-      "shop": "Online-Shop",
-      "unsure": "Ich bin unsicher"
-    },
-    "step2": {
-      "title": "Wie viele unterschiedliche Seitenarten?",
-      "helper": "Zehn Produktseiten nach einem Muster zählen als eine Seite.",
-      "value": "{count} Seiten"
-    },
-    "step3": {
-      "title": "Was soll die Website tun?",
-      "blog": "Blog",
-      "booking": "Terminbuchung",
-      "payments": "Online-Zahlungen",
-      "crm": "CRM-Anbindung",
-      "i18n": "Mehrsprachigkeit",
-      "none": "Nichts davon"
-    },
-    "step4": {
-      "title": "Ein Assistent, der 24/7 antwortet?",
-      "yes": "Ja",
-      "no": "Nein",
-      "note": "Ein Besucher fragt auf der Website. Der Assistent antwortet aus deinen Texten, auch außerhalb der Arbeitszeit."
-    },
-    "step5": {
-      "title": "Automatisierung?",
-      "one": "Eine",
-      "oneExample": "Zum Beispiel: eine neue Anfrage landet automatisch in deiner E-Mail oder Tabelle.",
-      "three": "Drei",
-      "threeExample": "Zum Beispiel: Anfrage, Erinnerung und eine kurze interne Nachricht — ohne Handarbeit.",
-      "none": "Nein",
-      "noneExample": "Wir starten ohne Automatisierung. Später können wir sie ergänzen."
-    },
-    "step6": {
-      "title": "Betreuung nach dem Launch?",
-      "basic": "Basis",
-      "standard": "Standard",
-      "none": "Ohne",
-      "note": "Wir empfehlen Basis. Ohne Betreuung wird die Website alt."
-    },
-    "result": {
-      "title": "Richtwert",
-      "range": "Richtwert: {low} – {high} €",
-      "monthly": "+ {amount} €/Monat",
-      "disclaimer": "Der genaue Preis hängt vom Umfang ab. Wir senden ein Angebot innerhalb von 48 Stunden.",
-      "summary": "Deine Auswahl",
-      "continue": "Kontakt hinterlassen",
-      "whatsapp": "WhatsApp öffnen"
-    },
-    "form": {
-      "title": "Wohin sollen wir schreiben?",
-      "submit": "Anfrage senden",
-      "whatsapp": "WhatsApp öffnen",
-      "name": "Name",
-      "company": "Firma",
-      "phone": "Telefon",
-      "email": "E-Mail",
-      "errors": {
-        "name": "Bitte einen Namen schreiben.",
-        "phone": "Bitte eine Telefonnummer schreiben.",
-        "email": "Bitte eine gültige E-Mail schreiben.",
-        "config": "Das Formular ist nicht eingerichtet. Schreib an die E-Mail."
+    "cta": "Schreib uns",
+    "visit": "Website ansehen",
+    "visitAria": "Website von {name} öffnen",
+    "imageAlt": "Startseite von {name}",
+    "projects": {
+      "glenz": {
+        "name": "Glenz Reinigung",
+        "industry": "Reinigung",
+        "summary": "Eine Website für ein Reinigungsunternehmen in Dissen — Haushalte, Büros und Gewerbe."
+      },
+      "quezher": {
+        "name": "Manufacturas Quezher",
+        "industry": "Metallverarbeitung",
+        "summary": "Eine Website für ein Metallbauunternehmen in Mexiko — Fertigung, Maschinen und Kontakt."
+      },
+      "dimitar": {
+        "name": "Dimitar Barev",
+        "industry": "Persönliche Marke",
+        "summary": "Eine persönliche Website — wer die Person ist und womit sie sich beschäftigt."
       }
-    },
-    "labels": {
-      "siteType": "Website-Typ",
-      "pages": "Seiten",
-      "features": "Funktionen",
-      "assistant": "24/7-Assistent",
-      "automations": "Automatisierung",
-      "maintenance": "Betreuung",
-      "yes": "Ja",
-      "no": "Nein"
     }
   }
 }

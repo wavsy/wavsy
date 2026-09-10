@@ -50,7 +50,7 @@ export async function ServicesIndex() {
         <Reveal>
           <p className="mt-10 max-w-[46ch] text-ink/80">{t("priceNote")}</p>
           <div className="mt-8">
-            <Button href={pathFor(locale, "calculator")}>{t("cta")}</Button>
+            <Button href={pathFor(locale, "contact")}>{t("cta")}</Button>
           </div>
         </Reveal>
       </Container>

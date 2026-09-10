@@ -51,4 +51,5 @@ export type InquiryInput = z.infer<typeof inquirySchema>;
 export type InquiryState = {
   error?: "config" | "fields" | "generic";
   fieldErrors?: Partial<Record<keyof InquiryInput, string>>;
+  url?: string;
 } | null;

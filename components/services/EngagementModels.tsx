@@ -6,7 +6,7 @@ import { pathFor } from "@/lib/routes";
 export async function EngagementModels() {
   const t = await getTranslations("engagement");
   const locale = await currentLocale();
-  const href = pathFor(locale, "calculator");
+  const href = pathFor(locale, "contact");
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">

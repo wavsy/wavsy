@@ -29,24 +29,30 @@ export function LanguageSwitch({ className }: { className?: string }) {
   return (
     <nav
       className={cn(
-        "flex shrink-0 items-center gap-1 text-[0.75rem] tracking-[0.08em] sm:gap-2 sm:text-[0.8125rem] sm:tracking-[0.04em]",
+        "flex shrink-0 items-center text-[0.625rem] font-medium uppercase tracking-[0.12em] text-ink/40",
         className,
       )}
       aria-label={t("language")}
     >
-      {locales.map((locale) => (
-        <Link
-          key={locale}
-          href={pathFor(locale, route)}
-          hrefLang={locale}
-          className={cn(
-            "px-1 py-1 text-ink/55 transition-colors duration-150 hover:text-ink",
-            current === locale && "text-ink",
-          )}
-          aria-current={current === locale ? "true" : undefined}
-        >
-          {labels[locale]}
-        </Link>
+      {locales.map((locale, index) => (
+        <span key={locale} className="flex items-center">
+          {index > 0 ? (
+            <span className="px-0.5 text-ink/20" aria-hidden>
+              /
+            </span>
+          ) : null}
+          <Link
+            href={pathFor(locale, route)}
+            hrefLang={locale}
+            className={cn(
+              "px-0.5 py-0.5 transition-colors duration-150 hover:text-ink/70",
+              current === locale && "text-ink",
+            )}
+            aria-current={current === locale ? "true" : undefined}
+          >
+            {labels[locale]}
+          </Link>
+        </span>
       ))}
     </nav>
   );

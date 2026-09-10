@@ -7,7 +7,6 @@ const metaKey: Record<RouteKey, { title: string; description: string }> = {
   home: { title: "homeTitle", description: "homeDescription" },
   services: { title: "servicesTitle", description: "servicesDescription" },
   portfolio: { title: "portfolioTitle", description: "portfolioDescription" },
-  calculator: { title: "calculatorTitle", description: "calculatorDescription" },
   about: { title: "aboutTitle", description: "aboutDescription" },
   contact: { title: "contactTitle", description: "contactDescription" },
   privacy: { title: "privacyTitle", description: "privacyDescription" },

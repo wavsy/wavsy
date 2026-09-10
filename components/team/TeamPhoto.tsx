@@ -1,12 +1,14 @@
 import Image from "next/image";
+import { cn } from "@/lib/cn";
 
 type TeamPhotoProps = {
   src: string | null;
   name: string;
   label: string;
+  imageClass?: string;
 };
 
-export function TeamPhoto({ src, name, label }: TeamPhotoProps) {
+export function TeamPhoto({ src, name, label, imageClass }: TeamPhotoProps) {
   return (
     <div className="relative flex aspect-[4/5] items-end overflow-hidden border border-mist bg-mist/60">
       {src ? (
@@ -15,7 +17,7 @@ export function TeamPhoto({ src, name, label }: TeamPhotoProps) {
           alt={name}
           fill
           sizes="(min-width: 768px) 40vw, 100vw"
-          className="object-cover"
+          className={cn("object-cover", imageClass)}
         />
       ) : (
         <div className="flex h-full w-full flex-col justify-between bg-[linear-gradient(135deg,#0B3D91_0%,#0A1224_58%,#3FC1F0_130%)] p-5">

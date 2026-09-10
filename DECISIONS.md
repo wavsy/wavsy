@@ -9,27 +9,26 @@ Items in brackets stay out of the public site until confirmed.
 - Extra packages: `motion`, `clsx`, `zod`, `next-intl`, `lenis`
 - Hero CTAs: quote request + portfolio
 - Final CTA: „Имаш идея? Разкажи ни.“
-- Public Bulgarian routes: `/услуги`, `/калкулатор`, `/портфолио`, `/за-нас`, `/контакти`
-- English: `/en`, `/en/services`, `/en/calculator`, `/en/portfolio`, `/en/about`, `/en/contact`
-- German: `/de`, `/de/leistungen`, `/de/rechner`, `/de/portfolio`, `/de/ueber-uns`, `/de/kontakt`
-- Default locale is Bulgarian at `/`. Language switcher is `BG / EN / DE` text, no flags.
+- Public Bulgarian routes: `/услуги`, `/портфолио`, `/за-нас`, `/контакти`
+- English: `/en`, `/en/services`, `/en/portfolio`, `/en/about`, `/en/contact`
+- German: `/de`, `/de/leistungen`, `/de/portfolio`, `/de/ueber-uns`, `/de/kontakt`
+- Default locale is Bulgarian at `/`. Language switcher is compact `BG / EN / DE` text, no flags.
 - Public email: `mitkobarev@gmail.com`
-- Phone is not published. WhatsApp number stays in server env (`WHATSAPP_E164`) and is never rendered in HTML or client JS.
+- Phone is not published. The chat number stays in server env (`WHATSAPP_E164`) and is never rendered in HTML or client JS.
 - Reply time: within 2 calendar days
-- Inquiry form on the homepage finale and contact page. After submit, WhatsApp opens with a ready message.
-- Quote calculator can open WhatsApp from the result (step 7) before the visitor fills contact details. Step 8 adds name, company, phone and email, then opens WhatsApp with the full breakdown.
+- Inquiry form on the homepage finale and contact page. „Send enquiry“ opens WhatsApp with the filled message. A separate Viber button opens a chat with the same number and does not send the form text (Viber cannot pre-fill). Form fields stay filled until WhatsApp send succeeds.
+- Quote calculator is removed from this version. Old URLs (`/калкулатор`, `/en/calculator`, `/de/rechner`) redirect to contact.
 - No Resend / send-email keys in this version
-- Founders: Dimitar and Nikolay, first names only. Bios are short and non-technical. Dimitar photo uses his public GitHub portrait (LinkedIn is authwalled). Nikolay photo still pending — drop `public/team/nikolay.jpg` when available.
-- Prices stay off marketing pages except the calculator, which shows a range at the end only.
+- Founders: Dimitar and Nikolay, first names only. Cards show short title lines plus a LinkedIn link. Photos are the portraits supplied for v0.3.
+- Prices stay off marketing pages. Exact price is agreed in conversation.
 - Two engagement models on services: handoff vs maintain (maintain marked recommended).
-- Portfolio page is an empty state until there are confirmed projects. `PortfolioCard` is ready.
-- No social links in this version
+- Portfolio shows three live sites: Glenz Reinigung, Manufacturas Quezher, and Dimitar’s personal site. Cards show a landing-page thumbnail and link out.
+- Social links: LinkedIn on founder cards only. No other socials.
 - Blog omitted from this version
 - No Edge middleware: locale routing uses `app/[locale]` plus `next.config` rewrites, so Vercel does not load an ESM middleware file.
 
 ## Open
 
-- [РЕШЕНИЕ: снимка на Николай]
 - [РЕШЕНИЕ: клиентски лога]
 - [РЕШЕНИЕ: клиентски отзиви]
 - [РЕШЕНИЕ: проекти за портфолио]

@@ -2,8 +2,8 @@ import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
-import { TeamPhoto } from "@/components/team/TeamPhoto";
-import { teamIds, teamPhotos } from "@/lib/team";
+import { TeamCard } from "@/components/team/TeamCard";
+import { teamIds } from "@/lib/team";
 
 export async function Founders() {
   const t = await getTranslations("team");
@@ -22,20 +22,7 @@ export async function Founders() {
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           {teamIds.map((id, index) => (
             <Reveal key={id} delay={index * 0.06}>
-              <article>
-                <TeamPhoto
-                  src={teamPhotos[id]}
-                  name={t(`people.${id}.name`)}
-                  label={t(`people.${id}.photoLabel`)}
-                />
-                <h3 className="mt-6 font-display text-3xl tracking-[-0.04em]">
-                  {t(`people.${id}.name`)}
-                </h3>
-                <p className="mt-2 text-sm text-muted">{t(`people.${id}.role`)}</p>
-                <p className="mt-4 max-w-[36ch] leading-7 text-ink/80">
-                  {t(`people.${id}.bio`)}
-                </p>
-              </article>
+              <TeamCard id={id} />
             </Reveal>
           ))}
         </div>

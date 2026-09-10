@@ -14,6 +14,8 @@ type ButtonProps =
       type: "button" | "submit";
       disabled?: boolean;
       onClick?: () => void;
+      name?: string;
+      value?: string;
     });
 
 export function Button(props: ButtonProps) {
@@ -53,6 +55,8 @@ export function Button(props: ButtonProps) {
       type={props.type}
       disabled={props.disabled}
       onClick={props.onClick}
+      name={"name" in props ? props.name : undefined}
+      value={"value" in props ? props.value : undefined}
       className={classes}
     >
       {inner}

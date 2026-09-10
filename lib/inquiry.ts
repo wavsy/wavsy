@@ -1,8 +1,7 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { inquirySchema, type InquiryState } from "@/lib/validation";
-import { buildInquiryMessage, getWhatsAppDigits } from "@/lib/whatsapp";
+import { buildChatUrl, buildInquiryMessage } from "@/lib/whatsapp";
 
 function read(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -40,11 +39,18 @@ export async function submitInquiry(
     return {};
   }
 
-  const digits = getWhatsAppDigits();
-  if (!digits) {
+  const url = buildChatUrl("whatsapp", buildInquiryMessage(parsed.data));
+  if (!url) {
     return { error: "config" };
   }
 
-  const text = encodeURIComponent(buildInquiryMessage(parsed.data));
-  redirect(`https://wa.me/${digits}?text=${text}`);
+  return { url };
+}
+
+export async function openViberChat(): Promise<{ url?: string; error?: "config" }> {
+  const url = buildChatUrl("viber");
+  if (!url) {
+    return { error: "config" };
+  }
+  return { url };
 }
