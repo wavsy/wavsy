@@ -16,7 +16,7 @@ Items in brackets stay out of the public site until confirmed.
 - Public email: `mitkobarev@gmail.com`
 - Phone is not published. The chat number stays in server env (`WHATSAPP_E164`) and is never rendered in HTML or client JS.
 - Reply time: within 2 calendar days
-- Inquiry form on the homepage finale and contact page. „Send enquiry“ opens WhatsApp with the filled message. A separate Viber button opens a chat with the same number and does not send the form text (Viber cannot pre-fill). Form fields stay filled until WhatsApp send succeeds.
+- Inquiry form on the homepage finale and contact page. „Send enquiry“ opens WhatsApp with the filled message. A separate Viber button is a native `viber://` link so the app opens a chat. The number is not shown as text. Form fields stay filled until WhatsApp send succeeds.
 - Quote calculator is removed from this version. Old URLs (`/калкулатор`, `/en/calculator`, `/de/rechner`) redirect to contact.
 - No Resend / send-email keys in this version
 - Founders: Dimitar and Nikolay, first names only. Cards show short title lines plus a LinkedIn link. Photos are the portraits supplied for v0.3.

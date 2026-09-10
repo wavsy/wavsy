@@ -21,7 +21,7 @@ export function buildChatUrl(channel: ChatChannel, text = ""): string | null {
   }
 
   if (channel === "viber") {
-    return `viber://chat?number=${digits}`;
+    return `viber://chat?number=%2B${digits}`;
   }
 
   const encoded = text ? `?text=${encodeURIComponent(text)}` : "";

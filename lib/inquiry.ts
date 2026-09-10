@@ -46,11 +46,3 @@ export async function submitInquiry(
 
   return { url };
 }
-
-export async function openViberChat(): Promise<{ url?: string; error?: "config" }> {
-  const url = buildChatUrl("viber");
-  if (!url) {
-    return { error: "config" };
-  }
-  return { url };
-}

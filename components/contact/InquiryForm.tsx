@@ -3,7 +3,7 @@
 import { useActionState, useId, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import { openViberChat, submitInquiry } from "@/lib/inquiry";
+import { submitInquiry } from "@/lib/inquiry";
 import { useExternalChat } from "@/lib/use-external-chat";
 import { cn } from "@/lib/cn";
 import type { InquiryState } from "@/lib/validation";
@@ -18,6 +18,7 @@ const projectTypeValues = [
 
 type InquiryFormProps = {
   tone?: "light" | "dark";
+  viberHref?: string | null;
 };
 
 type FormValues = {
@@ -38,13 +39,11 @@ const emptyValues: FormValues = {
   message: "",
 };
 
-export function InquiryForm({ tone = "light" }: InquiryFormProps) {
+export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
   const t = useTranslations("contact");
   const locale = useLocale();
   const id = useId();
   const [values, setValues] = useState<FormValues>(emptyValues);
-  const [viberPending, setViberPending] = useState(false);
-  const [viberError, setViberError] = useState(false);
   const [state, action, pending] = useActionState<InquiryState, FormData>(
     submitInquiry,
     null,
@@ -55,18 +54,6 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
 
   function update<Key extends keyof FormValues>(key: Key, value: FormValues[Key]) {
     setValues((current) => ({ ...current, [key]: value }));
-  }
-
-  async function onViber() {
-    setViberError(false);
-    setViberPending(true);
-    const result = await openViberChat();
-    if (result.url) {
-      window.location.assign(result.url);
-      return;
-    }
-    setViberPending(false);
-    setViberError(true);
   }
 
   if (state && !state.error && !state.fieldErrors && !state.url) {
@@ -195,7 +182,7 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
         aria-hidden="true"
         className="pointer-events-none absolute h-px w-px opacity-0"
       />
-      {state?.error === "config" || state?.error === "generic" || viberError ? (
+      {state?.error === "config" || state?.error === "generic" ? (
         <p className="text-sm text-cyan" role="alert">
           {t("errors.config")}
         </p>
@@ -207,17 +194,15 @@ export function InquiryForm({ tone = "light" }: InquiryFormProps) {
         <Button type="submit" disabled={pending} variant={dark ? "inverse" : "primary"}>
           {pending ? t("fields.pending") : t("fields.submit")}
         </Button>
-        <Button
-          type="button"
-          disabled={viberPending}
-          variant="ghost"
-          className={cn(dark && "text-white hover:text-cyan")}
-          onClick={() => {
-            void onViber();
-          }}
-        >
-          {viberPending ? t("fields.pendingViber") : t("fields.viber")}
-        </Button>
+        {viberHref ? (
+          <Button
+            href={viberHref}
+            variant="ghost"
+            className={cn(dark && "text-white hover:text-cyan")}
+          >
+            {t("fields.viber")}
+          </Button>
+        ) : null}
       </div>
     </form>
   );

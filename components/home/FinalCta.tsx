@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { WaveField } from "@/components/motion/WaveField";
 import { InquiryForm } from "@/components/contact/InquiryForm";
 import { PUBLIC_EMAIL } from "@/lib/site";
+import { buildChatUrl } from "@/lib/whatsapp";
 
 export async function FinalCta() {
   const t = await getTranslations("contact");
@@ -31,7 +32,7 @@ export async function FinalCta() {
             <p className="mt-2 text-sm text-white/55">{t("response")}</p>
           </Reveal>
           <Reveal>
-            <InquiryForm tone="dark" />
+            <InquiryForm tone="dark" viberHref={buildChatUrl("viber")} />
           </Reveal>
         </div>
       </Container>

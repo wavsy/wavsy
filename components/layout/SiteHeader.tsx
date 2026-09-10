@@ -34,9 +34,10 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   ];
 
   return (
+    <>
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter] duration-150",
+        "fixed inset-x-0 top-0 z-50 overflow-visible transition-[background,border-color,backdrop-filter] duration-150",
         compact || open
           ? "border-b border-mist/80 bg-paper/90 backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
@@ -67,7 +68,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <LanguageSwitch />
           <Button href={pathFor(locale, "contact")}>{t("cta")}</Button>
         </nav>
-        <div className="ml-auto flex items-center gap-2 lg:hidden">
+        <div className="relative z-50 ml-auto flex items-center gap-2 lg:hidden">
           <LanguageSwitch />
           <button
             type="button"
@@ -94,9 +95,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           </button>
         </div>
       </Container>
-      <div id="mobile-nav">
-        <MobileNav open={open} onClose={() => setOpen(false)} locale={locale} />
-      </div>
     </header>
+    <MobileNav open={open} onClose={() => setOpen(false)} locale={locale} />
+    </>
   );
 }

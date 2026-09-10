@@ -43,8 +43,19 @@ export function Button(props: ButtonProps) {
   );
 
   if ("href" in props && props.href) {
+    const href = props.href;
+    const native = /^(https?:|mailto:|tel:|viber:|sms:)/i.test(href);
+
+    if (native) {
+      return (
+        <a href={href} className={classes}>
+          {inner}
+        </a>
+      );
+    }
+
     return (
-      <Link href={props.href} className={classes}>
+      <Link href={href} className={classes}>
         {inner}
       </Link>
     );

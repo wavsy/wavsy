@@ -5,6 +5,7 @@ import { InquiryForm } from "@/components/contact/InquiryForm";
 import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { PUBLIC_EMAIL } from "@/lib/site";
+import { buildChatUrl } from "@/lib/whatsapp";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -25,7 +26,7 @@ export default async function ContactPage({ params }: PageProps) {
       <PageHeader title={t("pageTitle")} lead={t("lead")} />
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.8fr] lg:gap-20">
-          <InquiryForm />
+          <InquiryForm viberHref={buildChatUrl("viber")} />
           <aside className="lg:pt-2">
             <p className="text-[0.75rem] uppercase tracking-[0.14em] text-muted">
               {t("emailLabel")}
