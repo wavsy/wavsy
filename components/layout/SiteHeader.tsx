@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
@@ -15,6 +16,11 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
   const [compact, setCompact] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,7 +43,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     <>
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 overflow-visible transition-[background,border-color,backdrop-filter] duration-150",
+        "fixed inset-x-0 top-0 z-[70] overflow-visible transition-[background,border-color,backdrop-filter] duration-150",
         compact || open
           ? "border-b border-mist/80 bg-paper/90 backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
@@ -96,7 +102,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         </div>
       </Container>
     </header>
-    <MobileNav open={open} onClose={() => setOpen(false)} locale={locale} />
+    <MobileNav open={open} onClose={() => setOpen(false)} locale={locale} pathname={pathname} />
     </>
   );
 }

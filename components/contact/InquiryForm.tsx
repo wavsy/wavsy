@@ -65,7 +65,8 @@ export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
   }
 
   return (
-    <form action={action} className="relative grid gap-6" noValidate>
+    <div className="grid gap-6">
+      <form action={action} className="relative grid gap-6" noValidate>
       <input type="hidden" name="locale" value={locale} />
       <Field
         id={`${id}-name`}
@@ -187,24 +188,28 @@ export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
           {t("errors.config")}
         </p>
       ) : null}
-      <p className={cn("text-sm leading-6", dark ? "text-white/50" : "text-muted")}>
-        {t("channelNote")}
-      </p>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <Button type="submit" disabled={pending} variant={dark ? "inverse" : "primary"}>
           {pending ? t("fields.pending") : t("fields.submit")}
         </Button>
-        {viberHref ? (
+      </form>
+      {viberHref ? (
+        <div>
           <Button
             href={viberHref}
             variant="ghost"
-            className={cn(dark && "text-white hover:text-cyan")}
+            className={cn(
+              "border px-5",
+              dark ? "border-white/40 text-white hover:border-cyan hover:text-cyan" : "border-ink",
+            )}
           >
             {t("fields.viber")}
           </Button>
-        ) : null}
-      </div>
-    </form>
+          <p className={cn("mt-2 max-w-[36ch] text-sm leading-6", dark ? "text-white/50" : "text-muted")}>
+            {t("viberHint")}
+          </p>
+        </div>
+      ) : null}
+    </div>
   );
 }
 

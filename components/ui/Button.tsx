@@ -8,7 +8,12 @@ type Shared = {
 };
 
 type ButtonProps =
-  | (Shared & { href: string; type?: never; disabled?: never; onClick?: never })
+  | (Shared & {
+      href: string;
+      type?: never;
+      disabled?: never;
+      onClick?: () => void;
+    })
   | (Shared & {
       href?: never;
       type: "button" | "submit";
@@ -48,14 +53,14 @@ export function Button(props: ButtonProps) {
 
     if (native) {
       return (
-        <a href={href} className={classes}>
+        <a href={href} className={classes} onClick={props.onClick}>
           {inner}
         </a>
       );
     }
 
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} onClick={props.onClick}>
         {inner}
       </Link>
     );

@@ -217,11 +217,11 @@
     "title": "Have an idea?",
     "titleLine2": "Tell us.",
     "pageTitle": "Contact",
-    "lead": "Fill in the form. Send the enquiry on WhatsApp. We reply within 2 calendar days.",
+    "lead": "Fill in the form for WhatsApp. Or text us on Viber — no form needed. We reply within 2 calendar days.",
     "emailLabel": "Email",
     "response": "We reply within 2 calendar days.",
     "emailHint": "If you prefer, write to the email directly.",
-    "channelNote": "Send enquiry opens WhatsApp with your message. Viber opens a chat with us, without the form text. The number is not published on the site.",
+    "viberHint": "No need to fill in the form — this opens a chat straight away.",
     "fields": {
       "name": "Name",
       "company": "Company",
@@ -230,9 +230,9 @@
       "projectType": "Project type",
       "message": "What you need",
       "contactHint": "Fill in email, phone, or both.",
-      "viber": "Message on Viber",
+      "viber": "Text via Viber",
       "pendingViber": "Opening Viber…",
-      "submit": "Send enquiry",
+      "submit": "Send enquiry via WhatsApp",
       "pending": "Opening WhatsApp…"
     },
     "projectTypes": {

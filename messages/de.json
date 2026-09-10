@@ -218,11 +218,11 @@
     "title": "Hast du eine Idee?",
     "titleLine2": "Erzähl uns.",
     "pageTitle": "Kontakt",
-    "lead": "Fülle das Formular aus. Sende die Anfrage über WhatsApp. Wir antworten innerhalb von 2 Kalendertagen.",
+    "lead": "Fülle das Formular für WhatsApp aus. Oder schreib uns in Viber — ohne Formular. Wir antworten innerhalb von 2 Kalendertagen.",
     "emailLabel": "E-Mail",
     "response": "Wir antworten innerhalb von 2 Kalendertagen.",
     "emailHint": "Wenn du magst, schreib direkt an die E-Mail.",
-    "channelNote": "„Anfrage senden“ öffnet WhatsApp mit deiner Nachricht. Viber öffnet einen Chat mit uns, ohne den Formulartext. Die Nummer steht nicht auf der Website.",
+    "viberHint": "Das Formular musst du dafür nicht ausfüllen — es öffnet sich direkt ein Chat.",
     "fields": {
       "name": "Name",
       "company": "Firma",
@@ -231,9 +231,9 @@
       "projectType": "Projektart",
       "message": "Was du brauchst",
       "contactHint": "E-Mail, Telefon oder beides.",
-      "viber": "In Viber schreiben",
+      "viber": "Per Viber schreiben",
       "pendingViber": "Viber wird geöffnet…",
-      "submit": "Anfrage senden",
+      "submit": "Anfrage per WhatsApp senden",
       "pending": "WhatsApp wird geöffnet…"
     },
     "projectTypes": {

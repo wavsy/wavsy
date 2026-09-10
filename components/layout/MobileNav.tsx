@@ -5,15 +5,20 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
-import { pathFor, type Locale } from "@/lib/routes";
+import { normalizePathname, pathFor, type Locale } from "@/lib/routes";
 
 type MobileNavProps = {
   open: boolean;
   onClose: () => void;
   locale: Locale;
+  pathname: string;
 };
 
-export function MobileNav({ open, onClose, locale }: MobileNavProps) {
+function isCurrentPath(pathname: string, href: string) {
+  return normalizePathname(pathname) === normalizePathname(href);
+}
+
+export function MobileNav({ open, onClose, locale, pathname }: MobileNavProps) {
   const t = useTranslations("nav");
 
   useEffect(() => {
@@ -48,7 +53,7 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
     <div
       id="mobile-nav"
       className={cn(
-        "fixed inset-0 z-40 bg-paper lg:hidden",
+        "fixed inset-0 z-[65] bg-paper lg:hidden",
         open ? "visible opacity-100" : "invisible pointer-events-none opacity-0",
       )}
       aria-hidden={!open}
@@ -62,7 +67,11 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
             <Link
               key={item.href}
               href={item.href}
-              onClick={onClose}
+              onClick={() => {
+                if (isCurrentPath(pathname, item.href)) {
+                  onClose();
+                }
+              }}
               className="border-b border-mist py-3.5 font-display text-[1.65rem] leading-none tracking-[-0.04em] text-ink sm:text-3xl"
             >
               {item.label}
@@ -70,7 +79,15 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
           ))}
         </div>
         <div className="pt-6">
-          <Button href={pathFor(locale, "contact")} className="w-full justify-center sm:w-fit">
+          <Button
+            href={pathFor(locale, "contact")}
+            onClick={() => {
+              if (isCurrentPath(pathname, pathFor(locale, "contact"))) {
+                onClose();
+              }
+            }}
+            className="w-full justify-center sm:w-fit"
+          >
             {t("cta")}
           </Button>
         </div>
