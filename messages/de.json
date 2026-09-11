@@ -39,7 +39,10 @@
     "legalLabel": "Rechtliches",
     "privacy": "Datenschutz",
     "cookies": "Cookies",
-    "copyright": "Wavsy"
+    "copyright": "Wavsy",
+    "socialLabel": "Soziale Medien",
+    "facebookAria": "Wavsy auf Facebook (öffnet in neuem Tab)",
+    "linkedinAria": "Wavsy auf LinkedIn (öffnet in neuem Tab)"
   },
   "hero": {
     "eyebrow": "Wavsy",

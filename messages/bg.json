@@ -38,7 +38,10 @@
     "legalLabel": "Правна информация",
     "privacy": "Поверителност",
     "cookies": "Бисквитки",
-    "copyright": "Wavsy"
+    "copyright": "Wavsy",
+    "socialLabel": "Социални мрежи",
+    "facebookAria": "Wavsy във Facebook (отваря се в нов раздел)",
+    "linkedinAria": "Wavsy в LinkedIn (отваря се в нов раздел)"
   },
   "hero": {
     "eyebrow": "Wavsy",
