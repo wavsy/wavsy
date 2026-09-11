@@ -13,7 +13,8 @@
     "privacyTitle": "Поверителност — Wavsy",
     "privacyDescription": "Как Wavsy ползва данните от запитванията.",
     "cookiesTitle": "Бисквитки — Wavsy",
-    "cookiesDescription": "Информация за бисквитките на wavsy.dev."
+    "cookiesDescription": "Информация за бисквитките на wavsy.dev.",
+    "ogImageAlt": "Слоганът на Wavsy „Сайт, който работи за теб.“ върху тъмносин фон с вълна и адреса wavsy.dev"
   },
   "nav": {
     "home": "Начало",

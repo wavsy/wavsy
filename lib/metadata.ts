@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { Locale, RouteKey } from "@/lib/routes";
-import { pathFor } from "@/lib/routes";
+import { locales, pathFor } from "@/lib/routes";
 
 const metaKey: Record<RouteKey, { title: string; description: string }> = {
   home: { title: "homeTitle", description: "homeDescription" },
@@ -13,16 +13,26 @@ const metaKey: Record<RouteKey, { title: string; description: string }> = {
   cookies: { title: "cookiesTitle", description: "cookiesDescription" },
 };
 
+const ogLocale: Record<Locale, string> = {
+  bg: "bg_BG",
+  en: "en_US",
+  de: "de_DE",
+};
+
+export const ogImageSize = { width: 1200, height: 630 };
+
 export async function pageMetadata(
   locale: Locale,
   route: RouteKey,
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "meta" });
   const keys = metaKey[route];
+  const title = t(keys.title);
+  const description = t(keys.description);
 
   return {
-    title: t(keys.title),
-    description: t(keys.description),
+    title,
+    description,
     alternates: {
       canonical: pathFor(locale, route),
       languages: {
@@ -32,10 +42,30 @@ export async function pageMetadata(
         "x-default": pathFor("bg", route),
       },
     },
+    // A page's openGraph replaces its parents' openGraph as a whole, including
+    // the image from app/[locale]/opengraph-image.tsx. So every field is set
+    // here and the image is referenced by its route.
     openGraph: {
-      locale: locale === "bg" ? "bg_BG" : locale === "de" ? "de_DE" : "en_GB",
-      title: t(keys.title),
-      description: t(keys.description),
+      type: "website",
+      siteName: "Wavsy",
+      url: pathFor(locale, route),
+      locale: ogLocale[locale],
+      alternateLocale: locales
+        .filter((other) => other !== locale)
+        .map((other) => ogLocale[other]),
+      title,
+      description,
+      images: [
+        {
+          url: `/${locale}/opengraph-image`,
+          ...ogImageSize,
+          type: "image/png",
+          alt: t("ogImageAlt"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
     },
   };
 }

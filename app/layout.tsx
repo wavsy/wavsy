@@ -3,12 +3,9 @@ import type { ReactNode } from "react";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
+// Open Graph and Twitter fields are set per page in lib/metadata.ts.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  openGraph: {
-    type: "website",
-    siteName: "Wavsy",
-  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
