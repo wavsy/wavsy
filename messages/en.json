@@ -13,7 +13,8 @@
     "privacyTitle": "Privacy — Wavsy",
     "privacyDescription": "How Wavsy uses enquiry data.",
     "cookiesTitle": "Cookies — Wavsy",
-    "cookiesDescription": "Cookie information for wavsy.dev."
+    "cookiesDescription": "Cookie information for wavsy.dev.",
+    "ogImageAlt": "The Wavsy slogan “Website that works for you.” on a dark navy background with a wave and the address wavsy.dev"
   },
   "nav": {
     "home": "Home",
@@ -37,7 +38,10 @@
     "legalLabel": "Legal",
     "privacy": "Privacy",
     "cookies": "Cookies",
-    "copyright": "Wavsy"
+    "copyright": "Wavsy",
+    "socialLabel": "Social media",
+    "facebookAria": "Wavsy on Facebook (opens in a new tab)",
+    "linkedinAria": "Wavsy on LinkedIn (opens in a new tab)"
   },
   "hero": {
     "eyebrow": "Wavsy",

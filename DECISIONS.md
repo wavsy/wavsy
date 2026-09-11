@@ -23,7 +23,8 @@ Items in brackets stay out of the public site until confirmed.
 - Prices stay off marketing pages. Exact price is agreed in conversation.
 - Two engagement models on services: handoff vs maintain (maintain marked recommended).
 - Portfolio shows three live sites: Glenz Reinigung, Manufacturas Quezher, and Dimitar’s personal site. Cards show a landing-page thumbnail and link out.
-- Social links: LinkedIn on founder cards only. No other socials.
+- Social links: LinkedIn on founder cards, plus the company Facebook and LinkedIn pages as icons in the footer (KAN-30). No other socials.
+- Structured data (KAN-30): a `ProfessionalService` JSON-LD block on the home pages. The founders appear there by full name with their LinkedIn profiles, so search engines can tell Wavsy the studio from the song of the same name. The visible site keeps first names only. No telephone, since the phone is not published.
 - Blog omitted from this version
 - No Edge middleware: locale routing uses `app/[locale]` plus `next.config` rewrites, so Vercel does not load an ESM middleware file.
 

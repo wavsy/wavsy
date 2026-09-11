@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { EngagementModels } from "@/components/services/EngagementModels";
 import { FaqList } from "@/components/services/FaqList";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { pathFor } from "@/lib/routes";
-import { SITE_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 const serviceIds = ["websites", "apps", "maintenance", "automation"] as const;
 
@@ -42,15 +43,12 @@ export default async function ServicesPage({ params }: PageProps) {
         text: item.a,
       },
     })),
-    url: `${SITE_URL}${pathFor(locale, "services")}`,
+    url: absoluteUrl(locale, "services"),
   };
 
   return (
     <main id="content" className="bg-paper pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <PageHeader title={t("pageTitle")} lead={t("lead")} />
       <Container>
         <ul>

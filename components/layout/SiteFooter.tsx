@@ -1,8 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
+import { FacebookMark, LinkedInMark } from "@/components/ui/SocialIcons";
 import Link from "next/link";
 import { pathFor, type Locale } from "@/lib/routes";
+import { PUBLIC_EMAIL, SOCIAL_LINKS } from "@/lib/site";
 
 export async function SiteFooter({ locale }: { locale: Locale }) {
   const t = await getTranslations("footer");
@@ -17,6 +19,11 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     { href: pathFor(locale, "contact"), label: nav("contact") },
   ];
 
+  const socials = [
+    { href: SOCIAL_LINKS.facebook, label: t("facebookAria"), Icon: FacebookMark },
+    { href: SOCIAL_LINKS.linkedin, label: t("linkedinAria"), Icon: LinkedInMark },
+  ];
+
   return (
     <footer className="relative overflow-hidden border-t border-mist bg-white">
       <Container className="grid gap-12 py-16 md:grid-cols-[1.3fr_0.8fr_0.8fr] md:py-20">
@@ -27,12 +34,27 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
           </p>
           <p className="mt-4 text-sm text-muted">{t("studio")}</p>
           <a
-            href="mailto:mitkobarev@gmail.com"
+            href={`mailto:${PUBLIC_EMAIL}`}
             className="mt-8 inline-block text-ink underline decoration-mist underline-offset-4 transition-colors duration-150 hover:decoration-navy"
           >
-            mitkobarev@gmail.com
+            {PUBLIC_EMAIL}
           </a>
           <p className="mt-2 text-sm text-muted">{t("response")}</p>
+          <ul className="mt-8 flex gap-3" aria-label={t("socialLabel")}>
+            {socials.map(({ href, label, Icon }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-10 w-10 items-center justify-center border border-mist text-ink/70 transition-colors duration-150 hover:border-navy hover:text-navy"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
         <nav className="flex flex-col gap-3" aria-label={t("navLabel")}>
           <p className="text-[0.75rem] uppercase tracking-[0.14em] text-muted">

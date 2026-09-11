@@ -1,21 +1,25 @@
 import type { MetadataRoute } from "next";
-import { locales, pathFor, routeKeys } from "@/lib/routes";
-import { SITE_URL } from "@/lib/site";
+import { locales, routeKeys, type Locale, type RouteKey } from "@/lib/routes";
+import { absoluteUrl } from "@/lib/site";
+
+function languages(route: RouteKey): Record<Locale | "x-default", string> {
+  return {
+    bg: absoluteUrl("bg", route),
+    en: absoluteUrl("en", route),
+    de: absoluteUrl("de", route),
+    "x-default": absoluteUrl("bg", route),
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return locales.flatMap((locale) =>
     routeKeys.map((route) => ({
-      url: `${SITE_URL}${pathFor(locale, route)}`,
+      url: absoluteUrl(locale, route),
       lastModified: new Date(),
       changeFrequency: route === "home" ? "weekly" : "monthly",
       priority: route === "home" ? 1 : 0.7,
       alternates: {
-        languages: {
-          bg: `${SITE_URL}${pathFor("bg", route)}`,
-          en: `${SITE_URL}${pathFor("en", route)}`,
-          de: `${SITE_URL}${pathFor("de", route)}`,
-          "x-default": `${SITE_URL}${pathFor("bg", route)}`,
-        },
+        languages: languages(route),
       },
     })),
   );

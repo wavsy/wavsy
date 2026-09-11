@@ -14,7 +14,8 @@
     "privacyTitle": "Datenschutz — Wavsy",
     "privacyDescription": "Wie Wavsy Anfragedaten verwendet.",
     "cookiesTitle": "Cookies — Wavsy",
-    "cookiesDescription": "Cookie-Informationen für wavsy.dev."
+    "cookiesDescription": "Cookie-Informationen für wavsy.dev.",
+    "ogImageAlt": "Der Wavsy-Slogan „Eine Website, die für dich arbeitet.“ auf dunkelblauem Hintergrund mit einer Welle und der Adresse wavsy.dev"
   },
   "nav": {
     "home": "Start",
@@ -38,7 +39,10 @@
     "legalLabel": "Rechtliches",
     "privacy": "Datenschutz",
     "cookies": "Cookies",
-    "copyright": "Wavsy"
+    "copyright": "Wavsy",
+    "socialLabel": "Soziale Medien",
+    "facebookAria": "Wavsy auf Facebook (öffnet in neuem Tab)",
+    "linkedinAria": "Wavsy auf LinkedIn (öffnet in neuem Tab)"
   },
   "hero": {
     "eyebrow": "Wavsy",

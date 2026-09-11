@@ -45,9 +45,20 @@ const calculatorRedirects = [
   { source: "/de/kalkulator", destination: "/de/kontakt", permanent: true },
 ];
 
+// The old production alias. The value is a regex matched against the whole
+// host, so preview hosts (wavsy-<hash>-….vercel.app, wavsy-git-<branch>-….vercel.app)
+// do not match.
+const legacyHostRedirect = {
+  source: "/:path*",
+  has: [{ type: "host" as const, value: "wavsy\\.vercel\\.app" }],
+  destination: "https://wavsy.dev/:path*",
+  permanent: true,
+};
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      legacyHostRedirect,
       { source: "/bg", destination: "/", permanent: true },
       { source: "/uslugi", destination: "/услуги", permanent: true },
       { source: "/proekti", destination: "/портфолио", permanent: true },
