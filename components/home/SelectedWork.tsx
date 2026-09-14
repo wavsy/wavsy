@@ -30,7 +30,7 @@ export async function SelectedWork() {
             {t("lead")}
           </p>
         </Reveal>
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2">
           {items.map((project, index) => (
             <Reveal key={project?.slug ?? `slot-${index}`} delay={index * 0.06} className="h-full">
               <PortfolioCard project={project} index={index} />

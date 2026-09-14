@@ -34,7 +34,7 @@ export default async function PortfolioPage({ params }: PageProps) {
             </div>
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid items-stretch gap-6 md:grid-cols-2">
             {projects.map((project, index) => (
               <PortfolioCard key={project.slug} project={project} index={index} />
             ))}

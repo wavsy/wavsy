@@ -1,4 +1,4 @@
-export const projectIds = ["glenz", "quezher", "dimitar", "kibo2", "storm"] as const;
+export const projectIds = ["storm", "glenz", "quezher", "kibo2", "dimitar"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
@@ -8,6 +8,11 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "storm",
+    url: "https://stormcarwash.vercel.app/",
+    image: "/portfolio/storm.jpg",
+  },
   {
     slug: "glenz",
     url: "https://www.glenz-reinigung.com/",
@@ -19,18 +24,13 @@ export const projects: Project[] = [
     image: "/portfolio/quezher.jpg",
   },
   {
-    slug: "dimitar",
-    url: "https://portfolio-theta-dun-ejq1lqeyg0.vercel.app/",
-    image: "/portfolio/dimitar.jpg",
-  },
-  {
     slug: "kibo2",
     url: "https://kibo-2.vercel.app/",
     image: "/portfolio/kibo-2.jpg",
   },
   {
-    slug: "storm",
-    url: "https://stormcarwash.vercel.app/",
-    image: "/portfolio/storm.jpg",
+    slug: "dimitar",
+    url: "https://portfolio-theta-dun-ejq1lqeyg0.vercel.app/",
+    image: "/portfolio/dimitar.jpg",
   },
 ];

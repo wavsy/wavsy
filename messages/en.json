@@ -292,23 +292,19 @@
         "summary": "A site for a metalworking company in Mexico — manufacturing, machines and contact."
       },
       "dimitar": {
-        "name": "Dimitar Barev",
+        "name": "Personal Website",
         "industry": "Personal brand",
         "summary": "A personal site — who they are and what they do."
       },
       "kibo2": {
         "name": "KIBO - 2",
         "industry": "Plumbing & heating",
-<<<<<<< HEAD
         "summary": "A site for a building company in Kazanlak — plumbing, heating and heat pumps, with a chat assistant that points visitors to the right service."
-=======
-        "summary": "A site for a building company in Kazanlak — plumbing, heating and heat pumps."
       },
       "storm": {
         "name": "Storm Car Wash",
         "industry": "Car wash",
         "summary": "A site for a self-service car wash in Kazanlak — open 24/7, on the road to Ovoshtnik."
->>>>>>> cb4e557 (Storm Website Added)
       }
     }
   }

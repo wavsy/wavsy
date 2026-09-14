@@ -20,7 +20,7 @@ export function HoverLift({
 
   return (
     <motion.div
-      className={cn(className)}
+      className={cn("h-full", className)}
       whileHover={reduce || !canHover ? undefined : { scale: 1.03 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
