@@ -295,6 +295,11 @@
         "name": "Dimitar Barev",
         "industry": "Personal brand",
         "summary": "A personal site — who they are and what they do."
+      },
+      "kibo2": {
+        "name": "KIBO - 2",
+        "industry": "Plumbing & heating",
+        "summary": "A site for a building company in Kazanlak — plumbing, heating and heat pumps."
       }
     }
   }
