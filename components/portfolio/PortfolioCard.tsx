@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { HoverLift } from "@/components/motion/HoverLift";
-import { cn } from "@/lib/cn";
 import type { Project } from "@/lib/projects";
 
 type PortfolioCardProps = {
@@ -20,13 +19,8 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
   const summary = project ? t(`projects.${project.slug}.summary`) : work("emptyHint");
 
   const body = (
-    <article
-      className={cn(
-        "group overflow-hidden border border-mist bg-white",
-        index === 1 && "md:mt-12",
-      )}
-    >
-      <div className="relative aspect-[16/10] overflow-hidden bg-mist">
+    <article className="group flex h-full flex-col overflow-hidden border border-mist bg-white">
+      <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-mist">
         {project ? (
           <Image
             src={project.image}
@@ -40,7 +34,7 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
           <div className="absolute inset-0 bg-[linear-gradient(135deg,#0B3D91_0%,transparent_42%,#3FC1F0_100%)] opacity-[0.18]" />
         )}
       </div>
-      <div className="p-6 md:p-8">
+      <div className="flex flex-1 flex-col p-6 md:p-8">
         <p className="text-[0.75rem] uppercase tracking-[0.16em] text-muted">
           {String(index + 1).padStart(2, "0")}
         </p>
@@ -50,7 +44,7 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
         <p className="mt-3 text-sm text-muted">{industry}</p>
         <p className="mt-4 max-w-[32ch] text-ink/75">{summary}</p>
         {project ? (
-          <p className="mt-6 inline-flex items-center gap-2 text-sm text-ink/55 transition-colors duration-150 group-hover:text-navy">
+          <p className="mt-auto inline-flex items-center gap-2 pt-6 text-sm text-ink/55 transition-colors duration-150 group-hover:text-navy">
             <span>{t("visit")}</span>
             <span
               aria-hidden
@@ -65,11 +59,11 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
   );
 
   if (!project) {
-    return <HoverLift>{body}</HoverLift>;
+    return <HoverLift className="h-full">{body}</HoverLift>;
   }
 
   return (
-    <HoverLift>
+    <HoverLift className="h-full">
       <a
         href={project.url}
         target="_blank"

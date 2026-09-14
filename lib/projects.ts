@@ -1,4 +1,4 @@
-export const projectIds = ["glenz", "quezher", "dimitar", "kibo2"] as const;
+export const projectIds = ["glenz", "quezher", "dimitar", "kibo2", "storm"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
@@ -27,5 +27,10 @@ export const projects: Project[] = [
     slug: "kibo2",
     url: "https://kibo-2.vercel.app/",
     image: "/portfolio/kibo-2.jpg",
+  },
+  {
+    slug: "storm",
+    url: "https://stormcarwash.vercel.app/",
+    image: "/portfolio/storm.jpg",
   },
 ];

@@ -300,7 +300,16 @@
       "kibo2": {
         "name": "KIBO - 2",
         "industry": "Sanitär & Heizung",
+<<<<<<< HEAD
+        "summary": "Eine Website für ein Bauunternehmen in Kasanlak — Sanitär, Heizung und Wärmepumpen, mit einem Chat-Assistenten, der Besucher zur passenden Leistung führt."
+=======
         "summary": "Eine Website für ein Bauunternehmen in Kasanlak — Sanitär, Heizung und Wärmepumpen."
+      },
+      "storm": {
+        "name": "Storm Autowäsche",
+        "industry": "Autowäsche",
+        "summary": "Eine Website für eine SB-Autowäsche in Kasanlak — rund um die Uhr, an der Straße nach Ovoshtnik."
+>>>>>>> cb4e557 (Storm Website Added)
       }
     }
   }
