@@ -12,9 +12,11 @@
     "contactTitle": "Kontakt — Wavsy",
     "contactDescription": "Erzähl uns, was du brauchst. Wir antworten innerhalb von 2 Kalendertagen.",
     "privacyTitle": "Datenschutz — Wavsy",
-    "privacyDescription": "Wie Wavsy Anfragedaten verwendet.",
+    "privacyDescription": "Wie Wavsy Anfragedaten erhebt und verwendet.",
     "cookiesTitle": "Cookies — Wavsy",
     "cookiesDescription": "Cookie-Informationen für wavsy.dev.",
+    "careersTitle": "Karriere — Wavsy",
+    "careersDescription": "Arbeiten mit Wavsy. Initiativbewerbungen per E-Mail.",
     "ogImageAlt": "Der Wavsy-Slogan „Eine Website, die für dich arbeitet.“ auf dunkelblauem Hintergrund mit einer Welle und der Adresse wavsy.dev"
   },
   "nav": {
@@ -34,15 +36,18 @@
     "tagline": "Eine Website, die für dich arbeitet.",
     "studio": "Zwei Personen. Direkter Kontakt.",
     "emailLabel": "E-Mail",
+    "contactLabel": "Kontakt",
     "response": "Wir antworten innerhalb von 2 Kalendertagen.",
     "navLabel": "Navigation",
     "legalLabel": "Rechtliches",
     "privacy": "Datenschutz",
+    "careers": "Karriere",
     "cookies": "Cookies",
     "copyright": "Wavsy",
     "socialLabel": "Soziale Medien",
     "facebookAria": "Wavsy auf Facebook (öffnet in neuem Tab)",
-    "linkedinAria": "Wavsy auf LinkedIn (öffnet in neuem Tab)"
+    "linkedinAria": "Wavsy auf LinkedIn (öffnet in neuem Tab)",
+    "gdprAria": "DSGVO-konform — Datenschutzrichtlinie"
   },
   "hero": {
     "eyebrow": "Wavsy",
@@ -265,13 +270,52 @@
   },
   "legal": {
     "privacyTitle": "Datenschutz",
-    "privacyNote": "Den vollen Text ergänzen wir vor dem öffentlichen Start. Bis dahin: Anfragen kommen über das Formular und wir nutzen sie nur zur Antwort.",
+    "privacyNote": "Wir erheben so wenig wie nötig — und nur, um dir zu antworten.",
+    "privacySections": {
+      "who": {
+        "title": "Wer wir sind",
+        "body": "Wavsy ist ein Zwei-Personen-Webstudio in Sofia, Bulgarien. Wir entscheiden, wie die Daten genutzt werden, die du uns sendest."
+      },
+      "data": {
+        "title": "Was wir erheben",
+        "body": "Über das Anfrageformular: Name, Firma falls angegeben, E-Mail und/oder Telefon, Projektart und deine Nachricht. Wenn du uns per E-Mail schreibst, erhalten wir, was du sendest."
+      },
+      "use": {
+        "title": "Wofür wir sie nutzen",
+        "body": "Nur um dir zu antworten — in der Regel innerhalb von 2 Kalendertagen — und für die Arbeit, wenn wir ein Projekt beginnen."
+      },
+      "share": {
+        "title": "Mit wem wir sie teilen",
+        "body": "Wir verkaufen deine Daten nicht. Wenn du die Anfrage über WhatsApp sendest, öffnet sich die Nachricht dort und es gelten die Bedingungen von WhatsApp. Viber öffnet einen Chat, ohne das Formular zu senden."
+      },
+      "keep": {
+        "title": "Wie lange wir sie behalten",
+        "body": "Wir behalten eine Anfrage, solange wir sie bearbeiten, und löschen sie danach — außer wir arbeiten zusammen und brauchen sie für das Projekt."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "body": "Diese Website nutzt nur Cookies, die sie zum Funktionieren braucht. Keine Analyse. Keine Marketing-Cookies."
+      },
+      "rights": {
+        "title": "Deine Rechte",
+        "body": "Du kannst Auskunft, Berichtigung oder Löschung verlangen, oder die Nutzung einschränken. Schreib uns. Du kannst dich auch bei der Kommission für den Schutz personenbezogener Daten in Bulgarien beschweren."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "body": "Schreib an"
+      }
+    },
     "cookiesTitle": "Cookies",
     "cookiesNote": "In dieser Version gibt es keine Analyse und keine Marketing-Cookies.",
     "notFoundTitle": "Diese Seite gibt es nicht.",
     "notFoundNote": "Zurück zum Start, oder schreib uns, wenn du etwas Bestimmtes gesucht hast.",
     "home": "Zum Start",
     "contact": "Kontakt"
+  },
+  "careers": {
+    "title": "Karriere",
+    "lead": "Für Initiativbewerbungen schreib an wavsy.dev@gmail.com",
+    "imageAlt": "Menschen unterschiedlicher Herkunft umarmen sich und lächeln gemeinsam"
   },
   "portfolio": {
     "title": "Portfolio",

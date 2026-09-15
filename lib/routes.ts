@@ -10,6 +10,7 @@ export const routeKeys = [
   "contact",
   "privacy",
   "cookies",
+  "careers",
 ] as const;
 export type RouteKey = (typeof routeKeys)[number];
 
@@ -22,6 +23,7 @@ export const paths: Record<Locale, Record<RouteKey, string>> = {
     contact: "/контакти",
     privacy: "/поверителност",
     cookies: "/бисквитки",
+    careers: "/кариери",
   },
   en: {
     home: "/en",
@@ -31,6 +33,7 @@ export const paths: Record<Locale, Record<RouteKey, string>> = {
     contact: "/en/contact",
     privacy: "/en/privacy",
     cookies: "/en/cookies",
+    careers: "/en/careers",
   },
   de: {
     home: "/de",
@@ -40,6 +43,7 @@ export const paths: Record<Locale, Record<RouteKey, string>> = {
     contact: "/de/kontakt",
     privacy: "/de/datenschutz",
     cookies: "/de/cookies",
+    careers: "/de/karriere",
   },
 };
 
@@ -51,6 +55,7 @@ const internalFolders: Record<string, RouteKey> = {
   kontakti: "contact",
   poveritelnost: "privacy",
   biskvitki: "cookies",
+  karieri: "careers",
 };
 
 export function pathFor(locale: Locale, key: RouteKey) {

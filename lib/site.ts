@@ -1,8 +1,6 @@
 import { pathFor, type Locale, type RouteKey } from "@/lib/routes";
 
-export const PUBLIC_EMAIL = "mitkobarev@gmail.com";
-// Listed in llms.txt only; the site itself still shows PUBLIC_EMAIL.
-export const SECOND_EMAIL = "nikolai.todorov.dev@gmail.com";
+export const PUBLIC_EMAIL = "wavsy.dev@gmail.com";
 export const SITE_URL = "https://wavsy.dev";
 
 export const SOCIAL_LINKS = {

@@ -20,16 +20,19 @@ const publicToInternal = [
   ["/контакти", "/bg/kontakti"],
   ["/поверителност", "/bg/poveritelnost"],
   ["/бисквитки", "/bg/biskvitki"],
+  ["/кариери", "/bg/karieri"],
   ["/en/services", "/en/uslugi"],
   ["/en/about", "/en/za-nas"],
   ["/en/contact", "/en/kontakti"],
   ["/en/privacy", "/en/poveritelnost"],
   ["/en/cookies", "/en/biskvitki"],
+  ["/en/careers", "/en/karieri"],
   ["/de/leistungen", "/de/uslugi"],
   ["/de/ueber-uns", "/de/za-nas"],
   ["/de/kontakt", "/de/kontakti"],
   ["/de/datenschutz", "/de/poveritelnost"],
   ["/de/cookies", "/de/biskvitki"],
+  ["/de/karriere", "/de/karieri"],
 ] as const;
 
 const calculatorRedirects = [
@@ -66,6 +69,7 @@ const nextConfig: NextConfig = {
       { source: "/kontakti", destination: "/контакти", permanent: true },
       { source: "/poveritelnost", destination: "/поверителност", permanent: true },
       { source: "/biskvitki", destination: "/бисквитки", permanent: true },
+      { source: "/karieri", destination: "/кариери", permanent: true },
       ...calculatorRedirects,
     ];
   },

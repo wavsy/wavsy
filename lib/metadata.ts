@@ -11,6 +11,7 @@ const metaKey: Record<RouteKey, { title: string; description: string }> = {
   contact: { title: "contactTitle", description: "contactDescription" },
   privacy: { title: "privacyTitle", description: "privacyDescription" },
   cookies: { title: "cookiesTitle", description: "cookiesDescription" },
+  careers: { title: "careersTitle", description: "careersDescription" },
 };
 
 const ogLocale: Record<Locale, string> = {
