@@ -13,7 +13,7 @@ Items in brackets stay out of the public site until confirmed.
 - English: `/en`, `/en/services`, `/en/portfolio`, `/en/about`, `/en/contact`
 - German: `/de`, `/de/leistungen`, `/de/portfolio`, `/de/ueber-uns`, `/de/kontakt`
 - Default locale is Bulgarian at `/`. Language switcher is compact `BG / EN / DE` text, no flags.
-- Public email: `mitkobarev@gmail.com`
+- Public email: `wavsy.dev@gmail.com`
 - Phone is not published. The chat number stays in server env (`WHATSAPP_E164`) and is never rendered in HTML or client JS.
 - Reply time: within 2 calendar days
 - Inquiry form on the homepage finale and contact page. „Send enquiry“ opens WhatsApp with the filled message. A separate Viber button is a native `viber://` link so the app opens a chat. The number is not shown as text. Form fields stay filled until WhatsApp send succeeds.

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { locales, routeKeys, type Locale, type RouteKey } from "@/lib/routes";
-import { PUBLIC_EMAIL, SECOND_EMAIL, SOCIAL_LINKS, absoluteUrl } from "@/lib/site";
+import { PUBLIC_EMAIL, SOCIAL_LINKS, absoluteUrl } from "@/lib/site";
 
 // https://llmstxt.org — a plain-text map of the site for AI crawlers.
 // Built from lib/routes.ts and the translations, so a new page lands here
@@ -22,6 +22,7 @@ const metaKey: Record<RouteKey, { label: string; description: string }> = {
   contact: { label: "nav.contact", description: "meta.contactDescription" },
   privacy: { label: "footer.privacy", description: "meta.privacyDescription" },
   cookies: { label: "footer.cookies", description: "meta.cookiesDescription" },
+  careers: { label: "footer.careers", description: "meta.careersDescription" },
 };
 
 const intro = [
@@ -30,7 +31,7 @@ const intro = [
   "> Wavsy е уеб студио от София. Двама души правят сайтове и уеб приложения",
   "> за бизнеси. Сайтът е на български, английски и немски.",
   "",
-  `Контакт: ${PUBLIC_EMAIL}, ${SECOND_EMAIL}`,
+  `Контакт: ${PUBLIC_EMAIL}`,
   `Facebook: ${SOCIAL_LINKS.facebook}`,
   `LinkedIn: ${SOCIAL_LINKS.linkedin}`,
 ];

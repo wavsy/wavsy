@@ -11,9 +11,11 @@
     "contactTitle": "Contact — Wavsy",
     "contactDescription": "Tell us what you need. We reply within 2 calendar days.",
     "privacyTitle": "Privacy — Wavsy",
-    "privacyDescription": "How Wavsy uses enquiry data.",
+    "privacyDescription": "How Wavsy collects and uses enquiry data.",
     "cookiesTitle": "Cookies — Wavsy",
     "cookiesDescription": "Cookie information for wavsy.dev.",
+    "careersTitle": "Careers — Wavsy",
+    "careersDescription": "Working with Wavsy. Unsolicited applications by email.",
     "ogImageAlt": "The Wavsy slogan “Website that works for you.” on a dark navy background with a wave and the address wavsy.dev"
   },
   "nav": {
@@ -33,15 +35,18 @@
     "tagline": "Website that works for you.",
     "studio": "Two people. Direct contact.",
     "emailLabel": "Email",
+    "contactLabel": "Contact",
     "response": "We reply within 2 calendar days.",
     "navLabel": "Navigation",
     "legalLabel": "Legal",
     "privacy": "Privacy",
+    "careers": "Careers",
     "cookies": "Cookies",
     "copyright": "Wavsy",
     "socialLabel": "Social media",
     "facebookAria": "Wavsy on Facebook (opens in a new tab)",
-    "linkedinAria": "Wavsy on LinkedIn (opens in a new tab)"
+    "linkedinAria": "Wavsy on LinkedIn (opens in a new tab)",
+    "gdprAria": "GDPR compliant — privacy policy"
   },
   "hero": {
     "eyebrow": "Wavsy",
@@ -264,13 +269,52 @@
   },
   "legal": {
     "privacyTitle": "Privacy",
-    "privacyNote": "The full policy will be added before public launch. Until then: enquiries reach us through the form and we use them only to reply.",
+    "privacyNote": "We collect as little as we need, and only to reply to you.",
+    "privacySections": {
+      "who": {
+        "title": "Who we are",
+        "body": "Wavsy is a two-person web studio in Sofia, Bulgaria. We decide how the data you send us is used."
+      },
+      "data": {
+        "title": "What we collect",
+        "body": "From the enquiry form: name, company if you give it, email and/or phone, project type, and your message. If you write to us by email, we receive what you send."
+      },
+      "use": {
+        "title": "How we use it",
+        "body": "Only to answer you — usually within 2 calendar days — and to do the work if we start a project together."
+      },
+      "share": {
+        "title": "Who we share with",
+        "body": "We do not sell your data. If you send the enquiry through WhatsApp, the message is opened there and follows WhatsApp’s own terms. Viber opens a chat without sending the form."
+      },
+      "keep": {
+        "title": "How long we keep it",
+        "body": "We keep an enquiry while we handle it, then delete it, unless we work together and need it for the project."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "body": "This site uses only cookies needed for it to work. No analytics. No marketing cookies."
+      },
+      "rights": {
+        "title": "Your rights",
+        "body": "You can ask to see, correct, or delete your data, or to limit how we use it. Write to us. You can also complain to the Commission for Personal Data Protection in Bulgaria."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "Write to"
+      }
+    },
     "cookiesTitle": "Cookies",
     "cookiesNote": "This version has no analytics and no marketing cookies.",
     "notFoundTitle": "This page does not exist.",
     "notFoundNote": "Go back home, or write to us if you were looking for something specific.",
     "home": "Home",
     "contact": "Contact"
+  },
+  "careers": {
+    "title": "Careers",
+    "lead": "For unsolicited applications, send an email to wavsy.dev@gmail.com",
+    "imageAlt": "People from different backgrounds hugging and smiling together"
   },
   "portfolio": {
     "title": "Portfolio",

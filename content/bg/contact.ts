@@ -4,7 +4,7 @@ export const contact = {
   pageTitle: "Контакти",
   lead: "Попълни формата. Запитването идва при нас като WhatsApp съобщение. Отговаряме до 2 календарни дни.",
   emailLabel: "Имейл",
-  email: "mitkobarev@gmail.com",
+  email: "wavsy.dev@gmail.com",
   emailHint: "Ако предпочиташ, пиши директно на имейла.",
   response: "Отговаряме до 2 календарни дни.",
   whatsappNote:
