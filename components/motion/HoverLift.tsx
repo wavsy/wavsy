@@ -21,7 +21,13 @@ export function HoverLift({
   return (
     <motion.div
       className={cn("h-full", className)}
-      whileHover={reduce || !canHover ? undefined : { scale: 1.03 }}
+      // Same shadow shape at rest and on hover, so motion can animate between them.
+      style={{ boxShadow: "0 16px 32px -20px rgba(17, 28, 51, 0)" }}
+      whileHover={
+        reduce || !canHover
+          ? undefined
+          : { scale: 1.03, boxShadow: "0 16px 32px -20px rgba(17, 28, 51, 0.28)" }
+      }
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
       {children}
