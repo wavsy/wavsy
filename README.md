@@ -9,8 +9,8 @@
 
 ---
 
-> **Pre-release.** The domain, the Vercel setup and the launch keys are still an open
-> decision — see [`DECISIONS.md`](DECISIONS.md).
+> **Live at [wavsy.dev](https://wavsy.dev).** Vercel deploys every merge to `main`.
+> Settled and open decisions are in [`DECISIONS.md`](DECISIONS.md).
 
 ## Getting started
 
@@ -35,7 +35,8 @@ Next.js 15 needs Node 18.18 or newer.
 |---|---|
 | `WHATSAPP_E164` | The chat number, server only. **Never prefix it with `NEXT_PUBLIC_`.** Without it the form cannot open a chat. |
 | `NEXT_PUBLIC_ASSISTANT_ENABLED` | `true` renders the slot for the site assistant. Off by default. |
-| `NEXT_PUBLIC_ANALYTICS_ENABLED` | `true` renders the analytics slot. Off by default. |
+| `NEXT_PUBLIC_ANALYTICS_ENABLED` | `true` turns on analytics. Off by default. |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | The Umami Cloud website id. Analytics loads only when this is set **and** the switch above is `true`. It counts page views plus two events: `inquiry-whatsapp` (a valid enquiry opened WhatsApp) and `inquiry-viber`. Cookieless, so no consent banner. |
 
 ## Stack
 
@@ -48,7 +49,7 @@ Typefaces: **Unbounded** for display, **Inter** for body text.
 
 ```
 app/[locale]/   one folder per page: uslugi, portfolio, za-nas, kontakti,
-                poveritelnost, biskvitki
+                poveritelnost, biskvitki, karieri
 components/     home · layout · contact · services · portfolio · team · motion · ui
 lib/            routes, locale, metadata, validation, inquiry, whatsapp, flags
 messages/       bg.json · en.json · de.json — the copy
@@ -68,6 +69,9 @@ paths:
 | Portfolio | `/портфолио` | `/en/portfolio` | `/de/portfolio` |
 | About | `/за-нас` | `/en/about` | `/de/ueber-uns` |
 | Contact | `/контакти` | `/en/contact` | `/de/kontakt` |
+| Privacy | `/поверителност` | `/en/privacy` | `/de/datenschutz` |
+| Cookies | `/бисквитки` | `/en/cookies` | `/de/cookies` |
+| Careers | `/кариери` | `/en/careers` | `/de/karriere` |
 
 The folders under `app/[locale]/` use Latin names internally. The public paths
 are mapped onto them by **rewrites in `next.config.ts`**, not by middleware:
