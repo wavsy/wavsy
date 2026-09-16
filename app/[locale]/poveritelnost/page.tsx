@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { flags } from "@/lib/flags";
 import { Container } from "@/components/ui/Container";
 import { GdprBadge } from "@/components/ui/GdprBadge";
 import { parseLocale } from "@/lib/locale";
@@ -50,6 +51,8 @@ export default async function PrivacyPage({ params }: PageProps) {
                       className="text-ink underline decoration-mist underline-offset-4 transition-colors duration-150 hover:decoration-navy"
                     >{PUBLIC_EMAIL}</a>.
                   </>
+                ) : key === "cookies" && flags.analytics ? (
+                  t("privacySections.cookies.bodyAnalytics")
                 ) : (
                   t(`privacySections.${key}.body`)
                 )}

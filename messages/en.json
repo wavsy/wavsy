@@ -294,7 +294,8 @@
       },
       "cookies": {
         "title": "Cookies",
-        "body": "This site uses only cookies needed for it to work. No analytics. No marketing cookies."
+        "body": "This site uses only cookies needed for it to work. No analytics. No marketing cookies.",
+        "bodyAnalytics": "This site uses only cookies needed for it to work. No marketing cookies. We count visits anonymously with Umami, which uses no cookies and stores no personal data."
       },
       "rights": {
         "title": "Your rights",
@@ -307,6 +308,7 @@
     },
     "cookiesTitle": "Cookies",
     "cookiesNote": "This version has no analytics and no marketing cookies.",
+    "cookiesNoteAnalytics": "No marketing cookies. We count visits anonymously with Umami, without cookies and without personal data.",
     "notFoundTitle": "This page does not exist.",
     "notFoundNote": "Go back home, or write to us if you were looking for something specific.",
     "home": "Home",

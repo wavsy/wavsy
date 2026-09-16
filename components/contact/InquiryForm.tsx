@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState, useId, useState } from "react";
+import { useActionState, useEffect, useId, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
+import { trackEvent } from "@/lib/analytics";
 import { submitInquiry } from "@/lib/inquiry";
 import { useExternalChat } from "@/lib/use-external-chat";
 import { cn } from "@/lib/cn";
@@ -48,6 +49,12 @@ export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
     submitInquiry,
     null,
   );
+  // Counted before the chat opens, since opening it leaves the page.
+  useEffect(() => {
+    if (state?.url) {
+      trackEvent("inquiry-whatsapp");
+    }
+  }, [state?.url]);
   useExternalChat(state?.url);
 
   const dark = tone === "dark";
@@ -196,6 +203,7 @@ export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
         <div>
           <Button
             href={viberHref}
+            onClick={() => trackEvent("inquiry-viber")}
             variant="ghost"
             className={cn(
               "border px-5",
