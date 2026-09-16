@@ -353,6 +353,11 @@
         "name": "Storm Autowäsche",
         "industry": "Autowäsche",
         "summary": "Eine Website für eine SB-Autowäsche in Kasanlak — rund um die Uhr, an der Straße nach Ovoshtnik."
+      },
+      "cacao": {
+        "name": "Cacao Cartel",
+        "industry": "Konzeptprojekt",
+        "summary": "Eine interaktive Konzept-Website über Kakao — 3D-Szenen, Scroll-Effekte und ein eigener Look."
       }
     }
   }

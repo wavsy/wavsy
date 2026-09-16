@@ -1,4 +1,4 @@
-export const projectIds = ["storm", "glenz", "quezher", "kibo2", "dimitar"] as const;
+export const projectIds = ["storm", "glenz", "quezher", "kibo2", "dimitar", "cacao"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
@@ -32,5 +32,11 @@ export const projects: Project[] = [
     slug: "dimitar",
     url: "https://portfolio-theta-dun-ejq1lqeyg0.vercel.app/",
     image: "/portfolio/dimitar.jpg",
+  },
+  // A concept piece, not a client (KAN-43). Kept last and labelled as a concept.
+  {
+    slug: "cacao",
+    url: "https://cacao-cartel.vercel.app/",
+    image: "/portfolio/cacao-cartel.jpg",
   },
 ];
