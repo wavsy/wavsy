@@ -352,6 +352,11 @@
         "name": "Storm Car Wash",
         "industry": "Car wash",
         "summary": "A site for a self-service car wash in Kazanlak — open 24/7, on the road to Ovoshtnik."
+      },
+      "cacao": {
+        "name": "Cacao Cartel",
+        "industry": "Concept project",
+        "summary": "An interactive concept site about cacao — 3D scenes, scroll-driven effects and a distinct look."
       }
     }
   }

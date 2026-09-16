@@ -22,7 +22,7 @@ Items in brackets stay out of the public site until confirmed.
 - Founders: Dimitar and Nikolay, first names only. Cards show short title lines plus a LinkedIn link. Photos are the portraits supplied for v0.3.
 - Prices stay off marketing pages. Exact price is agreed in conversation.
 - Two engagement models on services: handoff vs maintain (maintain marked recommended).
-- Portfolio shows five live sites, in this order: Автомивка СТОРМ (KAN-38), Glenz Reinigung, Manufacturas Quezher, КИБО - 2 (the client agreed to be shown, 2026-09-14) and Dimitar’s personal site. Cards show a landing-page thumbnail and link out.
+- Portfolio shows five client sites, in this order: Автомивка СТОРМ (KAN-38), Glenz Reinigung, Manufacturas Quezher, КИБО - 2 (the client agreed to be shown, 2026-09-14) and Dimitar’s personal site. Then Cacao Cartel as the sixth card (KAN-43), labelled „Концептуален проект“ / „Concept project“ / „Konzeptprojekt“, because it is a concept piece and not a client. Concept work always carries that label and comes after the clients. Cards show a landing-page thumbnail and link out.
 - Social links: LinkedIn on founder cards, plus the company Facebook and LinkedIn pages as icons in the footer (KAN-30). No other socials.
 - Structured data (KAN-30): a `ProfessionalService` JSON-LD block on the home pages. The founders appear there by full name with their LinkedIn profiles, so search engines can tell Wavsy the studio from the song of the same name. The visible site keeps first names only. No telephone, since the phone is not published.
 - Blog omitted from this version
