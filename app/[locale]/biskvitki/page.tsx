@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { flags } from "@/lib/flags";
 import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -19,7 +20,7 @@ export default async function CookiesPage({ params }: PageProps) {
 
   return (
     <main id="content" className="bg-paper pb-24">
-      <PageHeader title={t("cookiesTitle")} lead={t("cookiesNote")} />
+      <PageHeader title={t("cookiesTitle")} lead={t(flags.analytics ? "cookiesNoteAnalytics" : "cookiesNote")} />
     </main>
   );
 }

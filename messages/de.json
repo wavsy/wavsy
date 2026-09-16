@@ -295,7 +295,8 @@
       },
       "cookies": {
         "title": "Cookies",
-        "body": "Diese Website nutzt nur Cookies, die sie zum Funktionieren braucht. Keine Analyse. Keine Marketing-Cookies."
+        "body": "Diese Website nutzt nur Cookies, die sie zum Funktionieren braucht. Keine Analyse. Keine Marketing-Cookies.",
+        "bodyAnalytics": "Diese Website nutzt nur Cookies, die sie zum Funktionieren braucht. Keine Marketing-Cookies. Besuche zählen wir anonym mit Umami, das keine Cookies setzt und keine personenbezogenen Daten speichert."
       },
       "rights": {
         "title": "Deine Rechte",
@@ -308,6 +309,7 @@
     },
     "cookiesTitle": "Cookies",
     "cookiesNote": "In dieser Version gibt es keine Analyse und keine Marketing-Cookies.",
+    "cookiesNoteAnalytics": "Keine Marketing-Cookies. Besuche zählen wir anonym mit Umami, ohne Cookies und ohne personenbezogene Daten.",
     "notFoundTitle": "Diese Seite gibt es nicht.",
     "notFoundNote": "Zurück zum Start, oder schreib uns, wenn du etwas Bestimmtes gesucht hast.",
     "home": "Zum Start",
