@@ -353,6 +353,11 @@
         "industry": "Car wash",
         "summary": "A site for a self-service car wash in Kazanlak — open 24/7, on the road to Ovoshtnik."
       },
+      "todorovnet": {
+        "name": "TodorovNET",
+        "industry": "Our own product",
+        "summary": "Live timing and results for hard enduro — officials record times from a phone even without coverage, standings are computed automatically under the federation's rules, and official sheets come out as PDFs."
+      },
       "cacao": {
         "name": "Cacao Cartel",
         "industry": "Concept project",
