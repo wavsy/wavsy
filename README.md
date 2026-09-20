@@ -12,6 +12,8 @@
 > **Live at [wavsy.dev](https://wavsy.dev).** Vercel deploys every merge to `main`.
 > Settled and open decisions are in [`DECISIONS.md`](DECISIONS.md).
 
+> **New here?** Read [`ONBOARDING.md`](ONBOARDING.md) first — five minutes, in Bulgarian.
+
 ## Getting started
 
 ```bash
