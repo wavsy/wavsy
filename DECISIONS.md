@@ -32,6 +32,8 @@ Items in brackets stay out of the public site until confirmed.
 - Analytics (KAN-18): Umami Cloud, Hobby plan, which is free and cookieless, so no consent banner. It counts page views plus the events `inquiry-whatsapp` and `inquiry-viber`. Off until `NEXT_PUBLIC_ANALYTICS_ENABLED=true` and `NEXT_PUBLIC_UMAMI_WEBSITE_ID` are set in Vercel. The cookies and privacy texts switch to the analytics wording only when it is on.
 - First paint (KAN-11): the first page shows as the server sent it, with no fade-in, so mobile does not stay blank until JavaScript loads. The fade stays for later navigations.
 - No Edge middleware: locale routing uses `app/[locale]` plus `next.config` rewrites, so Vercel does not load an ESM middleware file.
+- AI page (KAN-48): `/ai`, `/en/ai`, `/de/ki`, linked from the header, mobile menu and footer as „AI системи“ / „AI systems“ / „KI-Systeme“. Its copy addresses the reader formally („Вие“), unlike the rest of the site. The „strictly custom systems“ message is stated once (the hero lead) and proven once (the off-the-shelf vs. made-to-fit comparison); other sections show it through specifics instead of repeating it. The chat in the hero is labelled as a demo, not a real client. КИБО - 2 is named as the live assistant. The deliverables promise a monitoring dashboard, team training and a monthly report.
+- Motion on first paint: nothing above the fold starts hidden, and components that change with reduced motion read it only after mount (`useReducedMotionSafe`), so the server HTML and the first client render always match.
 
 ## Open
 

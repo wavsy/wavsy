@@ -19,7 +19,13 @@ const labels: Record<Locale, string> = {
   de: "DE",
 };
 
-export function LanguageSwitch({ className }: { className?: string }) {
+export function LanguageSwitch({
+  className,
+  onDark = false,
+}: {
+  className?: string;
+  onDark?: boolean;
+}) {
   const t = useTranslations("nav");
   const pathname = usePathname() || "/";
   const intlLocale = useLocale();
@@ -29,7 +35,8 @@ export function LanguageSwitch({ className }: { className?: string }) {
   return (
     <nav
       className={cn(
-        "flex shrink-0 items-center text-[0.625rem] font-medium uppercase tracking-[0.12em] text-ink/40",
+        "flex shrink-0 items-center text-[0.625rem] font-medium uppercase tracking-[0.12em]",
+        onDark ? "text-white/45" : "text-ink/40",
         className,
       )}
       aria-label={t("language")}
@@ -37,7 +44,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
       {locales.map((locale, index) => (
         <span key={locale} className="flex items-center">
           {index > 0 ? (
-            <span className="px-0.5 text-ink/20" aria-hidden>
+            <span className={cn("px-0.5", onDark ? "text-white/25" : "text-ink/20")} aria-hidden>
               /
             </span>
           ) : null}
@@ -45,8 +52,9 @@ export function LanguageSwitch({ className }: { className?: string }) {
             href={pathFor(locale, route)}
             hrefLang={locale}
             className={cn(
-              "px-0.5 py-0.5 transition-colors duration-150 hover:text-ink/70",
-              current === locale && "text-ink",
+              "px-0.5 py-0.5 transition-colors duration-150",
+              onDark ? "hover:text-white/80" : "hover:text-ink/70",
+              current === locale && (onDark ? "text-white" : "text-ink"),
             )}
             aria-current={current === locale ? "true" : undefined}
           >

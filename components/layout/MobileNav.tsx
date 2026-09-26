@@ -44,6 +44,7 @@ export function MobileNav({ open, onClose, locale, pathname }: MobileNavProps) {
   const items = [
     { href: pathFor(locale, "home"), label: t("home") },
     { href: pathFor(locale, "services"), label: t("services") },
+    { href: pathFor(locale, "ai"), label: t("ai") },
     { href: pathFor(locale, "portfolio"), label: t("portfolio") },
     { href: pathFor(locale, "about"), label: t("about") },
     { href: pathFor(locale, "contact"), label: t("contact") },

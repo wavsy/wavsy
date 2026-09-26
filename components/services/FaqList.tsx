@@ -4,9 +4,11 @@ import { useTranslations } from "next-intl";
 
 type FaqItem = { q: string; a: string };
 
-export function FaqList() {
+// Without items it shows the general FAQ; a page with its own questions
+// passes them in.
+export function FaqList({ items: own }: { items?: FaqItem[] } = {}) {
   const t = useTranslations("faq");
-  const items = t.raw("items") as FaqItem[];
+  const items = own ?? (t.raw("items") as FaqItem[]);
 
   return (
     <div>

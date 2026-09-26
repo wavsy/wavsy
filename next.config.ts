@@ -14,6 +14,7 @@ function encodedSources(source: string) {
 const publicToInternal = [
   ["/", "/bg"],
   ["/услуги", "/bg/uslugi"],
+  ["/ai", "/bg/ai"],
   ["/портфолио", "/bg/portfolio"],
   ["/проекти", "/bg/portfolio"],
   ["/за-нас", "/bg/za-nas"],
@@ -28,6 +29,7 @@ const publicToInternal = [
   ["/en/cookies", "/en/biskvitki"],
   ["/en/careers", "/en/karieri"],
   ["/de/leistungen", "/de/uslugi"],
+  ["/de/ki", "/de/ai"],
   ["/de/ueber-uns", "/de/za-nas"],
   ["/de/kontakt", "/de/kontakti"],
   ["/de/datenschutz", "/de/poveritelnost"],

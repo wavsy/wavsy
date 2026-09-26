@@ -6,6 +6,7 @@ import { locales, pathFor } from "@/lib/routes";
 const metaKey: Record<RouteKey, { title: string; description: string }> = {
   home: { title: "homeTitle", description: "homeDescription" },
   services: { title: "servicesTitle", description: "servicesDescription" },
+  ai: { title: "aiTitle", description: "aiDescription" },
   portfolio: { title: "portfolioTitle", description: "portfolioDescription" },
   about: { title: "aboutTitle", description: "aboutDescription" },
   contact: { title: "contactTitle", description: "contactDescription" },

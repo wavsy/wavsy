@@ -10,7 +10,11 @@ import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
-import { pathFor, type Locale } from "@/lib/routes";
+import { pathFor, routeKeyFromPathname, type Locale } from "@/lib/routes";
+
+// Pages whose first screen is dark. The header sits on it in white until it
+// turns compact and gets its own light background.
+const darkHeroRoutes = new Set(["ai"]);
 
 export function SiteHeader({ locale }: { locale: Locale }) {
   const t = useTranslations("nav");
@@ -32,8 +36,12 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const onDark =
+    darkHeroRoutes.has(routeKeyFromPathname(pathname || "/")) && !compact && !open;
+
   const items = [
     { href: pathFor(locale, "services"), label: t("services") },
+    { href: pathFor(locale, "ai"), label: t("ai") },
     { href: pathFor(locale, "portfolio"), label: t("portfolio") },
     { href: pathFor(locale, "about"), label: t("about") },
     { href: pathFor(locale, "contact"), label: t("contact") },
@@ -56,7 +64,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         )}
       >
         <div className="min-w-0 shrink">
-          <Logo href={pathFor(locale, "home")} />
+          <Logo href={pathFor(locale, "home")} onDark={onDark} />
         </div>
         <nav
           className="ml-auto hidden items-center gap-5 lg:flex xl:gap-6"
@@ -66,16 +74,21 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[0.9375rem] text-ink/80 transition-colors duration-150 hover:text-ink"
+              className={cn(
+                "text-[0.9375rem] transition-colors duration-150",
+                onDark ? "text-white/75 hover:text-white" : "text-ink/80 hover:text-ink",
+              )}
             >
               {item.label}
             </Link>
           ))}
-          <LanguageSwitch />
-          <Button href={pathFor(locale, "contact")}>{t("cta")}</Button>
+          <LanguageSwitch onDark={onDark} />
+          <Button href={pathFor(locale, "contact")} variant={onDark ? "inverse" : "primary"}>
+            {t("cta")}
+          </Button>
         </nav>
         <div className="relative z-50 ml-auto flex items-center gap-2 lg:hidden">
-          <LanguageSwitch />
+          <LanguageSwitch onDark={onDark} />
           <button
             type="button"
             className="relative z-50 flex h-11 w-11 items-center justify-center"
@@ -87,13 +100,15 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             <span className="flex w-5 flex-col gap-1.5" aria-hidden>
               <span
                 className={cn(
-                  "h-px w-full bg-ink transition-transform duration-150",
+                  "h-px w-full transition-transform duration-150",
+                  onDark ? "bg-white" : "bg-ink",
                   open && "translate-y-[4px] rotate-45",
                 )}
               />
               <span
                 className={cn(
-                  "h-px w-full bg-ink transition-transform duration-150",
+                  "h-px w-full transition-transform duration-150",
+                  onDark ? "bg-white" : "bg-ink",
                   open && "-translate-y-[4px] -rotate-45",
                 )}
               />

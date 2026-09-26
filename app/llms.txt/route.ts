@@ -17,6 +17,7 @@ const languageHeading: Record<Locale, string> = {
 const metaKey: Record<RouteKey, { label: string; description: string }> = {
   home: { label: "nav.home", description: "meta.homeDescription" },
   services: { label: "nav.services", description: "meta.servicesDescription" },
+  ai: { label: "nav.ai", description: "meta.aiDescription" },
   portfolio: { label: "nav.portfolio", description: "meta.portfolioDescription" },
   about: { label: "nav.about", description: "meta.aboutDescription" },
   contact: { label: "nav.contact", description: "meta.contactDescription" },
