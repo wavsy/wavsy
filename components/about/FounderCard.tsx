@@ -12,10 +12,18 @@ type Person = {
   note?: string;
 };
 
-// The About page's founder card, in the style of the AI page: a rounded
-// photo that tilts toward the pointer, the name over the photo, titles as
-// chips. The home page keeps its own TeamCard.
-export async function FounderCard({ id, priority = false }: { id: TeamId; priority?: boolean }) {
+// The founder card on the home and About pages, in the style of the AI page:
+// a rounded photo that tilts toward the pointer, the name over the photo,
+// titles as chips.
+export async function FounderCard({
+  id,
+  priority = false,
+  heading: Heading = "h2",
+}: {
+  id: TeamId;
+  priority?: boolean;
+  heading?: "h2" | "h3";
+}) {
   const t = await getTranslations("team");
   const member = teamMembers[id];
   const person = t.raw(`people.${id}`) as Person;
@@ -37,9 +45,9 @@ export async function FounderCard({ id, priority = false }: { id: TeamId; priori
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-deep/90 via-deep/40 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-            <h2 className="font-display text-3xl tracking-[-0.04em] text-white md:text-4xl">
+            <Heading className="font-display text-3xl tracking-[-0.04em] text-white md:text-4xl">
               {person.name}
-            </h2>
+            </Heading>
             <p className="mt-1 text-sm text-white/75">{person.role}</p>
           </div>
         </div>

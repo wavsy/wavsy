@@ -58,7 +58,9 @@
     "titleLine2": "die für dich arbeitet.",
     "body": "Wir machen moderne Websites und Web-Apps für Unternehmen, die mehr Vertrauen und mehr Anfragen wollen.",
     "primary": "Angebot anfragen",
-    "secondary": "Arbeit ansehen"
+    "secondary": "Arbeit ansehen",
+    "new": "Neu",
+    "newLink": "KI-Systeme nach Maß"
   },
   "work": {
     "title": "Ausgewählte Projekte",
@@ -66,7 +68,9 @@
     "cta": "Alle Projekte",
     "emptyName": "Projekt",
     "emptyLabel": "Bald",
-    "emptyHint": "Die ersten öffentlichen Projekte erscheinen hier."
+    "emptyHint": "Die ersten öffentlichen Projekte erscheinen hier.",
+    "marquee": "Websites und Systeme, die schon laufen",
+    "view": "Ansehen"
   },
   "services": {
     "title": "Was wir tun",

@@ -26,8 +26,10 @@ export default async function ContactPage({ params }: PageProps) {
       <PageHeader title={t("pageTitle")} lead={t("lead")} />
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.8fr] lg:gap-20">
-          <InquiryForm viberHref={buildChatUrl("viber")} />
-          <aside className="lg:pt-2">
+          <div className="rounded-3xl border border-mist bg-white p-6 shadow-[0_30px_80px_-50px_rgb(11_61_145/0.45)] sm:p-10">
+            <InquiryForm viberHref={buildChatUrl("viber")} />
+          </div>
+          <aside className="ai-gradient-border h-fit rounded-3xl p-7 lg:mt-0">
             <p className="text-[0.75rem] uppercase tracking-[0.14em] text-muted">
               {t("emailLabel")}
             </p>

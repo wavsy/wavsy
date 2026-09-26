@@ -19,8 +19,8 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
   const summary = project ? t(`projects.${project.slug}.summary`) : work("emptyHint");
 
   const body = (
-    <article className="group flex h-full flex-col overflow-hidden border border-mist bg-white">
-      <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-mist">
+    <article className="spotlight-card conic-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-mist bg-white p-3 transition-shadow duration-300 hover:shadow-[0_30px_70px_-35px_rgb(11_61_145/0.55)]">
+      <div className="relative aspect-[16/10] shrink-0 overflow-hidden rounded-2xl bg-mist">
         {project ? (
           <Image
             src={project.image}
@@ -28,20 +28,20 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
             fill
             sizes="(min-width: 768px) 45vw, 100vw"
             priority={index < 2}
-            className="object-cover object-top"
+            className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
           />
         ) : (
           <div className="absolute inset-0 bg-[linear-gradient(135deg,#0B3D91_0%,transparent_42%,#3FC1F0_100%)] opacity-[0.18]" />
         )}
       </div>
-      <div className="flex flex-1 flex-col p-6 md:p-8">
+      <div className="relative flex flex-1 flex-col p-4 pt-6 md:p-6">
         <p className="text-[0.75rem] uppercase tracking-[0.16em] text-muted">
           {String(index + 1).padStart(2, "0")}
         </p>
         <p className="mt-4 font-display text-3xl tracking-[-0.04em] text-ink md:text-4xl">
           {name}
         </p>
-        <p className="mt-3 text-sm text-muted">{industry}</p>
+        <p className="mt-3 w-fit rounded-full border border-navy/15 bg-paper px-3 py-1 text-xs text-navy">{industry}</p>
         <p className="mt-4 max-w-[32ch] text-ink/75">{summary}</p>
         {project ? (
           <p className="mt-auto inline-flex items-center gap-2 pt-6 text-sm text-ink/55 transition-colors duration-150 group-hover:text-navy">
@@ -68,7 +68,6 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={t("visitAria", { name })}
         className="block h-full"
       >
         {body}

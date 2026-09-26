@@ -10,11 +10,10 @@ import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
-import { pathFor, routeKeyFromPathname, type Locale } from "@/lib/routes";
+import { pathFor, type Locale } from "@/lib/routes";
 
-// Pages whose first screen is dark. The header sits on it in white until it
+// Every page opens on a dark hero, so the header sits on it in white until it
 // turns compact and gets its own light background.
-const darkHeroRoutes = new Set(["ai", "about"]);
 
 export function SiteHeader({ locale }: { locale: Locale }) {
   const t = useTranslations("nav");
@@ -36,8 +35,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onDark =
-    darkHeroRoutes.has(routeKeyFromPathname(pathname || "/")) && !compact && !open;
+  const onDark = !compact && !open;
 
   const items = [
     { href: pathFor(locale, "services"), label: t("services") },

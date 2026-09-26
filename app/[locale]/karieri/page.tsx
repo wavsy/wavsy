@@ -23,7 +23,7 @@ export default async function CareersPage({ params }: PageProps) {
     <main id="content" className="bg-paper pb-24">
       <PageHeader title={t("title")} lead={t("lead")} />
       <Container>
-        <div className="relative aspect-[16/9] overflow-hidden border border-mist bg-mist">
+        <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-mist shadow-[0_30px_80px_-40px_rgb(11_61_145/0.5)]">
           <Image
             src="/careers/together.jpg"
             alt={t("imageAlt")}
