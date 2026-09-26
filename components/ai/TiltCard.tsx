@@ -4,7 +4,13 @@ import { useEffect, useRef } from "react";
 
 // Tilts its child toward the pointer and moves a soft glare with it. Only on
 // a mouse or trackpad: touch screens and reduced motion get a still card.
-export function TiltCard({ children }: { children: React.ReactNode }) {
+export function TiltCard({
+  children,
+  className = "w-full max-w-[26rem]",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,7 +49,7 @@ export function TiltCard({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={ref} className="tilt-card w-full max-w-[26rem] [perspective:1200px]">
+    <div ref={ref} className={`tilt-card [perspective:1200px] ${className}`}>
       <div className="tilt-card-inner relative">
         {children}
         <span className="tilt-card-glare pointer-events-none absolute inset-0 rounded-2xl" aria-hidden />

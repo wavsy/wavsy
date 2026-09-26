@@ -12,7 +12,7 @@ export function StatsStrip({ items }: { items: Stat[] }) {
   return (
     <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
       {items.map((item) => (
-        <div key={item.label} className="bg-deep p-6 md:p-8">
+        <div key={item.label} className="@container bg-deep p-6 md:p-8">
           <dt className="sr-only">{item.label}</dt>
           <dd>
             <CountUp value={item.value} />
@@ -51,7 +51,7 @@ function CountUp({ value }: { value: string }) {
     <p
       ref={ref}
       aria-hidden
-      className="ai-gradient-text font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-none tracking-[-0.05em] tabular-nums"
+      className="ai-gradient-text whitespace-nowrap font-display text-[clamp(0.875rem,22cqi,3.75rem)] leading-none tracking-[-0.05em] tabular-nums"
     >
       {text}
     </p>

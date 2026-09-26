@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { umamiEvent } from "@/lib/analytics";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/lib/cn";
@@ -51,6 +52,7 @@ export function LanguageSwitch({
           <Link
             href={pathFor(locale, route)}
             hrefLang={locale}
+            {...umamiEvent("language", { to: locale })}
             className={cn(
               "px-0.5 py-0.5 transition-colors duration-150",
               onDark ? "hover:text-white/80" : "hover:text-ink/70",

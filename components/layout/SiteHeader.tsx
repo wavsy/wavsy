@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { umamiEvent } from "@/lib/analytics";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -10,11 +11,10 @@ import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
-import { pathFor, routeKeyFromPathname, type Locale } from "@/lib/routes";
+import { pathFor, type Locale } from "@/lib/routes";
 
-// Pages whose first screen is dark. The header sits on it in white until it
+// Every page opens on a dark hero, so the header sits on it in white until it
 // turns compact and gets its own light background.
-const darkHeroRoutes = new Set(["ai"]);
 
 export function SiteHeader({ locale }: { locale: Locale }) {
   const t = useTranslations("nav");
@@ -36,8 +36,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onDark =
-    darkHeroRoutes.has(routeKeyFromPathname(pathname || "/")) && !compact && !open;
+  const onDark = !compact && !open;
 
   const items = [
     { href: pathFor(locale, "services"), label: t("services") },
@@ -67,7 +66,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <Logo href={pathFor(locale, "home")} onDark={onDark} />
         </div>
         <nav
-          className="ml-auto hidden items-center gap-5 lg:flex xl:gap-6"
+          className="ml-auto hidden items-center gap-6 whitespace-nowrap xl:flex"
           aria-label={t("main")}
         >
           {items.map((item) => (
@@ -83,11 +82,17 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             </Link>
           ))}
           <LanguageSwitch onDark={onDark} />
-          <Button href={pathFor(locale, "contact")} variant={onDark ? "inverse" : "primary"}>
+          <Button
+            href={pathFor(locale, "contact")}
+            variant={onDark ? "inverse" : "primary"}
+            size="sm"
+            className="whitespace-nowrap"
+            track={umamiEvent("cta-quote", { location: "header" })}
+          >
             {t("cta")}
           </Button>
         </nav>
-        <div className="relative z-50 ml-auto flex items-center gap-2 lg:hidden">
+        <div className="relative z-50 ml-auto flex items-center gap-2 xl:hidden">
           <LanguageSwitch onDark={onDark} />
           <button
             type="button"

@@ -36,6 +36,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* The page never scrolls sideways on a phone, whatever a decoration does.
+   clip (not hidden) keeps position: sticky working. */
+html,
+body {
+  overflow-x: clip;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -69,15 +76,6 @@ body {
   }
 }
 
-@keyframes wave-drift {
-  from {
-    transform: translate3d(0, 0, 0) rotate(-6deg);
-  }
-  to {
-    transform: translate3d(1.5%, -1.2%, 0) rotate(-4deg);
-  }
-}
-
 .hero-copy > * {
   animation: rise 0.75s var(--ease-out) both;
 }
@@ -98,39 +96,6 @@ body {
   animation-delay: 280ms;
 }
 
-.wave-drift {
-  animation: wave-drift 14s var(--ease-out) alternate infinite;
-}
-
-.field-input {
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid var(--mist);
-  border-radius: 0;
-  background: transparent;
-  padding: 0.7rem 0;
-  color: var(--ink);
-  outline: none;
-  transition: border-color 200ms var(--ease-out);
-}
-
-.field-input:focus {
-  border-bottom-color: var(--navy);
-}
-
-.field-input-dark {
-  border-bottom-color: rgb(255 255 255 / 0.22);
-  color: var(--white);
-}
-
-.field-input-dark:focus {
-  border-bottom-color: var(--cyan);
-}
-
-.field-input-dark option {
-  color: var(--ink);
-}
-
 @media (max-width: 767px) {
   .hero-copy > * {
     animation: none;
@@ -138,8 +103,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-copy > *,
-  .wave-drift {
+  .hero-copy > * {
     animation: none;
   }
 }
@@ -379,6 +343,219 @@ body {
   animation-play-state: running;
 }
 
+/* Service rows: the brand gradient sweeps in from the left on hover. */
+.fill-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--navy), #136fd4 60%, var(--cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 550ms var(--ease-out);
+}
+
+@media (hover: hover) {
+  .fill-row:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+/* Touch screens: the row in the middle of the screen fills (CenterActivate). */
+.fill-row[data-center-active]::before {
+  transform: scaleX(1);
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-50%, 14px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+}
+
+.scroll-cue {
+  position: relative;
+}
+
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--cyan);
+  animation: scroll-cue 1.8s var(--ease-out) infinite;
+}
+
+/* Hero mark (home). */
+@keyframes mark-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes mark-sweep {
+  0%,
+  35% {
+    transform: skewX(-18deg) translateX(0);
+  }
+  100% {
+    transform: skewX(-18deg) translateX(820px);
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-mark-float {
+  animation: mark-float 7s ease-in-out infinite;
+}
+
+.hero-mark-tilt {
+  transform: rotateX(var(--mark-rx, 0deg)) rotateY(var(--mark-ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 600ms var(--ease-out);
+}
+
+.hero-mark-glow {
+  animation: breathe 5s ease-in-out infinite;
+}
+
+.hero-mark-sweep {
+  animation: mark-sweep 5.5s var(--ease-out) infinite;
+}
+
+.orbit-a,
+.orbit-b {
+  transform-origin: 0 0;
+  transform-box: view-box;
+}
+
+.orbit-a {
+  animation: orbit-spin 26s linear infinite;
+}
+
+.orbit-b {
+  animation: orbit-spin 38s linear infinite reverse;
+}
+
+.footer-wordmark {
+  background: linear-gradient(90deg, rgb(11 61 145 / 0.55), rgb(63 193 240 / 0.35));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shown only where there is no mouse to hover with. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .touch-only {
+    display: none;
+  }
+}
+
+/* Touch screens: the card in the middle of the screen lights up as if
+   hovered (CenterActivate). */
+.spotlight-card[data-center-active]::before,
+.conic-card[data-center-active]::after {
+  opacity: 1;
+}
+
+.conic-card[data-center-active]::after {
+  animation-play-state: running;
+}
+
+/* Images settle from a slight zoom as they scroll into view. */
+@keyframes view-zoom {
+  from {
+    transform: scale(1.18);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .view-zoom {
+    animation: view-zoom linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+/* Buttons: the brand gradient sweeps in from the left on hover. */
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--navy), #136fd4 55%, var(--cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms var(--ease-out);
+}
+
+@media (hover: hover) {
+  .btn-sweep:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.btn-sweep:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/* Mobile agent flow: a light runs down the line, the agent pulses. */
+@keyframes agent-run {
+  0% {
+    top: 1.5rem;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 1.5rem);
+    opacity: 0;
+  }
+}
+
+@keyframes agent-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(63 193 240 / 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 18px rgb(63 193 240 / 0);
+  }
+}
+
+.agent-runner {
+  animation: agent-run 3.2s ease-in-out infinite;
+}
+
+.agent-ring {
+  animation: agent-ring 2.2s var(--ease-out) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ai-aurora::before,
   .ai-aurora::after,
@@ -388,6 +565,30 @@ body {
   .marquee-track,
   .ai-shine::after,
   .conic-card::after {
+    animation: none;
+  }
+
+  .fill-row::before,
+  .btn-sweep::before {
+    transition: none;
+  }
+
+  .scroll-cue::after,
+  .hero-mark-float,
+  .hero-mark-glow,
+  .hero-mark-sweep,
+  .orbit-a,
+  .orbit-b {
+    animation: none;
+  }
+
+  .hero-mark-tilt {
+    transform: none;
+  }
+
+  .view-zoom,
+  .agent-runner,
+  .agent-ring {
     animation: none;
   }
 

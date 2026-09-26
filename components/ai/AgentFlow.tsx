@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
 import { cn } from "@/lib/cn";
+import { MobileAgentFlow } from "@/components/ai/MobileAgentFlow";
 
 type Nodes = {
   input: string;
@@ -133,31 +134,10 @@ export function AgentFlow({ nodes, task }: { nodes: Nodes; task: Task }) {
           ))}
         </svg>
 
-        {/* Phones: the same path, top to bottom. */}
-        <ol className="relative space-y-3 md:hidden">
-          {boxes.map((box, index) => (
-            <li key={box.key} className="flex items-center gap-3">
-              <span
-                className={cn(
-                  "grid size-8 shrink-0 place-items-center rounded-full text-xs",
-                  box.strong ? "bg-gradient-to-br from-navy to-cyan text-white" : "border border-white/20 text-white/70",
-                )}
-              >
-                {index + 1}
-              </span>
-              <span
-                className={cn(
-                  "flex-1 rounded-xl px-4 py-3 text-[0.9375rem]",
-                  box.strong
-                    ? "bg-gradient-to-r from-navy to-cyan font-display text-white"
-                    : "border border-white/12 bg-white/[0.05] text-white/85",
-                )}
-              >
-                {nodes[box.key]}
-              </span>
-            </li>
-          ))}
-        </ol>
+        {/* Phones: the same path, top to bottom, drawn by scrolling. */}
+        <div className="relative md:hidden">
+          <MobileAgentFlow nodes={nodes} />
+        </div>
       </div>
 
       <TaskCard task={task} play={play} reduce={!!reduce} />

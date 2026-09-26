@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { umamiEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -79,16 +80,18 @@ export default async function AiPage({ params }: PageProps) {
             </p>
             <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
               <Magnetic>
-                <Button href={pathFor(locale, "contact")} variant="inverse" className="ai-shine">
+                <Button
+                  href={pathFor(locale, "contact")}
+                  variant="inverse"
+                  className="ai-shine"
+                  track={umamiEvent("cta-quote", { location: "ai-hero" })}
+                >
                   {t("hero.primary")}
                 </Button>
               </Magnetic>
-              <a
-                href="#how"
-                className="py-3 text-[0.9375rem] text-white/80 transition-colors duration-150 hover:text-cyan"
-              >
-                {t("hero.secondary")} ↓
-              </a>
+              <Button href="#how" variant="ghost" className="text-white/80 hover:text-cyan">
+                {t("hero.secondary")}
+              </Button>
             </div>
             <p className="mt-10 inline-flex items-center gap-2.5 text-sm text-white/60">
               <span className="relative flex size-2">

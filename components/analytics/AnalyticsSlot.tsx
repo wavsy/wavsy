@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { UMAMI_WEBSITE_ID } from "@/lib/analytics";
+import { UMAMI_DOMAINS, UMAMI_WEBSITE_ID } from "@/lib/analytics";
 import { flags } from "@/lib/flags";
 
 export function AnalyticsSlot() {
@@ -11,6 +11,7 @@ export function AnalyticsSlot() {
     <Script
       src="https://cloud.umami.is/script.js"
       data-website-id={UMAMI_WEBSITE_ID}
+      data-domains={UMAMI_DOMAINS}
       strategy="afterInteractive"
     />
   );

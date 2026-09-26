@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { umamiEvent } from "@/lib/analytics";
 import { normalizePathname, pathFor, type Locale } from "@/lib/routes";
 
 type MobileNavProps = {
@@ -54,7 +55,7 @@ export function MobileNav({ open, onClose, locale, pathname }: MobileNavProps) {
     <div
       id="mobile-nav"
       className={cn(
-        "fixed inset-0 z-[65] bg-paper lg:hidden",
+        "fixed inset-0 z-[65] bg-paper xl:hidden",
         open ? "visible opacity-100" : "invisible pointer-events-none opacity-0",
       )}
       aria-hidden={!open}
@@ -82,6 +83,7 @@ export function MobileNav({ open, onClose, locale, pathname }: MobileNavProps) {
         <div className="pt-6">
           <Button
             href={pathFor(locale, "contact")}
+            track={umamiEvent("cta-quote", { location: "mobile-menu" })}
             onClick={() => {
               if (isCurrentPath(pathname, pathFor(locale, "contact"))) {
                 onClose();

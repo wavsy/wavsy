@@ -57,7 +57,9 @@
     "titleLine2": "works for you.",
     "body": "We make modern websites and web apps for businesses that want more trust and more enquiries.",
     "primary": "Request a quote",
-    "secondary": "See the work"
+    "secondary": "See the work",
+    "new": "New",
+    "newLink": "Custom AI systems"
   },
   "work": {
     "title": "Selected work",
@@ -65,7 +67,9 @@
     "cta": "All work",
     "emptyName": "Project",
     "emptyLabel": "Soon",
-    "emptyHint": "The first public projects will show up here."
+    "emptyHint": "The first public projects will show up here.",
+    "marquee": "Sites and systems already live",
+    "view": "View"
   },
   "services": {
     "title": "What we do",

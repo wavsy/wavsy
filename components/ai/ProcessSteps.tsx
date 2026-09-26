@@ -8,7 +8,13 @@ type Step = { title: string; body: string };
 
 // The line between the steps fills as the section scrolls past, and each
 // step lights up when the line reaches it.
-export function ProcessSteps({ steps }: { steps: Step[] }) {
+export function ProcessSteps({
+  steps,
+  columns = "md:grid-cols-5",
+}: {
+  steps: Step[];
+  columns?: string;
+}) {
   const ref = useRef<HTMLOListElement>(null);
   const reduce = useReducedMotionSafe();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "end 55%"] });
@@ -16,7 +22,7 @@ export function ProcessSteps({ steps }: { steps: Step[] }) {
   const fill = reduce ? 1 : progress;
 
   return (
-    <ol ref={ref} className="relative mt-12 grid gap-10 md:mt-16 md:grid-cols-5 md:gap-6">
+    <ol ref={ref} className={`relative mt-12 grid gap-10 md:mt-16 md:gap-6 ${columns}`}>
       {/* Track and fill: horizontal from tablet up, vertical on phones. */}
       <span className="pointer-events-none absolute left-5 top-5 bottom-5 w-px bg-navy/12 md:left-0 md:right-0 md:bottom-auto md:h-px md:w-auto" aria-hidden />
       <motion.span

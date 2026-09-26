@@ -8,16 +8,19 @@ type RevealProps = {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  // false: slide in without starting invisible. Use it for content that can
+  // sit in the first screen on a phone, so it never holds back LCP.
+  fade?: boolean;
 };
 
-export function Reveal({ children, className, delay = 0 }: RevealProps) {
+export function Reveal({ children, className, delay = 0, fade = true }: RevealProps) {
   const reduce = useReducedMotionSafe();
 
   return (
     <motion.div
       className={cn(className)}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={fade ? { opacity: 0, y: 24 } : { y: 24 }}
+      whileInView={fade ? { opacity: 1, y: 0 } : { y: 0 }}
       viewport={{ once: true, margin: "-64px" }}
       transition={reduce ? { duration: 0 } : { duration: 0.5, ease: "easeOut", delay }}
     >
