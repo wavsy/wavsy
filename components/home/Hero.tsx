@@ -20,7 +20,10 @@ export async function Hero() {
       <div className="ai-aurora pointer-events-none absolute inset-0 -z-10" aria-hidden />
       <div className="ai-dot-grid pointer-events-none absolute inset-0 -z-10" aria-hidden />
       <HeroSpotlight />
-      <Container className="relative grid min-h-[100dvh] items-center gap-10 pb-16 pt-[calc(var(--header-h)+2.5rem)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:pb-20 lg:pt-[var(--header-h)]">
+      {/* Phones: content starts at the top instead of being centred, so when the
+          web fonts replace the fallback and the title changes height, the mark,
+          badge and title stay put (no layout shift). */}
+      <Container className="relative grid min-h-[100dvh] content-start gap-10 pb-16 pt-[calc(var(--header-h)+2rem)] lg:grid-cols-[1.05fr_0.95fr] lg:content-center lg:items-center lg:gap-6 lg:pb-20 lg:pt-[var(--header-h)]">
         <div className="hero-copy order-2 min-w-0 lg:order-1">
           <Link
             href={pathFor(locale, "ai")}

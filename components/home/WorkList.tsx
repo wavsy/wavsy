@@ -108,7 +108,10 @@ export function WorkList({ projects }: { projects: Project[] }) {
         {projects.map((project, index) => {
           const name = t(`projects.${project.slug}.name`);
           const industry = t(`projects.${project.slug}.industry`);
-          const dim = canHover ? active !== null && active !== index : scrolled !== index;
+          // Desktop dims the other rows while one is hovered. Phones never dim
+          // (dimmed text fails contrast); they highlight the active row instead.
+          const dim = canHover && active !== null && active !== index;
+          const current = !canHover && scrolled === index;
           return (
             <li key={project.slug} data-row={index} className="border-b border-white/12">
               <a
@@ -123,14 +126,24 @@ export function WorkList({ projects }: { projects: Project[] }) {
                   dim && "opacity-40",
                 )}
               >
-                <span className="font-display text-sm tracking-[0.12em] text-white/60">
+                <span
+                  className={cn(
+                    "font-display text-sm tracking-[0.12em] transition-colors duration-300",
+                    current ? "text-cyan" : "text-white/70",
+                  )}
+                >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="min-w-0">
-                  <span className="block font-display text-[clamp(1.5rem,4.2vw,3.5rem)] leading-[1.02] tracking-[-0.045em] text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-3">
+                  <span
+                    className={cn(
+                      "block font-display text-[clamp(1.5rem,4.2vw,3.5rem)] leading-[1.02] tracking-[-0.045em] transition-[transform,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-3",
+                      current ? "translate-x-2 text-cyan" : "text-white",
+                    )}
+                  >
                     {name}
                   </span>
-                  <span className="mt-1.5 block text-sm text-white/55">{industry}</span>
+                  <span className="mt-1.5 block text-sm text-white/70">{industry}</span>
                 </span>
                 <span
                   className="col-span-2 hidden items-center gap-2 text-sm text-white/60 transition-colors duration-300 group-hover:text-cyan md:col-span-1 md:inline-flex"
