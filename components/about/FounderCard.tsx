@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { umamiEvent } from "@/lib/analytics";
 import { getTranslations } from "next-intl/server";
 import { TiltCard } from "@/components/ai/TiltCard";
 import { Button } from "@/components/ui/Button";
@@ -75,6 +76,7 @@ export async function FounderCard({
             external
             size="sm"
             ariaLabel={t("linkedinAria", { name: person.name })}
+            track={umamiEvent("linkedin", { person: id })}
             icon={<LinkedInMark className="h-3.5 w-3.5" />}
           >
             {t("linkedin")}

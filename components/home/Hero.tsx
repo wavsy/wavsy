@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { umamiEvent } from "@/lib/analytics";
 import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -27,6 +28,7 @@ export async function Hero() {
         <div className="hero-copy order-2 min-w-0 lg:order-1">
           <Link
             href={pathFor(locale, "ai")}
+            {...umamiEvent("ai-badge")}
             className="group mb-7 inline-flex max-w-full items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.06] py-1.5 pl-1.5 pr-4 text-sm text-white/85 backdrop-blur-md transition-colors duration-200 hover:border-cyan/60 hover:text-white"
           >
             <span className="rounded-full bg-cyan px-2.5 py-0.5 text-xs font-semibold text-deep">
@@ -46,7 +48,12 @@ export async function Hero() {
           </p>
           <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
             <Magnetic>
-              <Button href={pathFor(locale, "contact")} variant="inverse" className="ai-shine">
+              <Button
+                href={pathFor(locale, "contact")}
+                variant="inverse"
+                className="ai-shine"
+                track={umamiEvent("cta-quote", { location: "home-hero" })}
+              >
                 {t("primary")}
               </Button>
             </Magnetic>

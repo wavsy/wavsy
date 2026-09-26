@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { umamiEvent } from "@/lib/analytics";
 import { normalizePathname, pathFor, type Locale } from "@/lib/routes";
 
 type MobileNavProps = {
@@ -82,6 +83,7 @@ export function MobileNav({ open, onClose, locale, pathname }: MobileNavProps) {
         <div className="pt-6">
           <Button
             href={pathFor(locale, "contact")}
+            track={umamiEvent("cta-quote", { location: "mobile-menu" })}
             onClick={() => {
               if (isCurrentPath(pathname, pathFor(locale, "contact"))) {
                 onClose();

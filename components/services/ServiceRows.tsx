@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { umamiEvent } from "@/lib/analytics";
 import { getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/motion/Reveal";
 import { CenterActivate } from "@/components/motion/CenterActivate";
@@ -42,6 +43,7 @@ export async function ServiceRows({ heading: Heading = "h2" }: { heading?: "h2" 
                   {id === "automation" ? (
                     <Link
                       href={pathFor(locale, "ai")}
+                      {...umamiEvent("ai-link", { location: "services" })}
                       className="mt-4 inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm text-white transition-colors duration-300 group-hover:bg-white group-hover:text-ink group-data-[center-active]:bg-white group-data-[center-active]:text-ink"
                     >
                       {nav("ai")} <span aria-hidden>→</span>

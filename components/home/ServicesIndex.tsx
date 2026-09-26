@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { umamiEvent } from "@/lib/analytics";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
@@ -26,7 +27,9 @@ export async function ServicesIndex() {
         <Reveal>
           <p className="mt-10 max-w-[46ch] text-ink/80">{t("priceNote")}</p>
           <div className="mt-8">
-            <Button href={pathFor(locale, "contact")}>{t("cta")}</Button>
+            <Button href={pathFor(locale, "contact")} track={umamiEvent("cta-quote", { location: "home-services" })}>
+              {t("cta")}
+            </Button>
           </div>
         </Reveal>
       </Container>

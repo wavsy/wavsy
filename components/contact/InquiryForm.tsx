@@ -58,6 +58,16 @@ export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
   useExternalChat(state?.url);
 
   const dark = tone === "dark";
+  const [started, setStarted] = useState(false);
+
+  // Funnel events: someone started the form, which type they chose, and every
+  // submit attempt. The WhatsApp and Viber events mark real enquiries.
+  function markStarted() {
+    if (!started) {
+      setStarted(true);
+      trackEvent("form-start");
+    }
+  }
 
   function update<Key extends keyof FormValues>(key: Key, value: FormValues[Key]) {
     setValues((current) => ({ ...current, [key]: value }));
@@ -83,7 +93,13 @@ export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
 
   return (
     <div className="grid gap-6">
-      <form action={action} className="relative grid gap-4" noValidate>
+      <form
+        action={action}
+        className="relative grid gap-4"
+        noValidate
+        onFocusCapture={markStarted}
+        onSubmit={() => trackEvent("form-submit", { type: values.projectType || "none" })}
+      >
         <input type="hidden" name="locale" value={locale} />
         <div className="grid gap-4 sm:grid-cols-2">
           <Field
@@ -165,7 +181,10 @@ export function InquiryForm({ tone = "light", viberHref }: InquiryFormProps) {
                   name="projectType"
                   value={value}
                   checked={values.projectType === value}
-                  onChange={() => update("projectType", value)}
+                  onChange={() => {
+                    update("projectType", value);
+                    trackEvent("project-type", { type: value });
+                  }}
                   className="sr-only"
                 />
                 {t(`projectTypes.${value}`)}

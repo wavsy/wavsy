@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { umamiEvent } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 import { HoverLift } from "@/components/motion/HoverLift";
 import type { Project } from "@/lib/projects";
@@ -70,6 +71,7 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
+        {...umamiEvent("project-open", { project: project.slug, from: "portfolio" })}
         className="block h-full"
       >
         {body}

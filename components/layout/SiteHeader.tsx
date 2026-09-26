@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { umamiEvent } from "@/lib/analytics";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -86,6 +87,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             variant={onDark ? "inverse" : "primary"}
             size="sm"
             className="whitespace-nowrap"
+            track={umamiEvent("cta-quote", { location: "header" })}
           >
             {t("cta")}
           </Button>

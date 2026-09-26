@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { umamiEvent } from "@/lib/analytics";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { InquiryForm } from "@/components/contact/InquiryForm";
@@ -35,6 +36,7 @@ export default async function ContactPage({ params }: PageProps) {
             </p>
             <a
               href={`mailto:${PUBLIC_EMAIL}`}
+              {...umamiEvent("email-click", { location: "contact" })}
               className="mt-3 inline-block break-all text-xl text-ink underline decoration-mist underline-offset-4 hover:decoration-navy"
             >
               {PUBLIC_EMAIL}

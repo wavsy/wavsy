@@ -11,6 +11,8 @@ type Shared = {
   className?: string;
   ariaLabel?: string;
   icon?: React.ReactNode;
+  // Umami click event, e.g. umamiEvent("cta-quote", { location: "hero" }).
+  track?: Record<string, string>;
 };
 
 type ButtonProps =
@@ -35,7 +37,7 @@ type ButtonProps =
 // from the left on hover, the arrow sits in its own circle and slides, and a
 // press scales the button down a touch (the feedback phones get).
 export function Button(props: ButtonProps) {
-  const { children, variant = "primary", size = "md", className, ariaLabel, icon } = props;
+  const { children, variant = "primary", size = "md", className, ariaLabel, icon, track } = props;
   const pill = variant !== "ghost";
 
   const classes = cn(
@@ -101,14 +103,14 @@ export function Button(props: ButtonProps) {
 
     if (native) {
       return (
-        <a href={href} className={classes} onClick={props.onClick} aria-label={ariaLabel} {...externalProps}>
+        <a href={href} className={classes} onClick={props.onClick} aria-label={ariaLabel} {...externalProps} {...track}>
           {inner}
         </a>
       );
     }
 
     return (
-      <Link href={href} className={classes} onClick={props.onClick} aria-label={ariaLabel}>
+      <Link href={href} className={classes} onClick={props.onClick} aria-label={ariaLabel} {...track}>
         {inner}
       </Link>
     );
@@ -123,6 +125,7 @@ export function Button(props: ButtonProps) {
       value={"value" in props ? props.value : undefined}
       aria-label={ariaLabel}
       className={classes}
+      {...track}
     >
       {inner}
     </button>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { umamiEvent } from "@/lib/analytics";
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { useTranslations } from "next-intl";
@@ -118,6 +119,7 @@ export function WorkList({ projects }: { projects: Project[] }) {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                {...umamiEvent("project-open", { project: project.slug, from: "home" })}
                 onPointerEnter={() => setActive(index)}
                 onFocus={() => setActive(index)}
                 onBlur={() => setActive(null)}

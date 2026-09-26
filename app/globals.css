@@ -36,6 +36,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* The page never scrolls sideways on a phone, whatever a decoration does.
+   clip (not hidden) keeps position: sticky working. */
+html,
+body {
+  overflow-x: clip;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -514,6 +521,41 @@ body {
   transform: scaleX(1);
 }
 
+/* Mobile agent flow: a light runs down the line, the agent pulses. */
+@keyframes agent-run {
+  0% {
+    top: 1.5rem;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 1.5rem);
+    opacity: 0;
+  }
+}
+
+@keyframes agent-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(63 193 240 / 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 18px rgb(63 193 240 / 0);
+  }
+}
+
+.agent-runner {
+  animation: agent-run 3.2s ease-in-out infinite;
+}
+
+.agent-ring {
+  animation: agent-ring 2.2s var(--ease-out) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ai-aurora::before,
   .ai-aurora::after,
@@ -544,7 +586,9 @@ body {
     transform: none;
   }
 
-  .view-zoom {
+  .view-zoom,
+  .agent-runner,
+  .agent-ring {
     animation: none;
   }
 

@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { umamiEvent } from "@/lib/analytics";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
@@ -23,6 +24,7 @@ export async function FinalCta() {
             <p className="mt-6 max-w-[38ch] leading-7 text-white/75">{t("lead")}</p>
             <a
               href={`mailto:${PUBLIC_EMAIL}`}
+              {...umamiEvent("email-click", { location: "final-cta" })}
               className="mt-6 inline-block text-white underline decoration-white/25 underline-offset-4 hover:decoration-cyan"
             >
               {PUBLIC_EMAIL}

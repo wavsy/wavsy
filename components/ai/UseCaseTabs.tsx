@@ -18,7 +18,7 @@ export function UseCaseTabs({ tabs }: { tabs: UseCase[] }) {
       <div
         role="tablist"
         aria-orientation="vertical"
-        className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0"
+        className="grid grid-cols-2 gap-2 lg:flex lg:flex-col"
         onKeyDown={(event) => {
           const step = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 0;
           if (step) {
@@ -40,7 +40,7 @@ export function UseCaseTabs({ tabs }: { tabs: UseCase[] }) {
             tabIndex={index === active ? 0 : -1}
             onClick={() => setActive(index)}
             className={cn(
-              "relative shrink-0 rounded-xl px-5 py-3.5 text-left font-display text-lg tracking-[-0.03em] transition-colors duration-200 lg:text-2xl",
+              "relative rounded-xl border border-mist px-4 py-3.5 text-left font-display text-[0.9375rem] leading-tight tracking-[-0.03em] transition-colors duration-200 active:scale-[0.98] sm:text-lg lg:border-transparent lg:px-5 lg:text-2xl",
               index === active ? "text-white" : "text-ink/70 hover:text-ink",
             )}
           >
