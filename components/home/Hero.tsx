@@ -47,12 +47,9 @@ export async function Hero() {
                 {t("primary")}
               </Button>
             </Magnetic>
-            <Link
-              href={pathFor(locale, "portfolio")}
-              className="py-3 text-[0.9375rem] text-white/80 transition-colors duration-150 hover:text-cyan"
-            >
-              {t("secondary")} →
-            </Link>
+            <Button href={pathFor(locale, "portfolio")} variant="ghost" className="text-white/80 hover:text-cyan">
+              {t("secondary")}
+            </Button>
           </div>
         </div>
         <div className="order-1 flex justify-center lg:order-2">

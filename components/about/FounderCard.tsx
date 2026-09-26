@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { TiltCard } from "@/components/ai/TiltCard";
+import { Button } from "@/components/ui/Button";
 import { LinkedInMark } from "@/components/ui/SocialIcons";
 import { cn } from "@/lib/cn";
 import { teamMembers, type TeamId } from "@/lib/team";
@@ -29,20 +30,22 @@ export async function FounderCard({
   const person = t.raw(`people.${id}`) as Person;
 
   return (
-    <article className="spotlight-card conic-card group relative flex h-full flex-col rounded-3xl border border-mist bg-white p-3 transition-shadow duration-300 hover:shadow-[0_30px_70px_-35px_rgb(11_61_145/0.55)] md:p-4">
+    <article data-center className="spotlight-card conic-card group relative flex h-full flex-col rounded-3xl border border-mist bg-white p-3 transition-shadow duration-300 hover:shadow-[0_30px_70px_-35px_rgb(11_61_145/0.55)] md:p-4">
       <TiltCard className="w-full">
         <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-deep">
-          <Image
-            src={member.src}
-            alt={person.name}
-            fill
-            priority={priority}
-            sizes="(min-width: 768px) 45vw, 100vw"
-            className={cn(
-              "object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]",
-              member.imageClass,
-            )}
-          />
+          <div className="view-zoom absolute inset-0">
+            <Image
+              src={member.src}
+              alt={person.name}
+              fill
+              priority={priority}
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className={cn(
+                "object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]",
+                member.imageClass,
+              )}
+            />
+          </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-deep/90 via-deep/40 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
             <Heading className="font-display text-3xl tracking-[-0.04em] text-white md:text-4xl">
@@ -67,19 +70,15 @@ export async function FounderCard({
           <p className="mt-4 max-w-[40ch] text-[0.9375rem] leading-6 text-ink/70">{person.note}</p>
         ) : null}
         <div className="mt-auto pt-6">
-          <a
+          <Button
             href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("linkedinAria", { name: person.name })}
-            className="inline-flex items-center gap-2.5 rounded-full bg-ink px-4 py-2.5 text-sm text-white transition-colors duration-200 hover:bg-navy"
+            external
+            size="sm"
+            ariaLabel={t("linkedinAria", { name: person.name })}
+            icon={<LinkedInMark className="h-3.5 w-3.5" />}
           >
-            <LinkedInMark className="h-3.5 w-3.5 shrink-0" />
-            <span>{t("linkedin")}</span>
-            <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">
-              →
-            </span>
-          </a>
+            {t("linkedin")}
+          </Button>
         </div>
       </div>
     </article>

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/Button";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -16,12 +15,9 @@ export default async function LocaleNotFound() {
           <Button href={pathFor(locale, "home")} variant="inverse">
             {t("home")}
           </Button>
-          <Link
-            href={pathFor(locale, "contact")}
-            className="py-3 text-[0.9375rem] text-white/80 transition-colors duration-150 hover:text-cyan"
-          >
-            {t("contact")} →
-          </Link>
+          <Button href={pathFor(locale, "contact")} variant="ghost" className="text-white/80 hover:text-cyan">
+            {t("contact")}
+          </Button>
         </div>
       </PageHeader>
     </main>

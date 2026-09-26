@@ -51,7 +51,7 @@ function CountUp({ value }: { value: string }) {
     <p
       ref={ref}
       aria-hidden
-      className="ai-gradient-text whitespace-nowrap font-display text-[clamp(1.75rem,22cqi,3.75rem)] leading-none tracking-[-0.05em] tabular-nums"
+      className="ai-gradient-text whitespace-nowrap font-display text-[clamp(0.875rem,22cqi,3.75rem)] leading-none tracking-[-0.05em] tabular-nums"
     >
       {text}
     </p>

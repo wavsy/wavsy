@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { PortfolioCard } from "@/components/portfolio/PortfolioCard";
+import { CenterActivate } from "@/components/motion/CenterActivate";
 import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { projects } from "@/lib/projects";
@@ -34,11 +35,11 @@ export default async function PortfolioPage({ params }: PageProps) {
             </div>
           </div>
         ) : (
-          <div className="grid items-stretch gap-6 md:grid-cols-2">
+          <CenterActivate className="grid items-stretch gap-6 md:grid-cols-2">
             {projects.map((project, index) => (
               <PortfolioCard key={project.slug} project={project} index={index} />
             ))}
-          </div>
+          </CenterActivate>
         )}
       </Container>
     </main>

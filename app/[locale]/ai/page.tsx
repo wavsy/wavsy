@@ -83,12 +83,9 @@ export default async function AiPage({ params }: PageProps) {
                   {t("hero.primary")}
                 </Button>
               </Magnetic>
-              <a
-                href="#how"
-                className="py-3 text-[0.9375rem] text-white/80 transition-colors duration-150 hover:text-cyan"
-              >
-                {t("hero.secondary")} ↓
-              </a>
+              <Button href="#how" variant="ghost" className="text-white/80 hover:text-cyan">
+                {t("hero.secondary")}
+              </Button>
             </div>
             <p className="mt-10 inline-flex items-center gap-2.5 text-sm text-white/60">
               <span className="relative flex size-2">

@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { HeadingReveal } from "@/components/motion/HeadingReveal";
 import { ScrambleText } from "@/components/ai/ScrambleText";
 import { FounderCard } from "@/components/about/FounderCard";
+import { CenterActivate } from "@/components/motion/CenterActivate";
 import { FinalCta } from "@/components/home/FinalCta";
 import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
@@ -57,13 +58,13 @@ export default async function AboutPage({ params }: PageProps) {
             lines={[t("title")]}
             className="max-w-[16ch] font-display text-[clamp(2rem,4vw,4.25rem)] leading-[0.95] tracking-[-0.05em]"
           />
-          <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
+          <CenterActivate className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
             {teamIds.map((id, index) => (
               <Reveal key={id} delay={index * 0.08} className="h-full">
                 <FounderCard id={id} />
               </Reveal>
             ))}
-          </div>
+          </CenterActivate>
         </Container>
       </Section>
 

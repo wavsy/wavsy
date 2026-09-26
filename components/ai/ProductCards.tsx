@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/motion/Reveal";
+import { CenterActivate } from "@/components/motion/CenterActivate";
 
 type Product = { title: string; body: string; points: string[] };
 
@@ -24,11 +25,13 @@ const icons = [
 
 export function ProductCards({ items }: { items: Product[] }) {
   return (
+    <CenterActivate>
     <ul className="grid gap-4 md:gap-5 lg:grid-cols-3">
       {items.map((item, index) => (
         <li key={item.title}>
           <Reveal delay={index * 0.08} className="h-full">
             <article
+              data-center
               onPointerMove={(event) => {
                 const box = event.currentTarget.getBoundingClientRect();
                 event.currentTarget.style.setProperty("--spot-x", `${event.clientX - box.left}px`);
@@ -72,5 +75,6 @@ export function ProductCards({ items }: { items: Product[] }) {
         </li>
       ))}
     </ul>
+    </CenterActivate>
   );
 }

@@ -84,6 +84,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <Button
             href={pathFor(locale, "contact")}
             variant={onDark ? "inverse" : "primary"}
+            size="sm"
             className="whitespace-nowrap"
           >
             {t("cta")}

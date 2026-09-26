@@ -19,17 +19,19 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
   const summary = project ? t(`projects.${project.slug}.summary`) : work("emptyHint");
 
   const body = (
-    <article className="spotlight-card conic-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-mist bg-white p-3 transition-shadow duration-300 hover:shadow-[0_30px_70px_-35px_rgb(11_61_145/0.55)]">
+    <article data-center className="spotlight-card conic-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-mist bg-white p-3 transition-shadow duration-300 hover:shadow-[0_30px_70px_-35px_rgb(11_61_145/0.55)]">
       <div className="relative aspect-[16/10] shrink-0 overflow-hidden rounded-2xl bg-mist">
         {project ? (
-          <Image
-            src={project.image}
-            alt={t("imageAlt", { name })}
-            fill
-            sizes="(min-width: 768px) 45vw, 100vw"
-            priority={index < 2}
-            className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-          />
+          <div className="view-zoom absolute inset-0">
+            <Image
+              src={project.image}
+              alt={t("imageAlt", { name })}
+              fill
+              sizes="(min-width: 768px) 45vw, 100vw"
+              priority={index < 2}
+              className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+            />
+          </div>
         ) : (
           <div className="absolute inset-0 bg-[linear-gradient(135deg,#0B3D91_0%,transparent_42%,#3FC1F0_100%)] opacity-[0.18]" />
         )}

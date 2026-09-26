@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { HeadingReveal } from "@/components/motion/HeadingReveal";
@@ -19,7 +19,9 @@ export async function SelectedWork() {
   return (
     <>
       <Marquee title={t("marquee")} items={names} />
-      <section className="relative overflow-hidden bg-deep py-20 text-white md:py-28 lg:py-32">
+      {/* overflow-clip, not overflow-hidden: hidden would make the section a
+          scroll container and stop the sticky preview on phones. */}
+      <section className="relative overflow-clip bg-deep py-20 text-white md:py-28 lg:py-32">
         <div className="ai-aurora ai-aurora-soft pointer-events-none absolute inset-0" aria-hidden />
         <Container className="relative">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -30,12 +32,9 @@ export async function SelectedWork() {
               />
               <p className="mt-6 max-w-[42ch] text-[1.0625rem] leading-7 text-white/70">{t("lead")}</p>
             </div>
-            <Link
-              href={pathFor(locale, "portfolio")}
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-[0.9375rem] text-white transition-colors duration-200 hover:border-cyan hover:text-cyan"
-            >
-              {t("cta")} <span aria-hidden>→</span>
-            </Link>
+            <Button href={pathFor(locale, "portfolio")} variant="outline" className="w-fit">
+              {t("cta")}
+            </Button>
           </div>
           <div className="mt-12 md:mt-16">
             <WorkList projects={projects} />

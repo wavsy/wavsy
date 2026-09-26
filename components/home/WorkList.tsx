@@ -11,7 +11,9 @@ import type { Project } from "@/lib/projects";
 // The studio-site project list (Obys, Lusion, Locomotive): big text rows, and
 // on a desktop with a mouse a preview of the site follows the pointer and
 // wipes in with a clip-path. Rows are plain text, visible from the first
-// paint. Touch screens get a thumbnail inside each row instead.
+// paint. Touch screens get the same preview as a sticky panel above the
+// list: the row crossing the middle of the screen becomes active and its
+// site wipes in, so scrolling does what the mouse does on desktop.
 export function WorkList({ projects }: { projects: Project[] }) {
   const t = useTranslations("portfolio");
   const work = useTranslations("work");
@@ -19,6 +21,7 @@ export function WorkList({ projects }: { projects: Project[] }) {
   const listRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState<number | null>(null);
   const [canHover, setCanHover] = useState(false);
+  const [scrolled, setScrolled] = useState(0);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 260, damping: 28, mass: 0.6 });
@@ -32,6 +35,24 @@ export function WorkList({ projects }: { projects: Project[] }) {
     return () => media.removeEventListener("change", update);
   }, []);
 
+  useEffect(() => {
+    if (canHover) return;
+    const rows = listRef.current?.querySelectorAll<HTMLElement>("[data-row]");
+    if (!rows) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setScrolled(Number((entry.target as HTMLElement).dataset.row));
+          }
+        }
+      },
+      { rootMargin: "-55% 0px -35% 0px" },
+    );
+    rows.forEach((row) => observer.observe(row));
+    return () => observer.disconnect();
+  }, [canHover]);
+
   const onMove = (event: React.PointerEvent) => {
     const box = listRef.current?.getBoundingClientRect();
     if (!box) return;
@@ -43,6 +64,41 @@ export function WorkList({ projects }: { projects: Project[] }) {
 
   return (
     <div className="relative">
+      <div className="touch-only sticky top-[calc(var(--header-h)+0.75rem)] z-10 mb-4">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-deep shadow-[0_30px_70px_-30px_rgb(0_0_0/0.9)] ring-1 ring-white/15">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.slug}
+              aria-hidden
+              className="absolute inset-0"
+              initial={false}
+              animate={
+                scrolled === index
+                  ? { clipPath: "inset(0% 0% 0% 0%)", scale: 1 }
+                  : { clipPath: "inset(0% 0% 0% 100%)", scale: 1.06 }
+              }
+              transition={reduce ? { duration: 0 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              style={{ zIndex: scrolled === index ? 2 : 1 }}
+            >
+              <Image
+                src={project.image}
+                alt=""
+                fill
+                sizes="(min-width: 768px) 700px, 100vw"
+                className="object-cover object-top"
+              />
+            </motion.div>
+          ))}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-3 bg-gradient-to-t from-deep/90 to-transparent p-4 pt-10">
+            <span className="font-display text-lg leading-tight tracking-[-0.03em] text-white">
+              {t(`projects.${projects[scrolled].slug}.name`)}
+            </span>
+            <span className="shrink-0 rounded-full bg-cyan px-3 py-1 text-xs font-semibold text-deep">
+              {String(scrolled + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+      </div>
       <ul
         ref={listRef}
         onPointerMove={canHover ? onMove : undefined}
@@ -52,9 +108,9 @@ export function WorkList({ projects }: { projects: Project[] }) {
         {projects.map((project, index) => {
           const name = t(`projects.${project.slug}.name`);
           const industry = t(`projects.${project.slug}.industry`);
-          const dim = canHover && active !== null && active !== index;
+          const dim = canHover ? active !== null && active !== index : scrolled !== index;
           return (
-            <li key={project.slug} className="border-b border-white/12">
+            <li key={project.slug} data-row={index} className="border-b border-white/12">
               <a
                 href={project.url}
                 target="_blank"
@@ -64,19 +120,10 @@ export function WorkList({ projects }: { projects: Project[] }) {
                 onBlur={() => setActive(null)}
                 className={cn(
                   "group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 transition-opacity duration-300 md:grid-cols-[4rem_1fr_auto] md:py-8",
-                  dim && "opacity-35",
+                  dim && "opacity-40",
                 )}
               >
-                <span className="relative block h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-white/5 md:hidden">
-                  <Image
-                    src={project.image}
-                    alt=""
-                    fill
-                    sizes="96px"
-                    className="object-cover object-top"
-                  />
-                </span>
-                <span className="hidden font-display text-sm tracking-[0.12em] text-white/60 md:block">
+                <span className="font-display text-sm tracking-[0.12em] text-white/60">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="min-w-0">
