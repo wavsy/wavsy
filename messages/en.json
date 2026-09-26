@@ -4,6 +4,8 @@
     "homeDescription": "Wavsy builds modern websites and web apps for businesses that want more trust and more enquiries. Two people. Direct contact.",
     "servicesTitle": "Services — Wavsy",
     "servicesDescription": "Websites, web apps, maintenance and automations. Two ways of working. Price is agreed together.",
+    "aiTitle": "Custom AI systems — Wavsy",
+    "aiDescription": "AI assistants, agents and automations built around the way your business works. A pilot first, real results, a human always in the loop.",
     "portfolioTitle": "Portfolio — Wavsy",
     "portfolioDescription": "Selected websites and web apps made by Wavsy.",
     "aboutTitle": "About — Wavsy",
@@ -21,6 +23,7 @@
   "nav": {
     "home": "Home",
     "services": "Services",
+    "ai": "AI systems",
     "portfolio": "Portfolio",
     "about": "About",
     "contact": "Contact",
@@ -91,6 +94,319 @@
         "sentence": "An assistant on the site, or automation of repeating work.",
         "audience": "For businesses that already have a site and want less manual work."
       }
+    }
+  },
+  "ai": {
+    "hero": {
+      "eyebrow": "Wavsy AI",
+      "titleLine1": "AI systems,",
+      "titleLine2": "made to fit your business.",
+      "body": "We don't sell off-the-shelf bots. Every system is built for your business: your customers, your rules and the software you already use. It takes over the repetitive work, so your team can focus on what matters.",
+      "primary": "Tell us about your process",
+      "secondary": "How it works",
+      "live": "Live on the КИБО - 2 website"
+    },
+    "demo": {
+      "label": "Demo · sample conversation",
+      "name": "Hotel assistant",
+      "status": "online",
+      "typing": "The assistant is typing",
+      "messages": [
+        {
+          "from": "user",
+          "text": "Hello! Do you have a double room free for 12–14 October?"
+        },
+        {
+          "from": "ai",
+          "text": "Hello! Yes, we have a sea-view double room for those dates. Would you like me to reserve it for you?"
+        },
+        {
+          "from": "user",
+          "text": "Yes, please. Two adults."
+        },
+        {
+          "from": "tool",
+          "text": "Availability checked in the calendar"
+        },
+        {
+          "from": "tool",
+          "text": "Booking sent for confirmation"
+        },
+        {
+          "from": "ai",
+          "text": "Done. Reception will confirm the booking by email within 15 minutes."
+        }
+      ]
+    },
+    "marquee": {
+      "title": "Works with the tools you already use",
+      "items": [
+        "Website",
+        "WhatsApp",
+        "Viber",
+        "Email",
+        "Calendar",
+        "Spreadsheets",
+        "CRM",
+        "Invoices",
+        "Messenger",
+        "Booking systems"
+      ]
+    },
+    "custom": {
+      "title": "An off-the-shelf chatbot or a system made to fit",
+      "lead": "The difference isn't the technology. It's how well the system knows your business.",
+      "generic": {
+        "label": "Off-the-shelf chatbot",
+        "items": [
+          "One template for every business",
+          "Generic answers, often inaccurate",
+          "Can't see your calendar, CRM or stock",
+          "You adapt to it",
+          "Nobody checks whether it works well"
+        ]
+      },
+      "tailored": {
+        "label": "A system by Wavsy",
+        "items": [
+          "Built after an audit of your processes",
+          "Speaks with your prices, policies and tone",
+          "Connected to the software you already use",
+          "It adapts to the way you work",
+          "We measure results and improve it every month"
+        ]
+      }
+    },
+    "products": {
+      "title": "Three ways AI can work for you",
+      "lead": "We start from one concrete task, not from the technology.",
+      "items": [
+        {
+          "title": "AI assistant",
+          "body": "Answers your customers around the clock, in their language. It knows your services, prices and policies, and when it doesn't know, it hands the conversation to a person.",
+          "points": [
+            "Website, WhatsApp and Viber",
+            "Bulgarian, English, German",
+            "Hands over to a person when needed"
+          ]
+        },
+        {
+          "title": "AI agent",
+          "body": "It doesn't just answer, it acts: books appointments, drafts quotes, checks availability. It works inside the tools you already use.",
+          "points": [
+            "Appointments and bookings",
+            "Draft quotes and emails",
+            "A person approves what matters"
+          ]
+        },
+        {
+          "title": "Automation",
+          "body": "Takes over the routine between your systems: enquiries, spreadsheets, invoices, CRM. No new software to learn. The work simply gets done.",
+          "points": [
+            "Enquiry to CRM in seconds",
+            "Reports that write themselves",
+            "An alert when something needs attention"
+          ]
+        }
+      ]
+    },
+    "stats": {
+      "title": "In practice",
+      "items": [
+        {
+          "value": "24/7",
+          "label": "answers your customers, weekends included"
+        },
+        {
+          "value": "3",
+          "label": "languages: Bulgarian, English and German"
+        },
+        {
+          "value": "2–4",
+          "label": "weeks of pilot before you decide"
+        },
+        {
+          "value": "100%",
+          "label": "of important actions go through a person"
+        }
+      ]
+    },
+    "useCases": {
+      "title": "What it can take over in your industry",
+      "lead": "Examples we start the conversation from. The real system comes out of the audit.",
+      "tabs": [
+        {
+          "label": "Hotels",
+          "headline": "Enquiries and bookings around the clock",
+          "items": [
+            "Answers guests in Bulgarian, English and German",
+            "Checks free rooms and sends the request to reception",
+            "Sends pre-arrival information: parking, check-in, transfers",
+            "Collects a review after the stay"
+          ]
+        },
+        {
+          "label": "Clinics",
+          "headline": "Appointments without phone queues",
+          "items": [
+            "Books, moves and cancels appointments by your rules",
+            "Reminds patients the day before",
+            "Answers questions on prices, address and preparation",
+            "Gives no medical advice and hands over to a person"
+          ]
+        },
+        {
+          "label": "Services & repairs",
+          "headline": "Enquiry, quote, appointment",
+          "items": [
+            "Takes the enquiry with details of the car or service",
+            "Prepares a draft quote for approval",
+            "Books the appointment and sends a reminder",
+            "Tells the customer when the job is ready"
+          ]
+        },
+        {
+          "label": "Office & admin",
+          "headline": "Less copying, more real work",
+          "items": [
+            "Website enquiries land in the CRM by themselves",
+            "Incoming emails get sorted with a draft reply",
+            "A weekly report that writes itself",
+            "An alert when something has waited too long"
+          ]
+        }
+      ]
+    },
+    "flow": {
+      "title": "How an agent works",
+      "lead": "Every request goes through clear steps. You see what was done and approve what matters.",
+      "nodes": {
+        "input": "Request",
+        "agent": "AI agent",
+        "calendar": "Calendar",
+        "crm": "CRM",
+        "email": "Email",
+        "human": "You approve"
+      },
+      "task": {
+        "label": "Sample task",
+        "title": "Appointment request · Monday, 10:00",
+        "status": "Done in 8 sec",
+        "steps": [
+          "Request read",
+          "Free slot found in the calendar",
+          "Customer added to the CRM",
+          "Confirmation waiting for your approval"
+        ]
+      }
+    },
+    "process": {
+      "title": "From a conversation to a system that works",
+      "steps": [
+        {
+          "title": "Conversation",
+          "body": "You tell us how you work and where time gets lost."
+        },
+        {
+          "title": "Audit",
+          "body": "We map your processes and pick the task with the biggest impact."
+        },
+        {
+          "title": "Pilot",
+          "body": "For two to four weeks the system runs under real conditions, closely watched."
+        },
+        {
+          "title": "Build",
+          "body": "We extend what has proven that it works."
+        },
+        {
+          "title": "Care",
+          "body": "We monitor quality, keep its knowledge current and improve it every month."
+        }
+      ]
+    },
+    "deliverables": {
+      "title": "What you get",
+      "items": [
+        {
+          "title": "A process audit",
+          "body": "A written account of where time is lost and which task to automate first."
+        },
+        {
+          "title": "A working system",
+          "body": "An assistant, agent or automation connected to your software."
+        },
+        {
+          "title": "A monitoring dashboard",
+          "body": "You see the conversations, the actions and what waited for approval."
+        },
+        {
+          "title": "Team training",
+          "body": "We show your people how to work with the system and when to step in."
+        },
+        {
+          "title": "A monthly report",
+          "body": "What the system did, where it went wrong and what we are improving."
+        },
+        {
+          "title": "The system is yours",
+          "body": "After the final payment the code and configuration stay with you."
+        }
+      ]
+    },
+    "principles": {
+      "title": "Rules we don't break",
+      "items": [
+        {
+          "title": "We always say it's AI",
+          "body": "Your customers know they are talking to an assistant and can always ask for a person."
+        },
+        {
+          "title": "A person decides what matters",
+          "body": "Payments, refusals and anything irreversible go through your approval."
+        },
+        {
+          "title": "Your data stays yours",
+          "body": "We work under GDPR and use only the data we need. After the final payment the system is yours."
+        },
+        {
+          "title": "No invented promises",
+          "body": "We measure the results in the pilot and show you the real numbers."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions about AI systems",
+      "items": [
+        {
+          "q": "How much does it cost?",
+          "a": "It depends on the task and on the software the system has to connect to. After the audit you get a clear quote with scope and price before we start."
+        },
+        {
+          "q": "How long does it take?",
+          "a": "The pilot usually takes two to four weeks. After it we decide together what to extend."
+        },
+        {
+          "q": "Will it replace our staff?",
+          "a": "No. The system takes over the repetitive work, and your people stay on the conversations and decisions that need a person."
+        },
+        {
+          "q": "What if the AI makes a mistake?",
+          "a": "That's why we start with a monitored pilot. Important actions need approval, every action is logged, and when the system is unsure it hands over to a person."
+        },
+        {
+          "q": "Where is our data kept?",
+          "a": "We work under GDPR, use only the data we need and choose providers with a data processing agreement. Where possible, data stays in the EU."
+        },
+        {
+          "q": "Do we need to change our software?",
+          "a": "Usually not. The system connects to what you already use: website, email, calendar, spreadsheets, CRM."
+        },
+        {
+          "q": "Which languages does it speak?",
+          "a": "Bulgarian, English and German, and other languages when needed."
+        }
+      ]
     }
   },
   "engagement": {

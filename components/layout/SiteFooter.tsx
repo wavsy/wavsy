@@ -15,6 +15,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
   const items = [
     { href: pathFor(locale, "home"), label: nav("home") },
     { href: pathFor(locale, "services"), label: nav("services") },
+    { href: pathFor(locale, "ai"), label: nav("ai") },
     { href: pathFor(locale, "portfolio"), label: nav("portfolio") },
     { href: pathFor(locale, "about"), label: nav("about") },
     { href: pathFor(locale, "contact"), label: nav("contact") },

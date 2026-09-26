@@ -5,6 +5,7 @@ export const defaultLocale: Locale = "bg";
 export const routeKeys = [
   "home",
   "services",
+  "ai",
   "portfolio",
   "about",
   "contact",
@@ -18,6 +19,7 @@ export const paths: Record<Locale, Record<RouteKey, string>> = {
   bg: {
     home: "/",
     services: "/услуги",
+    ai: "/ai",
     portfolio: "/портфолио",
     about: "/за-нас",
     contact: "/контакти",
@@ -28,6 +30,7 @@ export const paths: Record<Locale, Record<RouteKey, string>> = {
   en: {
     home: "/en",
     services: "/en/services",
+    ai: "/en/ai",
     portfolio: "/en/portfolio",
     about: "/en/about",
     contact: "/en/contact",
@@ -38,6 +41,7 @@ export const paths: Record<Locale, Record<RouteKey, string>> = {
   de: {
     home: "/de",
     services: "/de/leistungen",
+    ai: "/de/ki",
     portfolio: "/de/portfolio",
     about: "/de/ueber-uns",
     contact: "/de/kontakt",
@@ -50,6 +54,7 @@ export const paths: Record<Locale, Record<RouteKey, string>> = {
 const internalFolders: Record<string, RouteKey> = {
   "": "home",
   uslugi: "services",
+  ai: "ai",
   portfolio: "portfolio",
   "za-nas": "about",
   kontakti: "contact",

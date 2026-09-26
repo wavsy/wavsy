@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
 import { cn } from "@/lib/cn";
 
 type HeadingRevealProps = {
@@ -14,7 +15,7 @@ export function HeadingReveal({
   as: Tag = "h2",
   className,
 }: HeadingRevealProps) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   // The page title is the largest thing on first paint. Starting its lines at
   // opacity 0 held Largest Contentful Paint back until JavaScript loaded
@@ -38,14 +39,14 @@ export function HeadingReveal({
         <motion.span
           key={`${line}-${index}`}
           className="block"
-          initial={reduce ? false : { opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-64px" }}
-          transition={{
-            duration: 0.5,
-            ease: "easeOut",
-            delay: reduce ? 0 : index * 0.06,
-          }}
+          transition={
+            reduce
+              ? { duration: 0 }
+              : { duration: 0.5, ease: "easeOut", delay: index * 0.06 }
+          }
         >
           {line}
         </motion.span>

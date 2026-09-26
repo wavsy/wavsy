@@ -5,6 +5,8 @@
     "homeDescription": "Wavsy baut moderne Websites und Web-Apps für Unternehmen, die mehr Vertrauen und mehr Anfragen wollen. Zwei Personen. Direkter Kontakt.",
     "servicesTitle": "Leistungen — Wavsy",
     "servicesDescription": "Websites, Web-Apps, Betreuung und Automatisierung. Zwei Arbeitsweisen. Der Preis wird gemeinsam festgelegt.",
+    "aiTitle": "KI-Systeme nach Maß — Wavsy",
+    "aiDescription": "KI-Assistenten, Agenten und Automatisierungen, gebaut nach der Arbeitsweise Ihres Unternehmens. Erst ein Pilot, echte Ergebnisse, immer ein Mensch in der Schleife.",
     "portfolioTitle": "Portfolio — Wavsy",
     "portfolioDescription": "Ausgewählte Websites und Web-Apps von Wavsy.",
     "aboutTitle": "Über uns — Wavsy",
@@ -22,6 +24,7 @@
   "nav": {
     "home": "Start",
     "services": "Leistungen",
+    "ai": "KI-Systeme",
     "portfolio": "Portfolio",
     "about": "Über uns",
     "contact": "Kontakt",
@@ -92,6 +95,319 @@
         "sentence": "Ein Assistent auf der Website oder Automatisierung wiederkehrender Arbeit.",
         "audience": "Für Unternehmen, die schon eine Website haben und weniger Handarbeit wollen."
       }
+    }
+  },
+  "ai": {
+    "hero": {
+      "eyebrow": "Wavsy KI",
+      "titleLine1": "KI-Systeme,",
+      "titleLine2": "maßgeschneidert für Ihr Unternehmen.",
+      "body": "Wir verkaufen keine Chatbots von der Stange. Jedes System wird für Ihr Unternehmen gebaut: für Ihre Kunden, Ihre Regeln und die Software, die Sie schon nutzen. Es übernimmt die wiederkehrende Arbeit, damit sich Ihr Team auf das Wesentliche konzentriert.",
+      "primary": "Erzählen Sie uns von Ihrem Ablauf",
+      "secondary": "So funktioniert es",
+      "live": "Live auf der Website von КИБО - 2"
+    },
+    "demo": {
+      "label": "Demo · Beispielgespräch",
+      "name": "Hotel-Assistent",
+      "status": "online",
+      "typing": "Der Assistent schreibt",
+      "messages": [
+        {
+          "from": "user",
+          "text": "Hallo! Haben Sie vom 12. bis 14. Oktober ein Doppelzimmer frei?"
+        },
+        {
+          "from": "ai",
+          "text": "Hallo! Ja, für diese Tage haben wir ein Doppelzimmer mit Meerblick. Soll ich es für Sie reservieren?"
+        },
+        {
+          "from": "user",
+          "text": "Ja, bitte. Für zwei Erwachsene."
+        },
+        {
+          "from": "tool",
+          "text": "Verfügbarkeit im Kalender geprüft"
+        },
+        {
+          "from": "tool",
+          "text": "Buchung zur Bestätigung gesendet"
+        },
+        {
+          "from": "ai",
+          "text": "Erledigt. Die Rezeption bestätigt die Buchung innerhalb von 15 Minuten per E-Mail."
+        }
+      ]
+    },
+    "marquee": {
+      "title": "Arbeitet mit den Tools, die Sie schon nutzen",
+      "items": [
+        "Website",
+        "WhatsApp",
+        "Viber",
+        "E-Mail",
+        "Kalender",
+        "Tabellen",
+        "CRM",
+        "Rechnungen",
+        "Messenger",
+        "Buchungssysteme"
+      ]
+    },
+    "custom": {
+      "title": "Chatbot von der Stange oder System nach Maß",
+      "lead": "Der Unterschied liegt nicht in der Technik. Er liegt darin, wie gut das System Ihr Unternehmen kennt.",
+      "generic": {
+        "label": "Chatbot von der Stange",
+        "items": [
+          "Eine Vorlage für jedes Unternehmen",
+          "Allgemeine, oft ungenaue Antworten",
+          "Sieht weder Kalender noch CRM oder Lager",
+          "Sie passen sich ihm an",
+          "Niemand prüft, ob er gut funktioniert"
+        ]
+      },
+      "tailored": {
+        "label": "Ein System von Wavsy",
+        "items": [
+          "Gebaut nach einer Analyse Ihrer Abläufe",
+          "Spricht mit Ihren Preisen, Regeln und Ihrem Ton",
+          "Verbunden mit der Software, die Sie schon nutzen",
+          "Es passt sich Ihrer Arbeitsweise an",
+          "Wir messen die Ergebnisse und verbessern jeden Monat"
+        ]
+      }
+    },
+    "products": {
+      "title": "Drei Wege, wie KI für Sie arbeitet",
+      "lead": "Wir beginnen bei einer konkreten Aufgabe, nicht bei der Technik.",
+      "items": [
+        {
+          "title": "KI-Assistent",
+          "body": "Beantwortet Ihre Kunden rund um die Uhr, in ihrer Sprache. Er kennt Ihre Leistungen, Preise und Regeln und übergibt an einen Menschen, wenn er etwas nicht weiß.",
+          "points": [
+            "Website, WhatsApp und Viber",
+            "Bulgarisch, Englisch, Deutsch",
+            "Übergibt bei Bedarf an einen Menschen"
+          ]
+        },
+        {
+          "title": "KI-Agent",
+          "body": "Er antwortet nicht nur, er handelt: bucht Termine, entwirft Angebote, prüft Verfügbarkeiten. Er arbeitet in den Tools, die Sie bereits nutzen.",
+          "points": [
+            "Termine und Buchungen",
+            "Entwürfe für Angebote und E-Mails",
+            "Wichtiges gibt ein Mensch frei"
+          ]
+        },
+        {
+          "title": "Automatisierung",
+          "body": "Übernimmt die Routine zwischen Ihren Systemen: Anfragen, Tabellen, Rechnungen, CRM. Keine neue Software zum Lernen. Die Arbeit wird einfach erledigt.",
+          "points": [
+            "Anfrage ins CRM in Sekunden",
+            "Berichte, die sich selbst schreiben",
+            "Hinweis, wenn etwas Aufmerksamkeit braucht"
+          ]
+        }
+      ]
+    },
+    "stats": {
+      "title": "In der Praxis",
+      "items": [
+        {
+          "value": "24/7",
+          "label": "antwortet Ihren Kunden, auch am Wochenende"
+        },
+        {
+          "value": "3",
+          "label": "Sprachen: Bulgarisch, Englisch und Deutsch"
+        },
+        {
+          "value": "2–4",
+          "label": "Wochen Pilot, bevor Sie entscheiden"
+        },
+        {
+          "value": "100%",
+          "label": "der wichtigen Aktionen laufen über einen Menschen"
+        }
+      ]
+    },
+    "useCases": {
+      "title": "Was es in Ihrer Branche übernehmen kann",
+      "lead": "Beispiele, mit denen wir das Gespräch beginnen. Das echte System entsteht aus der Analyse.",
+      "tabs": [
+        {
+          "label": "Hotels",
+          "headline": "Anfragen und Buchungen rund um die Uhr",
+          "items": [
+            "Antwortet Gästen auf Bulgarisch, Englisch und Deutsch",
+            "Prüft freie Zimmer und leitet die Anfrage an die Rezeption",
+            "Sendet Infos vor der Anreise: Parken, Check-in, Transfer",
+            "Bittet nach dem Aufenthalt um eine Bewertung"
+          ]
+        },
+        {
+          "label": "Praxen",
+          "headline": "Termine ohne Warteschleife",
+          "items": [
+            "Bucht, verschiebt und storniert Termine nach Ihren Regeln",
+            "Erinnert Patienten am Vortag",
+            "Beantwortet Fragen zu Preisen, Adresse und Vorbereitung",
+            "Gibt keinen medizinischen Rat und übergibt an einen Menschen"
+          ]
+        },
+        {
+          "label": "Werkstätten & Dienste",
+          "headline": "Anfrage, Angebot, Termin",
+          "items": [
+            "Nimmt die Anfrage mit den Daten zu Auto oder Leistung auf",
+            "Erstellt einen Angebotsentwurf zur Freigabe",
+            "Bucht den Termin und schickt eine Erinnerung",
+            "Meldet dem Kunden, wenn der Auftrag fertig ist"
+          ]
+        },
+        {
+          "label": "Büro & Verwaltung",
+          "headline": "Weniger Kopieren, mehr echte Arbeit",
+          "items": [
+            "Anfragen von der Website landen von selbst im CRM",
+            "Eingehende E-Mails werden sortiert und mit Antwortentwurf versehen",
+            "Ein Wochenbericht, der sich selbst schreibt",
+            "Ein Hinweis, wenn etwas zu lange wartet"
+          ]
+        }
+      ]
+    },
+    "flow": {
+      "title": "So arbeitet ein Agent",
+      "lead": "Jede Anfrage durchläuft klare Schritte. Sie sehen, was erledigt wurde, und geben Wichtiges frei.",
+      "nodes": {
+        "input": "Anfrage",
+        "agent": "KI-Agent",
+        "calendar": "Kalender",
+        "crm": "CRM",
+        "email": "E-Mail",
+        "human": "Sie geben frei"
+      },
+      "task": {
+        "label": "Beispielaufgabe",
+        "title": "Terminanfrage · Montag, 10:00",
+        "status": "Erledigt in 8 Sek.",
+        "steps": [
+          "Anfrage gelesen",
+          "Freier Termin im Kalender gefunden",
+          "Kunde im CRM angelegt",
+          "Bestätigung wartet auf Ihre Freigabe"
+        ]
+      }
+    },
+    "process": {
+      "title": "Vom Gespräch zum System, das funktioniert",
+      "steps": [
+        {
+          "title": "Gespräch",
+          "body": "Sie erzählen uns, wie Sie arbeiten und wo Zeit verloren geht."
+        },
+        {
+          "title": "Analyse",
+          "body": "Wir sehen uns Ihre Abläufe an und wählen die Aufgabe mit der größten Wirkung."
+        },
+        {
+          "title": "Pilot",
+          "body": "Zwei bis vier Wochen läuft das System unter echten Bedingungen, eng begleitet."
+        },
+        {
+          "title": "Ausbau",
+          "body": "Wir erweitern, was sich bewährt hat."
+        },
+        {
+          "title": "Betreuung",
+          "body": "Wir überwachen die Qualität, halten das Wissen aktuell und verbessern jeden Monat."
+        }
+      ]
+    },
+    "deliverables": {
+      "title": "Was Sie bekommen",
+      "items": [
+        {
+          "title": "Eine Prozessanalyse",
+          "body": "Eine schriftliche Übersicht, wo Zeit verloren geht und welche Aufgabe zuerst automatisiert wird."
+        },
+        {
+          "title": "Ein laufendes System",
+          "body": "Assistent, Agent oder Automatisierung, verbunden mit Ihrer Software."
+        },
+        {
+          "title": "Ein Monitoring-Dashboard",
+          "body": "Sie sehen Gespräche, Aktionen und was auf Freigabe gewartet hat."
+        },
+        {
+          "title": "Schulung des Teams",
+          "body": "Wir zeigen Ihren Leuten, wie sie mit dem System arbeiten und wann sie eingreifen."
+        },
+        {
+          "title": "Ein Monatsbericht",
+          "body": "Was das System erledigt hat, wo es Fehler gab und was wir verbessern."
+        },
+        {
+          "title": "Das System gehört Ihnen",
+          "body": "Nach der Schlusszahlung bleiben Code und Einstellungen bei Ihnen."
+        }
+      ]
+    },
+    "principles": {
+      "title": "Regeln, die wir nicht brechen",
+      "items": [
+        {
+          "title": "Wir sagen immer, dass es KI ist",
+          "body": "Ihre Kunden wissen, dass sie mit einem Assistenten sprechen, und können jederzeit einen Menschen verlangen."
+        },
+        {
+          "title": "Wichtiges entscheidet ein Mensch",
+          "body": "Zahlungen, Absagen und alles Unumkehrbare laufen über Ihre Freigabe."
+        },
+        {
+          "title": "Ihre Daten bleiben Ihre",
+          "body": "Wir arbeiten DSGVO-konform und nutzen nur die nötigen Daten. Nach der Schlusszahlung gehört das System Ihnen."
+        },
+        {
+          "title": "Keine erfundenen Versprechen",
+          "body": "Wir messen die Ergebnisse im Pilot und zeigen Ihnen die echten Zahlen."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Fragen zu KI-Systemen",
+      "items": [
+        {
+          "q": "Was kostet das?",
+          "a": "Das hängt von der Aufgabe ab und davon, mit welcher Software sich das System verbinden muss. Nach der Analyse erhalten Sie ein klares Angebot mit Umfang und Preis, bevor wir beginnen."
+        },
+        {
+          "q": "Wie lange dauert es?",
+          "a": "Der Pilot dauert meist zwei bis vier Wochen. Danach entscheiden wir gemeinsam, was ausgebaut wird."
+        },
+        {
+          "q": "Ersetzt es unsere Mitarbeiter?",
+          "a": "Nein. Das System übernimmt die wiederkehrende Arbeit, Ihre Leute bleiben bei den Gesprächen und Entscheidungen, die einen Menschen brauchen."
+        },
+        {
+          "q": "Was, wenn die KI einen Fehler macht?",
+          "a": "Deshalb beginnen wir mit einem begleiteten Pilot. Wichtige Aktionen brauchen eine Freigabe, jede Aktion wird protokolliert, und wenn das System unsicher ist, übergibt es an einen Menschen."
+        },
+        {
+          "q": "Wo werden unsere Daten gespeichert?",
+          "a": "Wir arbeiten DSGVO-konform, nutzen nur die nötigen Daten und wählen Anbieter mit Auftragsverarbeitungsvertrag. Wo möglich, bleiben die Daten in der EU."
+        },
+        {
+          "q": "Müssen wir unsere Software wechseln?",
+          "a": "In der Regel nicht. Das System verbindet sich mit dem, was Sie schon nutzen: Website, E-Mail, Kalender, Tabellen, CRM."
+        },
+        {
+          "q": "Welche Sprachen spricht es?",
+          "a": "Bulgarisch, Englisch und Deutsch, bei Bedarf auch weitere."
+        }
+      ]
     }
   },
   "engagement": {
