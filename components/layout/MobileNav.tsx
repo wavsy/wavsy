@@ -54,7 +54,7 @@ export function MobileNav({ open, onClose, locale, pathname }: MobileNavProps) {
     <div
       id="mobile-nav"
       className={cn(
-        "fixed inset-0 z-[65] bg-paper lg:hidden",
+        "fixed inset-0 z-[65] bg-paper xl:hidden",
         open ? "visible opacity-100" : "invisible pointer-events-none opacity-0",
       )}
       aria-hidden={!open}
