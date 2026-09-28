@@ -7,7 +7,7 @@ export const teamMembers: Record<
 > = {
   dimitar: {
     src: "/team/dimitar.jpg",
-    imageClass: "object-[center_8%]",
+    imageClass: "object-center",
     linkedin: "https://www.linkedin.com/in/dimitarbarev/",
   },
   nikolay: {
