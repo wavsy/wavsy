@@ -491,7 +491,29 @@
         "title": "Launch and care",
         "body": "We launch it. We stay if you want us to continue."
       }
-    ]
+    ],
+    "film": {
+      "talk": [
+        "Hello! I run a car wash and I need a website.",
+        "Great. What should the site do?",
+        "Show the programmes and prices, be fast on a phone and be found on Google.",
+        "Got it: a fast Next.js site, easy on a phone and ready for Google."
+      ],
+      "offerTitle": "Offer",
+      "offer": [
+        "Design for your brand",
+        "Built with Next.js",
+        "Copy and SEO",
+        "Launch and domain"
+      ],
+      "live": "Live",
+      "chips": [
+        "Next.js",
+        "Fast on phones",
+        "Ready for Google",
+        "Maintenance"
+      ]
+    }
   },
   "team": {
     "title": "Two people",

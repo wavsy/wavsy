@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { umamiEvent } from "@/lib/analytics";
 import { getTranslations } from "next-intl/server";
+import { Clip } from "@/components/clips/Clip";
 import { Reveal } from "@/components/motion/Reveal";
 import { CenterActivate } from "@/components/motion/CenterActivate";
 import { currentLocale } from "@/lib/locale";
@@ -26,7 +27,7 @@ export async function ServiceRows({ heading: Heading = "h2" }: { heading?: "h2" 
               data-center
               className="fill-row group relative overflow-hidden rounded-2xl border border-mist bg-white transition-transform duration-200 active:scale-[0.985]"
             >
-              <div className="relative grid gap-4 p-6 md:grid-cols-[4.5rem_1fr_1.1fr] md:items-center md:gap-10 md:p-9">
+              <div className="relative grid gap-4 p-6 md:grid-cols-[4.5rem_1fr_1.1fr] md:items-center md:gap-10 md:p-9 lg:grid-cols-[4.5rem_1fr_1.1fr_7.5rem]">
                 <p className="font-display text-sm tracking-[0.12em] text-navy transition-colors duration-300 group-hover:text-white/70 group-data-[center-active]:text-white/70">
                   {String(index + 1).padStart(2, "0")}
                 </p>
@@ -50,6 +51,11 @@ export async function ServiceRows({ heading: Heading = "h2" }: { heading?: "h2" 
                     </Link>
                   ) : null}
                 </div>
+                {/* A small clip of the service: top corner on phones, own column on desktop. */}
+                <Clip
+                  name={id}
+                  className="absolute right-5 top-4 w-12 text-navy transition-colors duration-300 group-hover:text-white group-data-[center-active]:text-white md:w-20 lg:static lg:w-full"
+                />
               </div>
             </article>
           </Reveal>

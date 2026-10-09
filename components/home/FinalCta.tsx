@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { umamiEvent } from "@/lib/analytics";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { Clip } from "@/components/clips/Clip";
 import { Reveal } from "@/components/motion/Reveal";
 import { InquiryForm } from "@/components/contact/InquiryForm";
 import { PUBLIC_EMAIL } from "@/lib/site";
@@ -17,6 +18,7 @@ export async function FinalCta() {
       <Container className="relative">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <Reveal>
+            <Clip name="send" play="always" className="mb-8 w-24 text-cyan" />
             <h2 className="max-w-[12ch] font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.05em]">
               {t("title")}
               <span className="mt-2 block">{t("titleLine2")}</span>

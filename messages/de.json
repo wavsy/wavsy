@@ -492,7 +492,29 @@
         "title": "Launch und Betreuung",
         "body": "Wir gehen live. Wir bleiben, wenn du das möchtest."
       }
-    ]
+    ],
+    "film": {
+      "talk": [
+        "Hallo! Ich habe eine Waschanlage und brauche eine Website.",
+        "Sehr gut. Was soll die Website können?",
+        "Programme und Preise zeigen, auf dem Handy schnell sein und bei Google gefunden werden.",
+        "Verstanden: eine schnelle Next.js-Website, gut am Handy und bereit für Google."
+      ],
+      "offerTitle": "Angebot",
+      "offer": [
+        "Design für deine Marke",
+        "Umsetzung mit Next.js",
+        "Texte und SEO",
+        "Launch und Domain"
+      ],
+      "live": "Live",
+      "chips": [
+        "Next.js",
+        "Schnell am Handy",
+        "Bereit für Google",
+        "Wartung"
+      ]
+    }
   },
   "team": {
     "title": "Zwei Personen",

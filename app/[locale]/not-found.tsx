@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Clip } from "@/components/clips/Clip";
 import { Button } from "@/components/ui/Button";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { currentLocale } from "@/lib/locale";
@@ -11,6 +12,7 @@ export default async function LocaleNotFound() {
   return (
     <main id="content" className="bg-paper">
       <PageHeader title={t("notFoundTitle")} lead={t("notFoundNote")} eyebrow="404">
+        <Clip name="lost" play="always" className="mb-8 w-24 text-cyan" />
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-8">
           <Button href={pathFor(locale, "home")} variant="inverse">
             {t("home")}

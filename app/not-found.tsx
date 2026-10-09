@@ -1,3 +1,4 @@
+import { Clip } from "@/components/clips/Clip";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { fontClassName } from "@/lib/fonts";
@@ -8,6 +9,7 @@ export default function NotFound() {
       <body className="antialiased">
         <main id="content" className="bg-paper pt-24 pb-24">
           <Container>
+            <Clip name="lost" play="always" className="mb-8 w-24 text-navy" />
             <h1 className="max-w-[12ch] font-display text-[clamp(2.5rem,8vw,5rem)] leading-[0.95] tracking-[-0.05em] text-ink">
               Няма такава страница.
             </h1>
