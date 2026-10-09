@@ -1,9 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
+import { Clip, type ClipName } from "@/components/clips/Clip";
 import { Reveal } from "@/components/motion/Reveal";
 import { HeadingReveal } from "@/components/motion/HeadingReveal";
 
 type WhyItem = { display: string; body: string };
+
+// One clip per reason, in the order the reasons are written.
+const clips: ClipName[] = ["weeks", "offer", "after", "contact"];
 
 export async function WhyWavsy() {
   const t = await getTranslations("why");
@@ -21,6 +25,9 @@ export async function WhyWavsy() {
           {items.map((item, index) => (
             <li key={item.display} className="@container group bg-deep p-7 transition-colors duration-500 hover:bg-[#0d1a33] md:p-10">
               <Reveal delay={index * 0.06}>
+                {clips[index] ? (
+                  <Clip name={clips[index]} play="always" className="mb-7 w-20 text-cyan md:w-24" />
+                ) : null}
                 <p className="ai-gradient-text font-display text-[clamp(1.75rem,10cqi,3rem)] leading-[1.05] tracking-[-0.04em]">
                   {item.display}
                 </p>

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { HeadingReveal } from "@/components/motion/HeadingReveal";
 import { Marquee } from "@/components/ai/Marquee";
+import { ReelWall } from "@/components/home/ReelWall";
 import { WorkList } from "@/components/home/WorkList";
 import { currentLocale } from "@/lib/locale";
 import { projects } from "@/lib/projects";
@@ -19,6 +20,7 @@ export async function SelectedWork() {
   return (
     <>
       <Marquee title={t("marquee")} items={names} />
+      <ReelWall />
       {/* overflow-clip, not overflow-hidden: hidden would make the section a
           scroll container and stop the sticky preview on phones. */}
       <section className="relative overflow-clip bg-deep py-20 text-white md:py-28 lg:py-32">

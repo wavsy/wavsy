@@ -1,0 +1,133 @@
+.stage {
+  position: relative;
+  height: clamp(22rem, 62vh, 40rem);
+  overflow: hidden;
+  background: var(--deep);
+  perspective: 1500px;
+  /* Tuck under the next (also dark) section so no empty band is left. */
+  margin-bottom: -5rem;
+}
+
+.plane {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  gap: 1.5rem;
+  width: max(110vw, 78rem);
+  transform: translate(-50%, -50%) rotateX(54deg) rotateZ(-30deg) scale(1.25);
+  transform-style: preserve-3d;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: drift 46s linear infinite;
+  will-change: transform;
+}
+
+.column[data-reverse] {
+  animation-direction: reverse;
+}
+
+.screen {
+  overflow: hidden;
+  border-radius: 0.9rem;
+  background: #0d1830;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.12),
+    0 30px 60px -20px rgb(0 0 0 / 0.8),
+    0 0 50px -12px rgb(63 193 240 / 0.35);
+}
+
+.bar {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.45rem 0.6rem;
+}
+
+.bar i {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.25);
+}
+
+.bar i:last-child {
+  background: var(--cyan);
+}
+
+.view {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background: #101d3a;
+  container-type: size;
+}
+
+.view img {
+  position: absolute;
+  inset: 0 0 auto 0;
+  display: block;
+  width: 100%;
+  animation:
+    page ease-in-out infinite alternate,
+    appear 0.8s ease-out both;
+  will-change: transform;
+}
+
+.fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--deep), transparent 22%, transparent 70%, var(--deep)),
+    radial-gradient(120% 80% at 50% 50%, transparent 55%, var(--deep));
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+  to {
+    transform: translateY(calc(-50% - 0.75rem));
+  }
+}
+
+@keyframes page {
+  to {
+    transform: translateY(calc(-100% + 100cqh));
+  }
+}
+
+/* Phones: fewer, larger screens and no inner scrolling, to stay light. */
+@media (max-width: 767px) {
+  .plane {
+    width: 150vw;
+    gap: 0.9rem;
+  }
+
+  .column {
+    gap: 0.9rem;
+  }
+
+  .column:nth-child(n + 4) {
+    display: none;
+  }
+
+  .view img {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .column,
+  .view img {
+    animation: none;
+  }
+}

@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Clip } from "@/components/clips/Clip";
 import { Button } from "@/components/ui/Button";
 import { currentLocale } from "@/lib/locale";
 import { pathFor } from "@/lib/routes";
@@ -11,6 +12,7 @@ export async function EngagementModels() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <article className="rounded-3xl border border-mist bg-white p-7 sm:p-9">
+        <Clip name="handoff" play="always" className="mb-6 w-20 text-navy" />
         <h2 className="font-display text-3xl tracking-[-0.04em] md:text-4xl">
           {t("handoff.title")}
         </h2>
@@ -26,6 +28,7 @@ export async function EngagementModels() {
       <article className="relative overflow-hidden rounded-3xl bg-deep p-7 text-white shadow-[0_30px_70px_-30px_rgb(11_61_145/0.7)] sm:p-9">
         <div className="ai-aurora ai-aurora-soft pointer-events-none absolute inset-0" aria-hidden />
         <div className="relative">
+        <Clip name="maintenance" play="always" className="mb-6 w-20 text-cyan" />
         <p className="inline-flex rounded-full bg-cyan/15 px-3 py-1 text-[0.75rem] uppercase tracking-[0.14em] text-cyan">
           {t("recommended")}
         </p>
