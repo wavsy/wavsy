@@ -1,0 +1,678 @@
+.film {
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Everything inside a scene is paused until the film is on screen. */
+.film:not([data-playing]) .scene *,
+.film:not([data-playing]) .fill {
+  animation-play-state: paused;
+}
+
+/* Reduced motion: jump every animation to its end and hold the last frame. */
+.film[data-still] .scene * {
+  animation-duration: 0.01s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  animation-play-state: running;
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background: var(--deep);
+  box-shadow: 0 40px 90px -45px rgb(11 61 145 / 0.7);
+  container-type: size;
+}
+
+@media (min-width: 768px) {
+  .stage {
+    aspect-ratio: 16 / 8;
+  }
+}
+
+.glow {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(40% 50% at 22% 30%, rgb(11 61 145 / 0.75), transparent 70%),
+    radial-gradient(35% 45% at 80% 72%, rgb(63 193 240 / 0.35), transparent 70%);
+  animation: glow 14s ease-in-out infinite alternate;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 7cqh 6cqw;
+  animation: scene-in 0.6s var(--ease) both;
+}
+
+@keyframes glow {
+  to {
+    transform: translate(4%, -3%) scale(1.08);
+  }
+}
+
+@keyframes scene-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+/* ---------- Steps under the stage ---------- */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .steps {
+    gap: 1.5rem;
+  }
+}
+
+/* A tall hit area around a thin bar, so it is easy to tap. */
+.step {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 0;
+  cursor: pointer;
+}
+
+.track {
+  display: block;
+  position: relative;
+  height: 3px;
+  transition: background-color 0.3s;
+  overflow: hidden;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--navy) 14%, transparent);
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--navy), var(--cyan));
+  animation: fill linear both;
+}
+
+.step:hover .track {
+  background: color-mix(in srgb, var(--navy) 35%, transparent);
+}
+
+.step[aria-current] .track {
+  background: color-mix(in srgb, var(--navy) 22%, transparent);
+}
+
+.film[data-still] .glow {
+  animation: none;
+}
+
+.film[data-still] .fill {
+  animation: none;
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* ---------- Scene 1: the conversation ---------- */
+
+.talk {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2cqh;
+  width: min(100%, 44rem);
+}
+
+.message {
+  position: relative;
+  display: flex;
+}
+
+.ours {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 78%;
+  margin: 0;
+  padding: 2.4cqh 3.2cqh;
+  font-size: clamp(0.8125rem, 3.1cqh, 1.125rem);
+  line-height: 1.4;
+  color: #fff;
+  animation: pop 0.55s var(--ease) both;
+}
+
+.them {
+  border-radius: 3cqh 3cqh 3cqh 0.8cqh;
+  background: rgb(255 255 255 / 0.1);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12);
+}
+
+.us {
+  border-radius: 3cqh 3cqh 0.8cqh 3cqh;
+  background: linear-gradient(135deg, var(--navy), #1b7fd8 60%, var(--cyan));
+  box-shadow: 0 2cqh 5cqh -2cqh rgb(63 193 240 / 0.7);
+}
+
+/* "Typing" dots that sit where our message is about to appear. */
+.dots {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: flex;
+  gap: 1cqh;
+  padding: 2cqh 2.8cqh;
+  border-radius: 3cqh 3cqh 0.8cqh 3cqh;
+  background: rgb(255 255 255 / 0.12);
+  translate: 0 -50%;
+  animation: dots 1.1s ease-out both;
+}
+
+.dots b {
+  display: block;
+  width: 1.5cqh;
+  height: 1.5cqh;
+  border-radius: 50%;
+  background: #fff;
+  animation: dot 0.9s ease-in-out infinite;
+}
+
+.dots b:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dots b:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(3cqh) scale(0.92);
+  }
+}
+
+@keyframes dots {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  15%,
+  85% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes dot {
+  50% {
+    transform: translateY(-1cqh);
+    opacity: 0.5;
+  }
+}
+
+/* ---------- Scene 2: the offer ---------- */
+
+.offer {
+  perspective: 1200px;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 3cqh;
+  width: min(80cqw, 64cqh);
+  padding: 4.5cqh 4.5cqh 3.5cqh;
+  border-radius: 2.4cqh;
+  background: #fff;
+  box-shadow: 0 6cqh 12cqh -4cqh rgb(0 0 0 / 0.7);
+  animation: sheet 1s var(--ease) both;
+}
+
+.sheetHead {
+  display: flex;
+  align-items: center;
+  gap: 2cqh;
+  padding-bottom: 2.6cqh;
+  border-bottom: 1px solid var(--mist);
+}
+
+.sheetHead img {
+  width: 6cqh;
+  height: 6cqh;
+}
+
+.sheetHead strong {
+  font-family: var(--font-unbounded);
+  font-size: clamp(0.875rem, 3.4cqh, 1.25rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 2.4cqh;
+  animation: pop 0.5s var(--ease) both;
+}
+
+.row svg {
+  flex: none;
+  width: 4cqh;
+  height: 4cqh;
+  fill: none;
+}
+
+.row rect {
+  stroke: color-mix(in srgb, var(--navy) 30%, transparent);
+  stroke-width: 1.6;
+}
+
+.row path {
+  stroke: var(--navy);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16;
+  stroke-dashoffset: 16;
+  animation: draw 0.4s ease-out forwards;
+}
+
+.row span {
+  font-size: clamp(0.75rem, 2.9cqh, 1.0625rem);
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.sign {
+  align-self: flex-end;
+  width: 46%;
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  animation: draw 1.5s ease-in-out 3s forwards;
+}
+
+@keyframes sheet {
+  from {
+    opacity: 0;
+    transform: rotateX(38deg) rotateZ(-8deg) translateY(12cqh);
+  }
+  to {
+    transform: rotateX(8deg) rotateZ(-2deg);
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Scene 3: the build ---------- */
+
+.build {
+  display: grid;
+  gap: 2.4cqh;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .build {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3cqw;
+    align-items: center;
+  }
+}
+
+.editor,
+.preview {
+  overflow: hidden;
+  border-radius: 2cqh;
+  background: #0d1830;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.12),
+    0 5cqh 10cqh -4cqh rgb(0 0 0 / 0.8);
+}
+
+.chrome {
+  display: flex;
+  gap: 0.9cqh;
+  padding: 1.8cqh 2.2cqh;
+}
+
+.chrome i {
+  width: 1.4cqh;
+  height: 1.4cqh;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.25);
+}
+
+.chrome i:last-child {
+  background: var(--cyan);
+}
+
+.editor pre {
+  margin: 0;
+  padding: 1cqh 3cqh 3.5cqh;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(0.5625rem, 2.3cqh, 0.9375rem);
+  line-height: 1.55;
+  color: #b9d7ff;
+}
+
+.line {
+  display: block;
+  width: fit-content;
+  overflow: hidden;
+  white-space: pre;
+  border-right: 2px solid transparent;
+  animation:
+    type 0.4s steps(22) both,
+    caret 0.4s steps(1) both;
+}
+
+.line:nth-child(n + 3):nth-child(-n + 6) {
+  color: #7fe0ff;
+}
+
+.canvas {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6cqh;
+  aspect-ratio: 16 / 10;
+  padding: 2.4cqh;
+  background: #fff;
+}
+
+.block {
+  flex: 1;
+  border-radius: 1.2cqh;
+  background: var(--mist);
+  transform-origin: left top;
+  animation: place 0.5s var(--ease) both;
+}
+
+.blockHero {
+  flex: 2.4;
+  background: linear-gradient(135deg, var(--navy), var(--cyan));
+}
+
+.blockWide {
+  flex: 0.7;
+  background: var(--ink);
+}
+
+.blockRow {
+  display: flex;
+  flex: 1.3;
+  gap: 1.6cqh;
+}
+
+.real {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  animation: develop 0.9s ease-out 3.5s both;
+}
+
+@keyframes type {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 40ch;
+  }
+}
+
+@keyframes caret {
+  from {
+    border-right-color: var(--cyan);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes place {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(2cqh);
+  }
+}
+
+@keyframes develop {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ---------- Scene 4: the launch ---------- */
+
+.launch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7cqh;
+  width: 100%;
+  height: 100%;
+  perspective: 1400px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4cqh;
+}
+
+.chips li {
+  padding: 1.1cqh 2.2cqh;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
+  font-size: clamp(0.6875rem, 2.5cqh, 0.875rem);
+  color: #fff;
+  animation: pop 0.5s var(--ease) both;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30cqh;
+  height: 30cqh;
+  margin: -15cqh 0 0 -15cqh;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  animation: ring 2.6s ease-out infinite;
+}
+
+/* Laptop and phone are one group, centred as a whole: the phone hangs over
+   the laptop's right edge, so the group is nudged left by half of that. */
+.devices {
+  position: relative;
+  width: min(70cqw, 92cqh);
+  margin-right: 7cqw;
+}
+
+.laptop {
+  overflow: hidden;
+  border-radius: 2cqh;
+  background: #0d1830;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.14),
+    0 6cqh 14cqh -5cqh rgb(0 0 0 / 0.85),
+    0 0 12cqh -3cqh rgb(63 193 240 / 0.6);
+  animation: rise-3d 1s var(--ease) both;
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqh;
+  padding: 1.6cqh 2.4cqh;
+  font-size: clamp(0.5625rem, 2.2cqh, 0.8125rem);
+  color: rgb(255 255 255 / 0.8);
+}
+
+.address em {
+  margin-left: auto;
+  padding: 0.5cqh 1.6cqh;
+  border-radius: 999px;
+  background: rgb(55 224 139 / 0.16);
+  font-style: normal;
+  color: #7df0b4;
+}
+
+.address b {
+  width: 1.4cqh;
+  height: 1.4cqh;
+  border-radius: 50%;
+  background: #37e08b;
+  box-shadow: 0 0 0 0 rgb(55 224 139 / 0.7);
+  animation: live 1.6s ease-out infinite;
+}
+
+.screenView {
+  position: relative;
+  aspect-ratio: 16 / 9.4;
+  overflow: hidden;
+  background: #fff;
+  container-type: size;
+}
+
+.screenView img {
+  position: absolute;
+  inset: 0 0 auto 0;
+  display: block;
+  width: 100%;
+  animation: scroll-page 9s ease-in-out 1s infinite alternate;
+}
+
+.phone {
+  position: absolute;
+  right: -7cqw;
+  bottom: -4cqh;
+  width: min(17cqw, 24cqh);
+  padding: 0.9cqh;
+  border-radius: 3cqh;
+  background: #0d1830;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.18),
+    0 5cqh 10cqh -3cqh rgb(0 0 0 / 0.9);
+  animation: phone-in 0.9s var(--ease) 0.5s both;
+}
+
+.phone .screenView {
+  aspect-ratio: 9 / 18;
+  border-radius: 2.2cqh;
+}
+
+.phone .screenView img {
+  animation-duration: 12s;
+}
+
+/* Phones: the laptop on top, the phone centred under it and overlapping. */
+@media (max-width: 767px) {
+  .launch {
+    gap: 4cqh;
+  }
+
+  .devices {
+    width: 86cqw;
+    margin: 0 0 24cqh;
+  }
+
+  .phone {
+    right: 50%;
+    bottom: -24cqh;
+    width: 28cqw;
+    margin-right: -14cqw;
+  }
+
+  .bubble {
+    max-width: 88%;
+  }
+}
+
+@keyframes rise-3d {
+  from {
+    opacity: 0;
+    transform: rotateX(50deg) translateY(16cqh) scale(0.8);
+  }
+}
+
+@keyframes phone-in {
+  from {
+    opacity: 0;
+    transform: translateY(14cqh) rotate(8deg);
+  }
+}
+
+@keyframes scroll-page {
+  to {
+    transform: translateY(calc(-100% + 100cqh));
+  }
+}
+
+@keyframes ring {
+  from {
+    opacity: 0.7;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3.4);
+  }
+}
+
+@keyframes live {
+  to {
+    box-shadow: 0 0 0 1.4cqh rgb(55 224 139 / 0);
+  }
+}
+
+@media (min-width: 768px) {
+  .editor pre {
+    line-height: 1.75;
+  }
+}
+
+@media (max-width: 767px) {
+  .scene {
+    padding: 4.5cqh 5cqw;
+  }
+}

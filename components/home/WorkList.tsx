@@ -5,6 +5,7 @@ import { umamiEvent } from "@/lib/analytics";
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { useTranslations } from "next-intl";
+import { LivingCover } from "@/components/portfolio/LivingCover";
 import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
 import { cn } from "@/lib/cn";
 import type { Project } from "@/lib/projects";
@@ -23,6 +24,9 @@ export function WorkList({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<number | null>(null);
   const [canHover, setCanHover] = useState(false);
   const [scrolled, setScrolled] = useState(0);
+  // True once the list has actually been scrolled to, so the phone preview
+  // does not start loading a recording while the visitor is still at the top.
+  const [reached, setReached] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 260, damping: 28, mass: 0.6 });
@@ -44,6 +48,7 @@ export function WorkList({ projects }: { projects: Project[] }) {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
+            setReached(true);
             setScrolled(Number((entry.target as HTMLElement).dataset.row));
           }
         }
@@ -88,6 +93,7 @@ export function WorkList({ projects }: { projects: Project[] }) {
                 sizes="(min-width: 768px) 700px, 100vw"
                 className="object-cover object-top"
               />
+              <LivingCover project={project} active={!canHover && reached && scrolled === index} />
             </motion.div>
           ))}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-3 bg-gradient-to-t from-deep/90 to-transparent p-4 pt-10">
@@ -177,17 +183,22 @@ export function WorkList({ projects }: { projects: Project[] }) {
           >
             <div className="relative h-[240px] w-[384px] overflow-hidden rounded-[18px] bg-deep shadow-[0_40px_90px_-30px_rgb(0_0_0/0.8)] ring-1 ring-white/15">
               {projects.map((project, index) => (
-                <Image
+                <div
                   key={project.slug}
-                  src={project.image}
-                  alt=""
-                  fill
-                  sizes="384px"
                   className={cn(
-                    "object-cover object-top transition-opacity duration-300",
+                    "absolute inset-0 transition-opacity duration-300",
                     active === index ? "opacity-100" : "opacity-0",
                   )}
-                />
+                >
+                  <Image
+                    src={project.image}
+                    alt=""
+                    fill
+                    sizes="384px"
+                    className="object-cover object-top"
+                  />
+                  <LivingCover project={project} active={showPreview && active === index} />
+                </div>
               ))}
             </div>
           </motion.div>

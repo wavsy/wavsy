@@ -4,6 +4,8 @@ import Image from "next/image";
 import { umamiEvent } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 import { HoverLift } from "@/components/motion/HoverLift";
+import { LivingCover } from "@/components/portfolio/LivingCover";
+import { useCoverActive } from "@/components/portfolio/useCoverActive";
 import type { Project } from "@/lib/projects";
 
 type PortfolioCardProps = {
@@ -12,6 +14,7 @@ type PortfolioCardProps = {
 };
 
 export function PortfolioCard({ project, index }: PortfolioCardProps) {
+  const { ref, active } = useCoverActive<HTMLElement>();
   const work = useTranslations("work");
   const t = useTranslations("portfolio");
 
@@ -20,7 +23,7 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
   const summary = project ? t(`projects.${project.slug}.summary`) : work("emptyHint");
 
   const body = (
-    <article data-center className="spotlight-card conic-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-mist bg-white p-3 transition-shadow duration-300 hover:shadow-[0_30px_70px_-35px_rgb(11_61_145/0.55)]">
+    <article ref={ref} data-center className="spotlight-card conic-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-mist bg-white p-3 transition-shadow duration-300 hover:shadow-[0_30px_70px_-35px_rgb(11_61_145/0.55)]">
       <div className="relative aspect-[16/10] shrink-0 overflow-hidden rounded-2xl bg-mist">
         {project ? (
           <div className="view-zoom absolute inset-0">
@@ -32,6 +35,7 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
               priority={index < 2}
               className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
             />
+            <LivingCover project={project} active={active} />
           </div>
         ) : (
           <div className="absolute inset-0 bg-[linear-gradient(135deg,#0B3D91_0%,transparent_42%,#3FC1F0_100%)] opacity-[0.18]" />

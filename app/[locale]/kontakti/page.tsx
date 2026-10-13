@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { umamiEvent } from "@/lib/analytics";
+import { Clip } from "@/components/clips/Clip";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { InquiryForm } from "@/components/contact/InquiryForm";
@@ -31,6 +32,7 @@ export default async function ContactPage({ params }: PageProps) {
             <InquiryForm viberHref={buildChatUrl("viber")} />
           </div>
           <aside className="ai-gradient-border h-fit rounded-3xl p-7 lg:mt-0">
+            <Clip name="send" play="always" className="mb-6 w-20 text-navy" />
             <p className="text-[0.75rem] uppercase tracking-[0.14em] text-muted">
               {t("emailLabel")}
             </p>

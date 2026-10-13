@@ -34,9 +34,10 @@ Items in brackets stay out of the public site until confirmed.
 - No Edge middleware: locale routing uses `app/[locale]` plus `next.config` rewrites, so Vercel does not load an ESM middleware file.
 - AI page (KAN-48): `/ai`, `/en/ai`, `/de/ki`, linked from the header, mobile menu and footer as „AI системи“ / „AI systems“ / „KI-Systeme“. Its copy addresses the reader formally („Вие“), unlike the rest of the site. The „strictly custom systems“ message is stated once (the hero lead) and proven once (the off-the-shelf vs. made-to-fit comparison); other sections show it through specifics instead of repeating it. The chat in the hero is labelled as a demo, not a real client. КИБО - 2 is named as the live assistant. The deliverables promise a monitoring dashboard, team training and a monthly report.
 - Motion on first paint: nothing above the fold starts hidden, and components that change with reduced motion read it only after mount (`useReducedMotionSafe`), so the server HTML and the first client render always match.
+- Living portfolio (2026-10-09): portfolio covers come alive on hover, keyboard focus, or when centred on a touch screen. The still thumbnail turns into a browser frame in which a recording of the client's live site scrolls, with a phone beside it showing the mobile version. The recordings are tall screenshots in `public/portfolio/tour/` (re-made with `scripts/record-tours.mjs` after a client's site changes), requested only when a card first becomes active. The home page adds a tilted wall of the same sites above „Избрани проекти“ (light copies in `public/portfolio/reel/`, loaded only after the page has loaded and the wall is near) and a four-scene film in „Как работим“, one scene per step. The film's conversation is an illustration, not a quote from a client; its subject is the first project in `lib/projects.ts` (Автомивка Сторм), shown as it really is. Small line-drawn clips (`components/clips/Clip.tsx`) sit in the service rows, „Защо Wavsy“, the two engagement models, the inquiry form and the 404 pages. All of it is drawn in code, with no video files, and stands still with reduced motion.
 
 ## Open
 
 - [РЕШЕНИЕ: клиентски лога]
 - [РЕШЕНИЕ: клиентски отзиви]
-- [РЕШЕНИЕ: човешка редакция на немския превод]
+- [РЕШЕНИЕ: човешка редакция на немския превод] (includes the film texts under `process.film`)
