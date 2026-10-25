@@ -691,6 +691,11 @@
         "industry": "Sanitär & Heizung",
         "summary": "Eine Website für ein Bauunternehmen in Kasanlak — Sanitär, Heizung und Wärmepumpen, mit einem Chat-Assistenten, der Besucher zur passenden Leistung führt."
       },
+      "cleantime": {
+        "name": "CleanTime",
+        "industry": "Chemische Reinigung",
+        "summary": "Eine Website für eine chemische Reinigung und Wäscherei in Sofia — zwei Filialen im Zentrum, Abholung und Lieferung bis zur Haustür, auf Bulgarisch, Englisch und Deutsch."
+      },
       "storm": {
         "name": "Storm Autowäsche",
         "industry": "Autowäsche",
@@ -700,6 +705,11 @@
         "name": "TodorovNET",
         "industry": "Eigenes Produkt · Website und App",
         "summary": "Live-Zeitmessung und Ergebnisse für Hard Enduro. Die Offiziellen haben eine eigene Handy-App, die Zeiten auch ohne Netz erfasst. Die Wertung entsteht automatisch nach den Verbandsregeln, und die offiziellen Protokolle liegen schon am Ziel als PDF bereit."
+      },
+      "structlab": {
+        "name": "StructLab",
+        "industry": "Eigenes Produkt · Lernplattform",
+        "summary": "Eine Lernplattform für Studierende des Bauingenieurwesens. Jedes Kapitel lässt sich in zwei Modi lesen — leicht, mit Beispielen aus dem Alltag, oder ausführlich, mit den Herleitungen. In den Laboren ändern Studierende die Zahlen, und die Lösung wird Schritt für Schritt neu berechnet. Persönliche Aufgaben entstehen aus der Matrikelnummer, und die verteilte Wiederholung bringt Fragen zurück, kurz bevor sie vergessen werden."
       },
       "cacao": {
         "name": "Cacao Cartel",

@@ -690,6 +690,11 @@
         "industry": "Plumbing & heating",
         "summary": "A site for a building company in Kazanlak — plumbing, heating and heat pumps, with a chat assistant that points visitors to the right service."
       },
+      "cleantime": {
+        "name": "CleanTime",
+        "industry": "Dry cleaning",
+        "summary": "A site for a dry cleaner and laundry in Sofia — two shops in the centre, pickup and delivery to the door, in Bulgarian, English and German."
+      },
       "storm": {
         "name": "Storm Car Wash",
         "industry": "Car wash",
@@ -699,6 +704,11 @@
         "name": "TodorovNET",
         "industry": "Our own product · site and app",
         "summary": "Live timing and results for hard enduro. Officials get their own phone app that records times even without coverage. Standings compute themselves under the federation's rules, and official sheets are ready as PDFs at the finish."
+      },
+      "structlab": {
+        "name": "StructLab",
+        "industry": "Our own product · learning platform",
+        "summary": "A learning platform for civil engineering students. Every chapter reads in two modes — light, with everyday examples, or detailed, with the derivations. In the labs students change the numbers and the solution is recalculated step by step. Personal assignments are generated from the student number, and spaced repetition brings questions back just before they are forgotten."
       },
       "cacao": {
         "name": "Cacao Cartel",
