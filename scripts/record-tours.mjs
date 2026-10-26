@@ -22,8 +22,10 @@ const sites = {
   glenz: { url: "https://www.glenz-reinigung.com/" },
   quezher: { url: "https://manufacturas-quezher.vercel.app/" },
   "kibo-2": { url: "https://kibo-2.vercel.app/" },
+  cleantime: { url: "https://cleantimesofia.com/bg" },
   dimitar: { url: "https://portfolio-theta-dun-ejq1lqeyg0.vercel.app/" },
   todorovnet: { url: "https://todorovnet.vercel.app/", crop: { desktop: 1450, mobile: 1000 } },
+  structlab: { url: "https://structlab-ivory.vercel.app/" },
   "cacao-cartel": { url: "https://cacao-cartel.vercel.app/", crop: { desktop: 3000, mobile: 1700 } },
 };
 

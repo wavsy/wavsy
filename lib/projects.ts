@@ -1,4 +1,4 @@
-export const projectIds = ["storm", "glenz", "quezher", "kibo2", "dimitar", "todorovnet", "cacao"] as const;
+export const projectIds = ["storm", "glenz", "quezher", "kibo2", "cleantime", "dimitar", "todorovnet", "structlab", "cacao"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
@@ -51,6 +51,14 @@ export const projects: Project[] = [
     tourMobile: { src: "/portfolio/tour/kibo-2-mobile.webp", ratio: 7.179 },
   },
   {
+    slug: "cleantime",
+    url: "https://cleantimesofia.com/",
+    image: "/portfolio/cleantime.jpg",
+    tour: { src: "/portfolio/tour/cleantime.webp", ratio: 5.576 },
+    reel: { src: "/portfolio/reel/cleantime.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/cleantime-mobile.webp", ratio: 7.179 },
+  },
+  {
     slug: "dimitar",
     url: "https://portfolio-theta-dun-ejq1lqeyg0.vercel.app/",
     image: "/portfolio/dimitar.jpg",
@@ -66,6 +74,15 @@ export const projects: Project[] = [
     tour: { src: "/portfolio/tour/todorovnet.webp", ratio: 1.133 },
     reel: { src: "/portfolio/reel/todorovnet.webp", ratio: 1.134 },
     tourMobile: { src: "/portfolio/tour/todorovnet-mobile.webp", ratio: 2.564 },
+  },
+  // Also our own product, labelled like TodorovNET. Sign-in is by invitation, so the link opens the public page with the demo.
+  {
+    slug: "structlab",
+    url: "https://structlab-ivory.vercel.app/",
+    image: "/portfolio/structlab.jpg",
+    tour: { src: "/portfolio/tour/structlab.webp", ratio: 4.316 },
+    reel: { src: "/portfolio/reel/structlab.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/structlab-mobile.webp", ratio: 7.179 },
   },
   // A concept piece, not a client (KAN-43). Kept last and labelled as a concept.
   {
