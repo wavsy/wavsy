@@ -48,6 +48,7 @@ export function MobileNav({ open, onClose, locale, pathname }: MobileNavProps) {
     { href: pathFor(locale, "ai"), label: t("ai") },
     { href: pathFor(locale, "portfolio"), label: t("portfolio") },
     { href: pathFor(locale, "about"), label: t("about") },
+    { href: pathFor(locale, "careers"), label: t("careers") },
     { href: pathFor(locale, "contact"), label: t("contact") },
   ];
 

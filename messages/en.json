@@ -13,11 +13,11 @@
     "contactTitle": "Contact — Wavsy",
     "contactDescription": "Tell us what you need. We reply within 2 calendar days.",
     "privacyTitle": "Privacy — Wavsy",
-    "privacyDescription": "How Wavsy collects and uses enquiry data.",
+    "privacyDescription": "How Wavsy collects and uses enquiry and application data.",
     "cookiesTitle": "Cookies — Wavsy",
     "cookiesDescription": "Cookie information for wavsy.dev.",
     "careersTitle": "Careers — Wavsy",
-    "careersDescription": "Working with Wavsy. Unsolicited applications by email.",
+    "careersDescription": "Sales & Business Development at Wavsy — fully remote, commission only, with training from the founders. Or write to us without a listing.",
     "ogImageAlt": "The Wavsy slogan “Website that works for you.” on a dark navy background with a wave and the address wavsy.dev"
   },
   "nav": {
@@ -26,6 +26,7 @@
     "ai": "AI systems",
     "portfolio": "Portfolio",
     "about": "About",
+    "careers": "Careers",
     "contact": "Contact",
     "cta": "Request a quote",
     "openMenu": "Open menu",
@@ -620,19 +621,19 @@
       },
       "data": {
         "title": "What we collect",
-        "body": "From the enquiry form: name, company if you give it, email and/or phone, project type, and your message. If you write to us by email, we receive what you send."
+        "body": "From the enquiry form: name, company if you give it, email and/or phone, project type, and your message. If you write to us by email, we receive what you send. From the careers form: name, email, phone if you give it, where you are, LinkedIn if you give it, how you want to work, and your story. You do not upload a CV on the site."
       },
       "use": {
         "title": "How we use it",
-        "body": "Only to answer you — usually within 2 calendar days — and to do the work if we start a project together."
+        "body": "Only to answer you — usually within 2 calendar days — and to do the work if we start a project together. We use an application only to decide whether to talk, and for those conversations."
       },
       "share": {
         "title": "Who we share with",
-        "body": "We do not sell your data. If you send the enquiry through WhatsApp, the message is opened there and follows WhatsApp’s own terms. Viber opens a chat without sending the form."
+        "body": "We do not sell your data. If you send the enquiry through WhatsApp, the message is opened there and follows WhatsApp’s own terms. Viber opens a chat without sending the form. An application is sent to our email through FormSubmit. We do not keep it in a database on the site."
       },
       "keep": {
         "title": "How long we keep it",
-        "body": "We keep an enquiry while we handle it, then delete it, unless we work together and need it for the project."
+        "body": "We keep an enquiry while we handle it, then delete it, unless we work together and need it for the project. An application stays in the inbox while the conversation is open. If we do not continue, we delete it."
       },
       "cookies": {
         "title": "Cookies",
@@ -658,8 +659,140 @@
   },
   "careers": {
     "title": "Careers",
-    "lead": "For unsolicited applications, send an email to wavsy.dev@gmail.com",
-    "imageAlt": "People from different backgrounds hugging and smiling together"
+    "lead": "Come work with us. You talk to us, not to a hiring department.",
+    "imageAlt": "People from different backgrounds hugging and smiling together",
+    "openingsTitle": "Open roles",
+    "openingsLead": "Sales & Business Development is open. If you want to work with us in another way, write and tell us.",
+    "or": "or",
+    "view": "See the role",
+    "write": "Write to us",
+    "close": "Close",
+    "schedules": {
+      "full": "Full-time",
+      "part": "Part-time",
+      "flex": "Flexible hours"
+    },
+    "sales": {
+      "eyebrow": "Open role",
+      "title": "Sales & Business Development",
+      "lead": "Help businesses grow with better digital solutions.",
+      "apply": "Apply for this role",
+      "facts": [
+        "Fully remote",
+        "Clients worldwide, many of them in Bulgaria",
+        "Full-time, part-time, or flexible hours",
+        "Sales experience is welcome, not required"
+      ],
+      "whyTitle": "Why join Wavsy",
+      "why": [
+        {
+          "title": "Learn directly from the founders",
+          "body": "Gain practical sales experience and receive hands-on guidance."
+        },
+        {
+          "title": "Work on real business opportunities",
+          "body": "Help companies solve problems through websites, software, and automation."
+        },
+        {
+          "title": "Flexibility and ownership",
+          "body": "Work remotely, organize your availability, and take responsibility for your own opportunities."
+        }
+      ],
+      "points": [
+        {
+          "label": "What you'll do",
+          "items": [
+            "Find and connect with prospective clients.",
+            "Lead discovery calls to understand their needs.",
+            "Identify opportunities where Wavsy can deliver value.",
+            "Explain our digital services, with technical support from the team.",
+            "Keep our CRM organized and manage follow-ups.",
+            "Help prepare proposals, negotiate, and close deals.",
+            "Build lasting relationships with clients."
+          ]
+        },
+        {
+          "label": "Where you'll work",
+          "body": "Fully remote. We work with businesses worldwide, and many of our clients are in Bulgaria."
+        },
+        {
+          "label": "Schedule",
+          "body": "Full-time, part-time, or flexible hours. You say which fits when you apply. We are hiring more than one person. Hours are not guaranteed."
+        },
+        {
+          "label": "Compensation",
+          "tone": "pay",
+          "body": "Commission only, with no fixed salary. The percentage and how it is calculated are agreed in writing before you start. Clients typically pay in two installments, and your earned commission arrives after each payment is received.",
+          "items": [
+            "50% when the project begins.",
+            "50% when the project is completed."
+          ]
+        },
+        {
+          "label": "Where clients come from",
+          "body": "Both sides. You can bring your own contacts and open new conversations. Wavsy can also pass you leads. There is no set number of leads."
+        },
+        {
+          "label": "Who we're looking for",
+          "body": "Previous sales experience is an advantage, not a requirement.",
+          "items": [
+            "Ambitious, proactive people.",
+            "Friendly but professional communicators.",
+            "People comfortable starting conversations.",
+            "Organized people who follow through.",
+            "People interested in business and technology.",
+            "People willing to learn and get better."
+          ]
+        },
+        {
+          "label": "Training and mentorship",
+          "body": "You work directly with Wavsy's founders. We teach you discovery calls, how to handle objections, the CRM, proposals, and how a deal closes. We sit with you on early conversations, give you practical feedback, and help you get steady."
+        }
+      ]
+    },
+    "open": {
+      "eyebrow": "No listing needed",
+      "title": "Write to us anyway",
+      "summary": "If sales is not your thing, there is still room for a conversation. Tell us what you can do and what you want to do with us.",
+      "points": [
+        {
+          "label": "An open door",
+          "body": "We do not have a listing for every kind of person. If this feels like your place, write. We read every story."
+        }
+      ]
+    },
+    "form": {
+      "heading": "Your application",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "place": "Where you are",
+      "linkedin": "LinkedIn",
+      "optionalNote": "Phone, where you are, and LinkedIn are optional.",
+      "schedule": "How you want to work",
+      "story": "Your story",
+      "storyHintSales": "In your own words. Why you, why now, what pulls you toward this. We ask for a CV later, if we continue.",
+      "storyHintOpen": "In your own words. What you can do, and what you want to do with us. We ask for a CV later, if we continue.",
+      "submit": "Send the application",
+      "pending": "Sending…",
+      "successTitle": "We have it.",
+      "success": "We will write to you within 2 calendar days.",
+      "privacy": "This goes only to us, so we can write back. More is in the",
+      "privacyLink": "privacy policy",
+      "privacyNewTab": "Privacy policy (opens in a new tab)"
+    },
+    "errors": {
+      "name": "Write your name.",
+      "email": "That email does not look valid.",
+      "phone": "That phone number does not look valid.",
+      "place": "That is a bit long.",
+      "linkedin": "That does not look like a LinkedIn profile.",
+      "schedule": "Choose how you want to work.",
+      "story": "Tell us a little more, in your own words.",
+      "config": "The form is not set up. Write to us at wavsy.dev@gmail.com",
+      "activate": "One confirmation is waiting in the inbox. Open wavsy.dev@gmail.com, activate the form, then send this again.",
+      "generic": "Something went wrong. Try again, or write to the email."
+    }
   },
   "portfolio": {
     "title": "Portfolio",
