@@ -20,7 +20,17 @@ export function SmoothScroll() {
     };
     frame = requestAnimationFrame(loop);
 
+    // Dialogs set data-scroll-lock so the page stays put while a popup scrolls.
+    const root = document.documentElement;
+    const syncLock = () => {
+      if (root.hasAttribute("data-scroll-lock")) lenis.stop();
+      else lenis.start();
+    };
+    const observer = new MutationObserver(syncLock);
+    observer.observe(root, { attributes: true, attributeFilter: ["data-scroll-lock"] });
+
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(frame);
       lenis.destroy();
     };

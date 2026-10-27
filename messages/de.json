@@ -14,11 +14,11 @@
     "contactTitle": "Kontakt — Wavsy",
     "contactDescription": "Erzähl uns, was du brauchst. Wir antworten innerhalb von 2 Kalendertagen.",
     "privacyTitle": "Datenschutz — Wavsy",
-    "privacyDescription": "Wie Wavsy Anfragedaten erhebt und verwendet.",
+    "privacyDescription": "Wie Wavsy Daten aus Anfragen und Bewerbungen erhebt und verwendet.",
     "cookiesTitle": "Cookies — Wavsy",
     "cookiesDescription": "Cookie-Informationen für wavsy.dev.",
     "careersTitle": "Karriere — Wavsy",
-    "careersDescription": "Arbeiten mit Wavsy. Initiativbewerbungen per E-Mail.",
+    "careersDescription": "Vertrieb & Business Development bei Wavsy — komplett remote, nur Provision, mit Anleitung von den Gründern. Oder schreib uns ohne Anzeige.",
     "ogImageAlt": "Der Wavsy-Slogan „Eine Website, die für dich arbeitet.“ auf dunkelblauem Hintergrund mit einer Welle und der Adresse wavsy.dev"
   },
   "nav": {
@@ -27,6 +27,7 @@
     "ai": "KI-Systeme",
     "portfolio": "Portfolio",
     "about": "Über uns",
+    "careers": "Karriere",
     "contact": "Kontakt",
     "cta": "Angebot anfragen",
     "openMenu": "Menü öffnen",
@@ -621,19 +622,19 @@
       },
       "data": {
         "title": "Was wir erheben",
-        "body": "Über das Anfrageformular: Name, Firma falls angegeben, E-Mail und/oder Telefon, Projektart und deine Nachricht. Wenn du uns per E-Mail schreibst, erhalten wir, was du sendest."
+        "body": "Über das Anfrageformular: Name, Firma falls angegeben, E-Mail und/oder Telefon, Projektart und deine Nachricht. Wenn du uns per E-Mail schreibst, erhalten wir, was du sendest. Über das Karriereformular: Name, E-Mail, Telefon falls angegeben, wo du bist, LinkedIn falls angegeben, wie du arbeiten willst und deine Geschichte. Einen Lebenslauf lädst du auf der Website nicht hoch."
       },
       "use": {
         "title": "Wofür wir sie nutzen",
-        "body": "Nur um dir zu antworten — in der Regel innerhalb von 2 Kalendertagen — und für die Arbeit, wenn wir ein Projekt beginnen."
+        "body": "Nur um dir zu antworten — in der Regel innerhalb von 2 Kalendertagen — und für die Arbeit, wenn wir ein Projekt beginnen. Eine Bewerbung nutzen wir nur, um zu entscheiden, ob wir sprechen, und für diese Gespräche."
       },
       "share": {
         "title": "Mit wem wir sie teilen",
-        "body": "Wir verkaufen deine Daten nicht. Wenn du die Anfrage über WhatsApp sendest, öffnet sich die Nachricht dort und es gelten die Bedingungen von WhatsApp. Viber öffnet einen Chat, ohne das Formular zu senden."
+        "body": "Wir verkaufen deine Daten nicht. Wenn du die Anfrage über WhatsApp sendest, öffnet sich die Nachricht dort und es gelten die Bedingungen von WhatsApp. Viber öffnet einen Chat, ohne das Formular zu senden. Eine Bewerbung geht über FormSubmit an unsere E-Mail. Wir speichern sie nicht in einer Datenbank auf der Website."
       },
       "keep": {
         "title": "Wie lange wir sie behalten",
-        "body": "Wir behalten eine Anfrage, solange wir sie bearbeiten, und löschen sie danach — außer wir arbeiten zusammen und brauchen sie für das Projekt."
+        "body": "Wir behalten eine Anfrage, solange wir sie bearbeiten, und löschen sie danach — außer wir arbeiten zusammen und brauchen sie für das Projekt. Eine Bewerbung bleibt im Postfach, solange das Gespräch läuft. Wenn wir nicht weitermachen, löschen wir sie."
       },
       "cookies": {
         "title": "Cookies",
@@ -659,8 +660,140 @@
   },
   "careers": {
     "title": "Karriere",
-    "lead": "Für Initiativbewerbungen schreib an wavsy.dev@gmail.com",
-    "imageAlt": "Menschen unterschiedlicher Herkunft umarmen sich und lächeln gemeinsam"
+    "lead": "Komm und arbeite mit uns. Du sprichst mit uns, nicht mit einer Personalabteilung.",
+    "imageAlt": "Menschen unterschiedlicher Herkunft umarmen sich und lächeln gemeinsam",
+    "openingsTitle": "Offene Stellen",
+    "openingsLead": "Die offene Rolle ist Vertrieb & Business Development. Wenn du auf andere Art mit uns arbeiten willst, schreib und sag uns wie.",
+    "or": "oder",
+    "view": "Stelle ansehen",
+    "write": "Schreib uns",
+    "close": "Schließen",
+    "schedules": {
+      "full": "Vollzeit",
+      "part": "Teilzeit",
+      "flex": "Flexible Zeiten"
+    },
+    "sales": {
+      "eyebrow": "Offene Stelle",
+      "title": "Vertrieb & Business Development",
+      "lead": "Hilf Unternehmen, mit besseren digitalen Lösungen zu wachsen.",
+      "apply": "Für diese Rolle bewerben",
+      "facts": [
+        "Komplett remote",
+        "Kunden weltweit, viele davon in Bulgarien",
+        "Vollzeit, Teilzeit oder flexible Zeiten",
+        "Vertriebserfahrung ist willkommen, keine Bedingung"
+      ],
+      "whyTitle": "Warum Wavsy",
+      "why": [
+        {
+          "title": "Du lernst direkt von den Gründern",
+          "body": "Praktische Vertriebserfahrung und Begleitung aus der Nähe."
+        },
+        {
+          "title": "Du arbeitest an echten Chancen",
+          "body": "Du hilfst Unternehmen, Probleme mit Websites, Software und Automatisierung zu lösen."
+        },
+        {
+          "title": "Flexibilität und eigene Verantwortung",
+          "body": "Du arbeitest remote, teilst dir deine Zeit ein und trägst deine eigenen Chancen."
+        }
+      ],
+      "points": [
+        {
+          "label": "Was du machst",
+          "items": [
+            "Du findest mögliche Kunden und nimmst Kontakt auf.",
+            "Du führst Bedarfsgespräche, um zu verstehen, was sie brauchen.",
+            "Du erkennst, wo Wavsy einen echten Nutzen bringen kann.",
+            "Du erklärst unsere digitalen Leistungen, mit technischer Hilfe vom Team.",
+            "Du hältst das CRM in Ordnung und kümmerst dich um die Nachfassaktionen.",
+            "Du hilfst bei Angeboten, verhandelst und schließt Aufträge ab.",
+            "Du baust dauerhafte Beziehungen zu Kunden auf."
+          ]
+        },
+        {
+          "label": "Wo du arbeitest",
+          "body": "Komplett remote. Wir arbeiten mit Unternehmen weltweit, und viele unserer Kunden sind in Bulgarien."
+        },
+        {
+          "label": "Zeiten",
+          "body": "Vollzeit, Teilzeit oder flexible Zeiten. Du sagst bei der Bewerbung, was dir passt. Wir suchen mehr als eine Person. Stunden sind nicht garantiert."
+        },
+        {
+          "label": "Vergütung",
+          "tone": "pay",
+          "body": "Nur Provision, ohne festes Gehalt. Der Prozentsatz und die Berechnung werden schriftlich vereinbart, bevor du anfängst. Kunden zahlen üblicherweise in zwei Teilen, und deine verdiente Provision kommt nach jedem Zahlungseingang.",
+          "items": [
+            "50 % zu Projektbeginn.",
+            "50 % zum Projektabschluss."
+          ]
+        },
+        {
+          "label": "Woher die Kunden kommen",
+          "body": "Von beiden Seiten. Du kannst eigene Kontakte mitbringen und neue Gespräche öffnen. Wavsy kann dir auch Anfragen weitergeben. Eine feste Anzahl gibt es nicht."
+        },
+        {
+          "label": "Wen wir suchen",
+          "body": "Bisherige Vertriebserfahrung ist ein Vorteil, keine Bedingung.",
+          "items": [
+            "Ambitionierte, initiative Menschen.",
+            "Freundliche und dabei professionelle Gesprächspartner.",
+            "Menschen, denen es leichtfällt, ein Gespräch zu beginnen.",
+            "Geordnete Menschen, die Dinge zu Ende bringen.",
+            "Menschen mit Interesse an Business und Technologie.",
+            "Menschen, die lernen und besser werden wollen."
+          ]
+        },
+        {
+          "label": "Ausbildung und Mentoring",
+          "body": "Du arbeitest direkt mit den Gründern von Wavsy. Wir bringen dir Bedarfsgespräche bei, den Umgang mit Einwänden, das CRM, Angebote und wie ein Auftrag abgeschlossen wird. Wir sind bei den ersten Gesprächen dabei, geben dir konkretes Feedback und helfen dir, sicher zu werden."
+        }
+      ]
+    },
+    "open": {
+      "eyebrow": "Ohne Anzeige",
+      "title": "Schreib uns einfach",
+      "summary": "Wenn Vertrieb nicht deins ist, gibt es trotzdem ein Gespräch. Erzähl, was du kannst und was du mit uns machen willst.",
+      "points": [
+        {
+          "label": "Offene Tür",
+          "body": "Wir haben nicht für jeden Menschen eine Anzeige. Wenn du spürst, dass du hier hingehörst, schreib. Wir lesen jede Geschichte."
+        }
+      ]
+    },
+    "form": {
+      "heading": "Deine Bewerbung",
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "place": "Wo du bist",
+      "linkedin": "LinkedIn",
+      "optionalNote": "Telefon, wo du bist und LinkedIn sind freiwillig.",
+      "schedule": "Wie du arbeiten willst",
+      "story": "Deine Geschichte",
+      "storyHintSales": "Mit deinen Worten. Warum du, warum jetzt, was dich daran zieht. Den Lebenslauf bitten wir später an, wenn wir weitermachen.",
+      "storyHintOpen": "Mit deinen Worten. Was du kannst und was du mit uns machen willst. Den Lebenslauf bitten wir später an, wenn wir weitermachen.",
+      "submit": "Bewerbung senden",
+      "pending": "Wird gesendet…",
+      "successTitle": "Wir haben sie.",
+      "success": "Wir schreiben dir innerhalb von 2 Kalendertagen.",
+      "privacy": "Das geht nur an uns, damit wir dir antworten können. Mehr steht in der",
+      "privacyLink": "Datenschutzerklärung",
+      "privacyNewTab": "Datenschutzerklärung (öffnet in neuem Tab)"
+    },
+    "errors": {
+      "name": "Schreib deinen Namen.",
+      "email": "Die E-Mail sieht nicht gültig aus.",
+      "phone": "Die Telefonnummer sieht nicht gültig aus.",
+      "place": "Das ist etwas lang.",
+      "linkedin": "Das sieht nicht nach einem LinkedIn-Profil aus.",
+      "schedule": "Wähle, wie du arbeiten willst.",
+      "story": "Erzähl uns ein bisschen mehr, mit deinen Worten.",
+      "config": "Das Formular ist nicht eingerichtet. Schreib uns an wavsy.dev@gmail.com",
+      "activate": "In der Inbox wartet eine Bestätigung. Öffne wavsy.dev@gmail.com, aktiviere das Formular und sende noch einmal.",
+      "generic": "Etwas ist schiefgegangen. Versuch es noch einmal oder schreib an die E-Mail."
+    }
   },
   "portfolio": {
     "title": "Portfolio",
