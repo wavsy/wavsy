@@ -65,7 +65,7 @@
   },
   "work": {
     "title": "Ausgewählte Projekte",
-    "lead": "Echte Arbeit. Name, Branche und ein Link zur Website.",
+    "lead": "Echte Arbeit. Name, was es ist, und ein Link.",
     "cta": "Alle Projekte",
     "emptyName": "Projekt",
     "emptyLabel": "Bald",
@@ -797,7 +797,7 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "lead": "Websites, die wir gebaut haben. Öffne sie und sieh selbst.",
+    "lead": "Websites und Software, die wir gebaut haben. Öffne sie und sieh selbst.",
     "empty": "Die ersten Projekte sind in Arbeit. Schreib uns, und wir zeigen, woran wir gerade bauen.",
     "cta": "Schreib uns",
     "visit": "Website ansehen",
@@ -843,6 +843,11 @@
         "name": "StructLab",
         "industry": "Eigenes Produkt · Lernplattform",
         "summary": "Eine Lernplattform für Studierende des Bauingenieurwesens. Jedes Kapitel lässt sich in zwei Modi lesen — leicht, mit Beispielen aus dem Alltag, oder ausführlich, mit den Herleitungen. In den Laboren ändern Studierende die Zahlen, und die Lösung wird Schritt für Schritt neu berechnet. Persönliche Aufgaben entstehen aus der Matrikelnummer, und die verteilte Wiederholung bringt Fragen zurück, kurz bevor sie vergessen werden."
+      },
+      "dimilessons": {
+        "name": "Dimi's Lessons",
+        "industry": "Eigenes Produkt · Unterrichtssoftware",
+        "summary": "Software für eine Lehrkraft — eine Notiz nach der Stunde, Zahlungen bei den Stunden und eine Seite für Eltern und Schüler."
       },
       "cacao": {
         "name": "Cacao Cartel",

@@ -1,4 +1,4 @@
-export const projectIds = ["storm", "glenz", "quezher", "kibo2", "cleantime", "dimitar", "todorovnet", "structlab", "cacao"] as const;
+export const projectIds = ["storm", "glenz", "quezher", "kibo2", "cleantime", "dimitar", "todorovnet", "structlab", "dimilessons", "cacao"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
@@ -83,6 +83,15 @@ export const projects: Project[] = [
     tour: { src: "/portfolio/tour/structlab.webp", ratio: 4.316 },
     reel: { src: "/portfolio/reel/structlab.webp", ratio: 3.393 },
     tourMobile: { src: "/portfolio/tour/structlab-mobile.webp", ratio: 7.179 },
+  },
+  // Also our own product. Software a teacher uses for lessons, homework and payments. The card links to the public page.
+  {
+    slug: "dimilessons",
+    url: "https://dims-lessons.vercel.app/en",
+    image: "/portfolio/dims-lessons.jpg",
+    tour: { src: "/portfolio/tour/dims-lessons.webp", ratio: 4.375 },
+    reel: { src: "/portfolio/reel/dims-lessons.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/dims-lessons-mobile.webp", ratio: 15.149 },
   },
   // A concept piece, not a client (KAN-43). Kept last and labelled as a concept.
   {

@@ -26,6 +26,9 @@ const sites = {
   dimitar: { url: "https://portfolio-theta-dun-ejq1lqeyg0.vercel.app/" },
   todorovnet: { url: "https://todorovnet.vercel.app/", crop: { desktop: 1450, mobile: 1000 } },
   structlab: { url: "https://structlab-ivory.vercel.app/" },
+  // A scrolling notebook: one tall capture would freeze a single page turn.
+  // `assemble` stitches the hero, each chapter, the film and the close.
+  "dims-lessons": { url: "https://dims-lessons.vercel.app/en", assemble: true },
   "cacao-cartel": { url: "https://cacao-cartel.vercel.app/", crop: { desktop: 3000, mobile: 1700 } },
 };
 
@@ -87,8 +90,111 @@ async function shrink(from, to) {
   return +(result.height / 560).toFixed(3);
 }
 
+// The lessons page keeps one notebook on screen and turns its pages as you
+// scroll, so a single tall capture would show one chapter and blank paper.
+// This stitches the hero, each chapter, the film and the close instead.
+async function openAssembled(url, viewport) {
+  const page = await browser.newPage();
+  await page.setViewport(viewport);
+  await page.emulateMediaFeatures([{ name: "prefers-color-scheme", value: "light" }]);
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 45_000 }).catch(() => {});
+  await page.waitForFunction(() => {
+    const heading = document.querySelector("h1");
+    return heading && heading.textContent.trim().length > 0;
+  }, { timeout: 20_000 }).catch(() => {});
+  await wait(2200);
+  return page;
+}
+
+async function shootScenes(page, quality) {
+  const frames = [];
+  const shoot = async () => {
+    await wait(1400);
+    frames.push(await page.screenshot({ type: "webp", quality }));
+  };
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await shoot();
+  const steps = await page.evaluate(() => document.querySelectorAll(".story-step").length);
+  for (let i = 0; i < steps; i++) {
+    await page.evaluate((index) => {
+      document.querySelectorAll(".story-step")[index].scrollIntoView({ block: "center", behavior: "instant" });
+    }, i);
+    await shoot();
+  }
+  for (const selector of [".film", ".landing-end"]) {
+    const found = await page.$(selector);
+    if (!found) continue;
+    await page.evaluate((selector) => {
+      document.querySelector(selector).scrollIntoView({ block: "start", behavior: "instant" });
+    }, selector);
+    await shoot();
+  }
+  return frames;
+}
+
+async function stack(frames) {
+  const page = await browser.newPage();
+  const images = frames.map((frame) => `data:image/webp;base64,${Buffer.from(frame).toString("base64")}`);
+  const result = await page.evaluate(async (images) => {
+    const bitmaps = [];
+    for (const src of images) {
+      const image = new Image();
+      image.src = src;
+      await image.decode();
+      bitmaps.push(image);
+    }
+    const width = bitmaps[0].naturalWidth;
+    const height = bitmaps.reduce((sum, image) => sum + image.naturalHeight, 0);
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext("2d");
+    let y = 0;
+    for (const image of bitmaps) {
+      context.drawImage(image, 0, y);
+      y += image.naturalHeight;
+    }
+    return { data: canvas.toDataURL("image/webp", 0.72).split(",")[1], width, height };
+  }, images);
+  await page.close();
+  return result;
+}
+
+async function assemble(url, viewport, file, quality) {
+  const page = await openAssembled(url, viewport);
+  const frames = await shootScenes(page, quality);
+  await page.close();
+  const stacked = await stack(frames);
+  writeFileSync(file, Buffer.from(stacked.data, "base64"));
+  return +(stacked.height / stacked.width).toFixed(3);
+}
+
+async function still(url, file) {
+  const page = await openAssembled(url, { width: 1440, height: 900, deviceScaleFactor: 1 });
+  await page.screenshot({ path: file, type: "jpeg", quality: 76 });
+  await page.close();
+}
+
 for (const [name, site] of Object.entries(sites)) {
   if (only && only !== name) continue;
+  if (site.assemble) {
+    await still(site.url, `${out}${name}.jpg`);
+    const tour = await assemble(
+      site.url,
+      { width: 1280, height: 800, deviceScaleFactor: 0.75 },
+      `${out}tour/${name}.webp`,
+      72,
+    );
+    const tourMobile = await assemble(
+      site.url,
+      { width: 390, height: 844, deviceScaleFactor: 1, isMobile: true, hasTouch: true },
+      `${out}tour/${name}-mobile.webp`,
+      68,
+    );
+    const reel = await shrink(`${out}tour/${name}.webp`, `${out}reel/${name}.webp`);
+    console.log(name, { tour, reel, tourMobile });
+    continue;
+  }
   const tour = await record(
     site.url,
     { width: 1280, height: 800, deviceScaleFactor: 0.75 },

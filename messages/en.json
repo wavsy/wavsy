@@ -64,7 +64,7 @@
   },
   "work": {
     "title": "Selected work",
-    "lead": "Real work. Name, industry, and a link to the site.",
+    "lead": "Real work. Name, what it is, and a link.",
     "cta": "All work",
     "emptyName": "Project",
     "emptyLabel": "Soon",
@@ -796,7 +796,7 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "lead": "Sites we have made. Open them and see for yourself.",
+    "lead": "Sites and software we have made. Open them and see for yourself.",
     "empty": "The first projects are in progress. Write to us and we will show you what we are making now.",
     "cta": "Write to us",
     "visit": "View site",
@@ -842,6 +842,11 @@
         "name": "StructLab",
         "industry": "Our own product · learning platform",
         "summary": "A learning platform for civil engineering students. Every chapter reads in two modes — light, with everyday examples, or detailed, with the derivations. In the labs students change the numbers and the solution is recalculated step by step. Personal assignments are generated from the student number, and spaced repetition brings questions back just before they are forgotten."
+      },
+      "dimilessons": {
+        "name": "Dimi's Lessons",
+        "industry": "Our own product · lesson software",
+        "summary": "Software for a teacher — one note after class, payments with the lessons, and a page for parents and students."
       },
       "cacao": {
         "name": "Cacao Cartel",
