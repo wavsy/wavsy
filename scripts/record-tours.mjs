@@ -18,11 +18,15 @@ const out = new URL("../public/portfolio/", import.meta.url).pathname;
 
 // File name -> address, plus how much of the page to keep (CSS px).
 const sites = {
+  ariadne: { url: "https://www.ariadne-drones.com/" },
   storm: { url: "https://stormcarwash.vercel.app/" },
   glenz: { url: "https://www.glenz-reinigung.com/" },
   quezher: { url: "https://manufacturas-quezher.vercel.app/" },
   "kibo-2": { url: "https://kibo-2.vercel.app/" },
   cleantime: { url: "https://cleantimesofia.com/bg" },
+  povecheotdumi: { url: "https://povecheotdumi.vercel.app/" },
+  // Its sections fade in with CSS scroll timelines, which a tall capture never triggers.
+  parvenec: { url: "https://parvenec.vercel.app/", css: ".reveal{animation:none!important}" },
   dimitar: { url: "https://portfolio-theta-dun-ejq1lqeyg0.vercel.app/" },
   todorovnet: { url: "https://todorovnet.vercel.app/", crop: { desktop: 1450, mobile: 1000 } },
   structlab: { url: "https://structlab-ivory.vercel.app/" },
@@ -41,10 +45,11 @@ const browser = await puppeteer.launch({
   args: ["--enable-unsafe-swiftshader", "--use-angle=swiftshader", "--lang=bg-BG"],
 });
 
-async function record(url, viewport, maxHeight, file, quality) {
+async function record(url, viewport, maxHeight, file, quality, css) {
   const page = await browser.newPage();
   await page.setViewport(viewport);
   await page.goto(url, { waitUntil: "networkidle2", timeout: 45_000 }).catch(() => {});
+  if (css) await page.addStyleTag({ content: css });
   await wait(2500);
   // Walk the page so scroll-triggered sections are revealed, then go back up.
   const total = await page.evaluate(() => document.documentElement.scrollHeight);
@@ -201,6 +206,7 @@ for (const [name, site] of Object.entries(sites)) {
     site.crop?.desktop ?? 9000,
     `${out}tour/${name}.webp`,
     72,
+    site.css,
   );
   const tourMobile = await record(
     site.url,
@@ -208,6 +214,7 @@ for (const [name, site] of Object.entries(sites)) {
     site.crop?.mobile ?? 2800,
     `${out}tour/${name}-mobile.webp`,
     68,
+    site.css,
   );
   const reel = await shrink(`${out}tour/${name}.webp`, `${out}reel/${name}.webp`);
   console.log(name, { tour, reel, tourMobile });

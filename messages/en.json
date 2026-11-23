@@ -852,6 +852,21 @@
         "name": "Cacao Cartel",
         "industry": "Concept project",
         "summary": "An interactive concept site about cacao — 3D scenes, scroll-driven effects and a distinct look."
+      },
+      "ariadne": {
+        "name": "ARIADNE",
+        "industry": "Our own project · defence tech",
+        "summary": "A patrol drone that spots an incoming fibre-optic drone and follows the fresh fibre back to where it was launched. The site presents the idea with a two-minute film, the research behind it and the team."
+      },
+      "povecheotdumi": {
+        "name": "Повече от думи",
+        "industry": "Online flower shop",
+        "summary": "An online shop for a florist in Studentski grad, Sofia — bouquets and arrangements made on the day of the order, with pickup from the shop or delivery across Sofia."
+      },
+      "parvenec": {
+        "name": "Parvenec",
+        "industry": "Online shop · ice cream",
+        "summary": "An online shop for ice cream machines and supplies — more than 80 products in Bulgarian and English, a three-step order with delivery to an address or an office, and a 3D ice cream that melts on the home page."
       }
     }
   }

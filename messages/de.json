@@ -853,6 +853,21 @@
         "name": "Cacao Cartel",
         "industry": "Konzeptprojekt",
         "summary": "Eine interaktive Konzept-Website über Kakao — 3D-Szenen, Scroll-Effekte und ein eigener Look."
+      },
+      "ariadne": {
+        "name": "ARIADNE",
+        "industry": "Eigenes Projekt · Verteidigungstechnik",
+        "summary": "Eine Patrouillendrohne, die eine anfliegende Glasfaserdrohne erkennt und der frischen Faser bis zum Startpunkt zurück folgt. Die Website zeigt die Idee mit einem zweiminütigen Film, der Recherche dahinter und dem Team."
+      },
+      "povecheotdumi": {
+        "name": "Повече от думи",
+        "industry": "Online-Blumenladen",
+        "summary": "Ein Onlineshop für einen Blumenladen in Studentski grad, Sofia — Sträuße und Gestecke, am Tag der Bestellung gebunden, zur Abholung im Laden oder mit Lieferung in ganz Sofia."
+      },
+      "parvenec": {
+        "name": "Parvenec",
+        "industry": "Onlineshop · Eis",
+        "summary": "Ein Onlineshop für Eismaschinen und Zubehör — über 80 Produkte auf Bulgarisch und Englisch, eine Bestellung in drei Schritten mit Lieferung an eine Adresse oder ein Büro und ein 3D-Eis, das auf der Startseite schmilzt."
       }
     }
   }

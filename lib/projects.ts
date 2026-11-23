@@ -1,4 +1,4 @@
-export const projectIds = ["storm", "glenz", "quezher", "kibo2", "cleantime", "dimitar", "todorovnet", "structlab", "dimilessons", "cacao"] as const;
+export const projectIds = ["ariadne", "storm", "glenz", "quezher", "kibo2", "cleantime", "povecheotdumi", "parvenec", "dimitar", "todorovnet", "structlab", "dimilessons", "cacao"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
@@ -18,6 +18,15 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  // Our own project, shown first by decision of Nikolay (2026-11-23). Labelled as ours, not as client work.
+  {
+    slug: "ariadne",
+    url: "https://www.ariadne-drones.com/",
+    image: "/portfolio/ariadne.jpg",
+    tour: { src: "/portfolio/tour/ariadne.webp", ratio: 7.031 },
+    reel: { src: "/portfolio/reel/ariadne.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/ariadne-mobile.webp", ratio: 7.179 },
+  },
   {
     slug: "storm",
     url: "https://stormcarwash.vercel.app/",
@@ -57,6 +66,24 @@ export const projects: Project[] = [
     tour: { src: "/portfolio/tour/cleantime.webp", ratio: 5.576 },
     reel: { src: "/portfolio/reel/cleantime.webp", ratio: 3.393 },
     tourMobile: { src: "/portfolio/tour/cleantime-mobile.webp", ratio: 7.179 },
+  },
+  // An online flower shop. The card opens its trial address until the shop moves to its own domain.
+  {
+    slug: "povecheotdumi",
+    url: "https://povecheotdumi.vercel.app/",
+    image: "/portfolio/povecheotdumi.jpg",
+    tour: { src: "/portfolio/tour/povecheotdumi.webp", ratio: 7.031 },
+    reel: { src: "/portfolio/reel/povecheotdumi.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/povecheotdumi-mobile.webp", ratio: 7.179 },
+  },
+  // An online shop for ice cream machines and supplies. Also on its trial address until the domain is moved.
+  {
+    slug: "parvenec",
+    url: "https://parvenec.vercel.app/",
+    image: "/portfolio/parvenec.jpg",
+    tour: { src: "/portfolio/tour/parvenec.webp", ratio: 6.023 },
+    reel: { src: "/portfolio/reel/parvenec.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/parvenec-mobile.webp", ratio: 7.179 },
   },
   {
     slug: "dimitar",
