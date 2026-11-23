@@ -23,7 +23,8 @@ export type FilmCopy = {
 const SCENE_MS = [8600, 6200, 6400, 7200];
 
 // The site the film is "made" about: a real client project, shown as it is.
-const subject = projects[0];
+// The film tells the story of a client site, so it names its subject instead of taking whichever project is first.
+const subject = projects.find((project) => project.slug === "storm") ?? projects[0];
 const host = new URL(subject.url).host.replace(/^www\./, "");
 
 const CODE = [
