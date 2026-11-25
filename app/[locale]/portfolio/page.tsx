@@ -8,6 +8,8 @@ import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { projects } from "@/lib/projects";
 import { pathFor } from "@/lib/routes";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { portfolioJsonLd } from "@/lib/structured-data";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -25,6 +27,7 @@ export default async function PortfolioPage({ params }: PageProps) {
 
   return (
     <main id="content" className="bg-paper pb-24">
+      <JsonLd data={await portfolioJsonLd(locale)} />
       <PageHeader title={t("title")} lead={t("lead")} />
       <Container>
         {projects.length === 0 ? (
