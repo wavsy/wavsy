@@ -33,6 +33,10 @@ const sites = {
   // A scrolling notebook: one tall capture would freeze a single page turn.
   // `assemble` stitches the hero, each chapter, the film and the close.
   "dims-lessons": { url: "https://dims-lessons.vercel.app/en", assemble: true },
+  // The three race sites share one row in the portfolio ("races").
+  koprinka: { url: "https://koprinka-2026.vercel.app/" },
+  "ali-baba-3": { url: "https://ali-baba-3.vercel.app/" },
+  "prohodat-na-pobedata": { url: "https://prohodat-na-pobedata.vercel.app/" },
   "cacao-cartel": { url: "https://cacao-cartel.vercel.app/", crop: { desktop: 3000, mobile: 1700 } },
 };
 

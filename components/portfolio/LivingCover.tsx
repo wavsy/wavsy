@@ -6,7 +6,8 @@ import { cn } from "@/lib/cn";
 import type { Project } from "@/lib/projects";
 
 type LivingCoverProps = {
-  project: Project;
+  /** A project, or one site inside a grouped row (it has the same fields). */
+  project: Pick<Project, "url" | "tour" | "tourMobile">;
   /** Only the active cover moves; the others stay as their still image. */
   active: boolean;
   className?: string;

@@ -868,6 +868,26 @@
         "name": "Parvenec",
         "industry": "Onlineshop · Eis",
         "summary": "Ein Onlineshop für Eismaschinen und Zubehör — über 80 Produkte auf Bulgarisch und Englisch, eine Bestellung in drei Schritten mit Lieferung an eine Adresse oder ein Büro und ein 3D-Eis, das auf der Startseite schmilzt."
+      },
+      "races": {
+        "name": "Websites für Rennen",
+        "industry": "3 Veranstaltungen · Anmeldung und Wertung",
+        "summary": "Websites für Motorrad- und ATV-Rennen: Online-Anmeldung der Teams, Starterliste, Start, Ziel und Live-Wertung. Sie funktionieren auch auf dem Handy an der Strecke.",
+        "more": "Alle drei Websites ansehen",
+        "items": {
+          "prohodat": {
+            "name": "Siegespass",
+            "note": "ATV · 05.12.2026"
+          },
+          "alibaba": {
+            "name": "Ali Baba 3",
+            "note": "Motorrad und ATV · 21.11.2026"
+          },
+          "koprinka": {
+            "name": "Koprinka 2026",
+            "note": "Team-Enduro · 31.10.2026"
+          }
+        }
       }
     }
   }

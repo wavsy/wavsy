@@ -1,4 +1,4 @@
-export const projectIds = ["ariadne", "storm", "glenz", "quezher", "kibo2", "cleantime", "povecheotdumi", "parvenec", "dimitar", "todorovnet", "structlab", "dimilessons", "cacao"] as const;
+export const projectIds = ["ariadne", "races", "parvenec", "povecheotdumi", "cleantime", "kibo2", "storm", "glenz", "quezher", "dimitar", "todorovnet", "structlab", "dimilessons", "cacao"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
@@ -15,8 +15,14 @@ export type Project = {
   reel?: { src: string; ratio: number };
   /** The phone version of the same site, shown on a phone beside the browser. */
   tourMobile?: { src: string; ratio: number };
+  /**
+   * Several small sites of one kind shown as a single row. Each needs
+   * `portfolio.projects.<slug>.items.<key>.name` and `.note` in the messages.
+   */
+  group?: ({ key: string; url: string; image: string } & Pick<Project, "tour" | "tourMobile">)[];
 };
 
+// Order: ARIADNE first, then client work newest first, then our own products and the concept.
 export const projects: Project[] = [
   // Our own project, shown first by decision of Nikolay (2026-11-23). Labelled as ours, not as client work.
   {
@@ -26,6 +32,73 @@ export const projects: Project[] = [
     tour: { src: "/portfolio/tour/ariadne.webp", ratio: 7.031 },
     reel: { src: "/portfolio/reel/ariadne.webp", ratio: 3.393 },
     tourMobile: { src: "/portfolio/tour/ariadne-mobile.webp", ratio: 7.179 },
+  },
+  // Three race sites (registration, teams, results) shown as ONE row so the list stays short.
+  // The row's link and moving cover are the newest event; `group` lists all three.
+  {
+    slug: "races",
+    url: "https://prohodat-na-pobedata.vercel.app/",
+    image: "/portfolio/prohodat-na-pobedata.jpg",
+    tour: { src: "/portfolio/tour/prohodat-na-pobedata.webp", ratio: 6.648 },
+    reel: { src: "/portfolio/reel/prohodat-na-pobedata.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/prohodat-na-pobedata-mobile.webp", ratio: 7.179 },
+    group: [
+      {
+        key: "prohodat",
+        url: "https://prohodat-na-pobedata.vercel.app/",
+        image: "/portfolio/prohodat-na-pobedata.jpg",
+        tour: { src: "/portfolio/tour/prohodat-na-pobedata.webp", ratio: 6.648 },
+        tourMobile: { src: "/portfolio/tour/prohodat-na-pobedata-mobile.webp", ratio: 7.179 },
+      },
+      {
+        key: "alibaba",
+        url: "https://ali-baba-3.vercel.app/",
+        image: "/portfolio/ali-baba-3.jpg",
+        tour: { src: "/portfolio/tour/ali-baba-3.webp", ratio: 7.031 },
+        tourMobile: { src: "/portfolio/tour/ali-baba-3-mobile.webp", ratio: 7.179 },
+      },
+      {
+        key: "koprinka",
+        url: "https://koprinka-2026.vercel.app/",
+        image: "/portfolio/koprinka.jpg",
+        tour: { src: "/portfolio/tour/koprinka.webp", ratio: 7.031 },
+        tourMobile: { src: "/portfolio/tour/koprinka-mobile.webp", ratio: 7.179 },
+      },
+    ],
+  },
+  // An online shop for ice cream machines and supplies. Also on its trial address until the domain is moved.
+  {
+    slug: "parvenec",
+    url: "https://parvenec.vercel.app/",
+    image: "/portfolio/parvenec.jpg",
+    tour: { src: "/portfolio/tour/parvenec.webp", ratio: 6.023 },
+    reel: { src: "/portfolio/reel/parvenec.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/parvenec-mobile.webp", ratio: 7.179 },
+  },
+  // An online flower shop. The card opens its trial address until the shop moves to its own domain.
+  {
+    slug: "povecheotdumi",
+    url: "https://povecheotdumi.vercel.app/",
+    image: "/portfolio/povecheotdumi.jpg",
+    tour: { src: "/portfolio/tour/povecheotdumi.webp", ratio: 7.031 },
+    reel: { src: "/portfolio/reel/povecheotdumi.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/povecheotdumi-mobile.webp", ratio: 7.179 },
+  },
+  {
+    slug: "cleantime",
+    url: "https://cleantimesofia.com/",
+    image: "/portfolio/cleantime.jpg",
+    tour: { src: "/portfolio/tour/cleantime.webp", ratio: 5.576 },
+    reel: { src: "/portfolio/reel/cleantime.webp", ratio: 3.393 },
+    tourMobile: { src: "/portfolio/tour/cleantime-mobile.webp", ratio: 7.179 },
+  },
+  {
+    slug: "kibo2",
+    url: "https://kibo-2.vercel.app/",
+    image: "/portfolio/kibo-2.jpg",
+    tour: { src: "/portfolio/tour/kibo-2.webp", ratio: 2.217 },
+    reel: { src: "/portfolio/reel/kibo-2.webp", ratio: 2.216 },
+    tourMobile: { src: "/portfolio/tour/kibo-2-mobile.webp", ratio: 7.179 },
   },
   {
     slug: "storm",
@@ -50,40 +123,6 @@ export const projects: Project[] = [
     tour: { src: "/portfolio/tour/quezher.webp", ratio: 6.423 },
     reel: { src: "/portfolio/reel/quezher.webp", ratio: 3.393 },
     tourMobile: { src: "/portfolio/tour/quezher-mobile.webp", ratio: 7.179 },
-  },
-  {
-    slug: "kibo2",
-    url: "https://kibo-2.vercel.app/",
-    image: "/portfolio/kibo-2.jpg",
-    tour: { src: "/portfolio/tour/kibo-2.webp", ratio: 2.217 },
-    reel: { src: "/portfolio/reel/kibo-2.webp", ratio: 2.216 },
-    tourMobile: { src: "/portfolio/tour/kibo-2-mobile.webp", ratio: 7.179 },
-  },
-  {
-    slug: "cleantime",
-    url: "https://cleantimesofia.com/",
-    image: "/portfolio/cleantime.jpg",
-    tour: { src: "/portfolio/tour/cleantime.webp", ratio: 5.576 },
-    reel: { src: "/portfolio/reel/cleantime.webp", ratio: 3.393 },
-    tourMobile: { src: "/portfolio/tour/cleantime-mobile.webp", ratio: 7.179 },
-  },
-  // An online flower shop. The card opens its trial address until the shop moves to its own domain.
-  {
-    slug: "povecheotdumi",
-    url: "https://povecheotdumi.vercel.app/",
-    image: "/portfolio/povecheotdumi.jpg",
-    tour: { src: "/portfolio/tour/povecheotdumi.webp", ratio: 7.031 },
-    reel: { src: "/portfolio/reel/povecheotdumi.webp", ratio: 3.393 },
-    tourMobile: { src: "/portfolio/tour/povecheotdumi-mobile.webp", ratio: 7.179 },
-  },
-  // An online shop for ice cream machines and supplies. Also on its trial address until the domain is moved.
-  {
-    slug: "parvenec",
-    url: "https://parvenec.vercel.app/",
-    image: "/portfolio/parvenec.jpg",
-    tour: { src: "/portfolio/tour/parvenec.webp", ratio: 6.023 },
-    reel: { src: "/portfolio/reel/parvenec.webp", ratio: 3.393 },
-    tourMobile: { src: "/portfolio/tour/parvenec-mobile.webp", ratio: 7.179 },
   },
   {
     slug: "dimitar",
