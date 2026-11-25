@@ -5,6 +5,7 @@ import { umamiEvent } from "@/lib/analytics";
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { useTranslations } from "next-intl";
+import { GroupPreview } from "@/components/portfolio/GroupPreview";
 import { LivingCover } from "@/components/portfolio/LivingCover";
 import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
 import { cn } from "@/lib/cn";
@@ -24,6 +25,10 @@ export function WorkList({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<number | null>(null);
   const [canHover, setCanHover] = useState(false);
   const [scrolled, setScrolled] = useState(0);
+  // A grouped row (several race sites) opens in place to list its sites;
+  // `sub` is the site under the pointer, so the preview shows that one.
+  const [open, setOpen] = useState<string | null>(null);
+  const [sub, setSub] = useState<number | null>(null);
   // True once the list has actually been scrolled to, so the phone preview
   // does not start loading a recording while the visitor is still at the top.
   const [reached, setReached] = useState(false);
@@ -86,14 +91,24 @@ export function WorkList({ projects }: { projects: Project[] }) {
               transition={reduce ? { duration: 0 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               style={{ zIndex: scrolled === index ? 2 : 1 }}
             >
-              <Image
-                src={project.image}
-                alt=""
-                fill
-                sizes="(min-width: 768px) 700px, 100vw"
-                className="object-cover object-top"
-              />
-              <LivingCover project={project} active={!canHover && reached && scrolled === index} />
+              {project.group ? (
+                <GroupPreview
+                  project={project}
+                  active={!canHover && reached && scrolled === index}
+                  sizes="(min-width: 768px) 700px, 100vw"
+                />
+              ) : (
+                <>
+                  <Image
+                    src={project.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 700px, 100vw"
+                    className="object-cover object-top"
+                  />
+                  <LivingCover project={project} active={!canHover && reached && scrolled === index} />
+                </>
+              )}
             </motion.div>
           ))}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-3 bg-gradient-to-t from-deep/90 to-transparent p-4 pt-10">
@@ -109,7 +124,10 @@ export function WorkList({ projects }: { projects: Project[] }) {
       <ul
         ref={listRef}
         onPointerMove={canHover ? onMove : undefined}
-        onPointerLeave={() => setActive(null)}
+        onPointerLeave={() => {
+          setActive(null);
+          setSub(null);
+        }}
         className="relative border-t border-white/12"
       >
         {projects.map((project, index) => {
@@ -119,21 +137,28 @@ export function WorkList({ projects }: { projects: Project[] }) {
           // (dimmed text fails contrast); they highlight the active row instead.
           const dim = canHover && active !== null && active !== index;
           const current = !canHover && scrolled === index;
+          const isOpen = open === project.slug;
           return (
             <li key={project.slug} data-row={index} className="border-b border-white/12">
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                {...umamiEvent("project-open", { project: project.slug, from: "home" })}
-                onPointerEnter={() => setActive(index)}
-                onFocus={() => setActive(index)}
-                onBlur={() => setActive(null)}
-                className={cn(
-                  "group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 transition-opacity duration-300 md:grid-cols-[4rem_1fr_auto] md:py-8",
+              {project.group ? (
+                <>
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={`group-${project.slug}`}
+                    onClick={() => setOpen(isOpen ? null : project.slug)}
+                    onPointerEnter={() => {
+                      setActive(index);
+                      setSub(null);
+                    }}
+                    onFocus={() => setActive(index)}
+                    onBlur={() => setActive(null)}
+                    className={cn(
+                  "group grid w-full text-left grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 transition-opacity duration-300 md:grid-cols-[4rem_1fr_auto] md:py-8",
                   dim && "opacity-40",
                 )}
-              >
+
+                  >
                 <span
                   className={cn(
                     "font-display text-sm tracking-[0.12em] transition-colors duration-300",
@@ -153,13 +178,96 @@ export function WorkList({ projects }: { projects: Project[] }) {
                   </span>
                   <span className="mt-1.5 block text-sm text-white/70">{industry}</span>
                 </span>
-                <span
-                  className="col-span-2 hidden items-center gap-2 text-sm text-white/60 transition-colors duration-300 group-hover:text-cyan md:col-span-1 md:inline-flex"
-                >
-                  {t("visit")}
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                <span className="col-span-2 inline-flex items-center gap-2 text-sm text-white/60 transition-colors duration-300 group-hover:text-cyan md:col-span-1">
+                  {t(`projects.${project.slug}.more`)}
+                  <span
+                    aria-hidden
+                    className={cn("transition-transform duration-300", isOpen ? "rotate-180" : "group-hover:translate-y-0.5")}
+                  >
+                    ↓
+                  </span>
                 </span>
-              </a>
+                  </button>
+                  <ul
+                    id={`group-${project.slug}`}
+                    hidden={!isOpen}
+                    className="mb-6 grid gap-px overflow-hidden rounded-2xl bg-white/10 md:ml-[5.25rem]"
+                  >
+                    {project.group.map((item, itemIndex) => (
+                      <li key={item.key}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          {...umamiEvent("project-open", { project: `${project.slug}-${item.key}`, from: "home" })}
+                          onPointerEnter={() => {
+                            setActive(index);
+                            setSub(itemIndex);
+                          }}
+                          onFocus={() => {
+                            setActive(index);
+                            setSub(itemIndex);
+                          }}
+                          className="group/item flex items-center justify-between gap-4 bg-deep px-5 py-4 transition-colors duration-300 hover:bg-white/[0.04]"
+                        >
+                          <span className="min-w-0">
+                            <span className="block font-display text-xl tracking-[-0.03em] text-white transition-colors duration-300 group-hover/item:text-cyan md:text-2xl">
+                              {t(`projects.${project.slug}.items.${item.key}.name`)}
+                            </span>
+                            <span className="mt-1 block text-sm text-white/60">
+                              {t(`projects.${project.slug}.items.${item.key}.note`)}
+                            </span>
+                          </span>
+                          <span className="inline-flex shrink-0 items-center gap-2 text-sm text-white/60 transition-colors duration-300 group-hover/item:text-cyan">
+                            {t("visit")}
+                            <span aria-hidden className="transition-transform duration-300 group-hover/item:translate-x-1">↗</span>
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...umamiEvent("project-open", { project: project.slug, from: "home" })}
+                  onPointerEnter={() => setActive(index)}
+                  onFocus={() => setActive(index)}
+                  onBlur={() => setActive(null)}
+                  className={cn(
+                    "group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 transition-opacity duration-300 md:grid-cols-[4rem_1fr_auto] md:py-8",
+                    dim && "opacity-40",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "font-display text-sm tracking-[0.12em] transition-colors duration-300",
+                      current ? "text-cyan" : "text-white/70",
+                    )}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="min-w-0">
+                    <span
+                      className={cn(
+                        "block font-display text-[clamp(1.5rem,4.2vw,3.5rem)] leading-[1.02] tracking-[-0.045em] transition-[transform,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-3",
+                        current ? "translate-x-2 text-cyan" : "text-white",
+                      )}
+                    >
+                      {name}
+                    </span>
+                    <span className="mt-1.5 block text-sm text-white/70">{industry}</span>
+                  </span>
+                  <span
+                    className="col-span-2 hidden items-center gap-2 text-sm text-white/60 transition-colors duration-300 group-hover:text-cyan md:col-span-1 md:inline-flex"
+                  >
+                    {t("visit")}
+                    <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                  </span>
+                </a>
+              )}
             </li>
           );
         })}
@@ -190,14 +298,25 @@ export function WorkList({ projects }: { projects: Project[] }) {
                     active === index ? "opacity-100" : "opacity-0",
                   )}
                 >
-                  <Image
-                    src={project.image}
-                    alt=""
-                    fill
-                    sizes="384px"
-                    className="object-cover object-top"
-                  />
-                  <LivingCover project={project} active={showPreview && active === index} />
+                  {project.group ? (
+                    <GroupPreview
+                      project={project}
+                      active={showPreview && active === index}
+                      pinned={active === index ? sub : null}
+                      sizes="384px"
+                    />
+                  ) : (
+                    <>
+                      <Image
+                        src={project.image}
+                        alt=""
+                        fill
+                        sizes="384px"
+                        className="object-cover object-top"
+                      />
+                      <LivingCover project={project} active={showPreview && active === index} />
+                    </>
+                  )}
                 </div>
               ))}
             </div>

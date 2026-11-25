@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { umamiEvent } from "@/lib/analytics";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { HoverLift } from "@/components/motion/HoverLift";
+import { GroupPreview } from "@/components/portfolio/GroupPreview";
 import { LivingCover } from "@/components/portfolio/LivingCover";
 import { useCoverActive } from "@/components/portfolio/useCoverActive";
 import type { Project } from "@/lib/projects";
@@ -15,6 +17,8 @@ type PortfolioCardProps = {
 
 export function PortfolioCard({ project, index }: PortfolioCardProps) {
   const { ref, active } = useCoverActive<HTMLElement>();
+  // In a grouped card, the site under the pointer plays its own recording.
+  const [sub, setSub] = useState<number | null>(null);
   const work = useTranslations("work");
   const t = useTranslations("portfolio");
 
@@ -27,15 +31,26 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
       <div className="relative aspect-[16/10] shrink-0 overflow-hidden rounded-2xl bg-mist">
         {project ? (
           <div className="view-zoom absolute inset-0">
-            <Image
-              src={project.image}
-              alt={t("imageAlt", { name })}
-              fill
-              sizes="(min-width: 768px) 45vw, 100vw"
-              priority={index < 2}
-              className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-            />
-            <LivingCover project={project} active={active} />
+            {project.group ? (
+              <GroupPreview
+                project={project}
+                active={active || sub !== null}
+                pinned={sub}
+                sizes="(min-width: 768px) 45vw, 100vw"
+              />
+            ) : (
+              <>
+                <Image
+                  src={project.image}
+                  alt={t("imageAlt", { name })}
+                  fill
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                  priority={index < 2}
+                  className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                />
+                <LivingCover project={project} active={active} />
+              </>
+            )}
           </div>
         ) : (
           <div className="absolute inset-0 bg-[linear-gradient(135deg,#0B3D91_0%,transparent_42%,#3FC1F0_100%)] opacity-[0.18]" />
@@ -50,7 +65,36 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
         </p>
         <p className="mt-3 w-fit rounded-full border border-navy/15 bg-paper px-3 py-1 text-xs text-navy">{industry}</p>
         <p className="mt-4 max-w-[32ch] text-ink/75">{summary}</p>
-        {project ? (
+        {project?.group ? (
+          // A grouped card is not one link: each site in it gets its own.
+          <ul className="mt-auto grid gap-2 pt-6" onPointerLeave={() => setSub(null)}>
+            {project.group.map((item, itemIndex) => (
+              <li key={item.key}>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...umamiEvent("project-open", { project: `${project.slug}-${item.key}`, from: "portfolio" })}
+                  onPointerEnter={() => setSub(itemIndex)}
+                  onFocus={() => setSub(itemIndex)}
+                  onBlur={() => setSub(null)}
+                  className="group/item flex items-center justify-between gap-4 rounded-2xl border border-mist bg-paper px-4 py-3 transition-colors duration-150 hover:border-navy/30"
+                >
+                  <span className="min-w-0">
+                    <span className="block font-medium text-ink">{t(`projects.${project.slug}.items.${item.key}.name`)}</span>
+                    <span className="block text-sm text-ink/60">{t(`projects.${project.slug}.items.${item.key}.note`)}</span>
+                  </span>
+                  <span className="inline-flex shrink-0 items-center gap-2 text-sm text-ink/55 transition-colors duration-150 group-hover/item:text-navy">
+                    {t("visit")}
+                    <span aria-hidden className="transition-transform duration-150 group-hover/item:translate-x-1">
+                      →
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : project ? (
           <p className="mt-auto inline-flex items-center gap-2 pt-6 text-sm text-ink/55 transition-colors duration-150 group-hover:text-navy">
             <span>{t("visit")}</span>
             <span
@@ -65,7 +109,7 @@ export function PortfolioCard({ project, index }: PortfolioCardProps) {
     </article>
   );
 
-  if (!project) {
+  if (!project || project.group) {
     return <HoverLift className="h-full">{body}</HoverLift>;
   }
 
