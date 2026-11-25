@@ -23,6 +23,7 @@ import { parseLocale } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { pathFor } from "@/lib/routes";
 import { absoluteUrl } from "@/lib/site";
+import { aiServiceJsonLd } from "@/lib/structured-data";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -63,6 +64,7 @@ export default async function AiPage({ params }: PageProps) {
   return (
     <main id="content">
       <JsonLd data={jsonLd} />
+      <JsonLd data={await aiServiceJsonLd(locale)} />
       <section className="relative isolate overflow-hidden bg-deep text-white">
         <div className="ai-aurora pointer-events-none absolute inset-0 -z-10" aria-hidden />
         <div className="ai-dot-grid pointer-events-none absolute inset-0 -z-10" aria-hidden />
